@@ -6,15 +6,8 @@ public interface SearchBehavior {
 
     public void displaySearch();
 
-    private boolean checkAvailabilty(int numofSeats) {
-        if (numofSeats > 0) {
-            return true;
-        }
-        return false;
-    }
+    private boolean checkAvailabilty(int numofSeats);
 
-    private boolean checkCapacity(int numInParty) {
-        return true;
-    }
+    private boolean checkCapacity(int numInParty);
 
 }
