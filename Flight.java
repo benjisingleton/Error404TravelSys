@@ -2,6 +2,7 @@
  * 
  * @author Benjamin Singleton
  */
+
 class Flight {
     private String deptAirport;
     private String arrivAirport;
