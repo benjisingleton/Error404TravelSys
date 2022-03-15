@@ -2,6 +2,8 @@
  * 
  * @author Mostafa Mohamed Ali
  */
+import java.util.ArrayList;
+
 class PartyMember implements RegisteredUser{
 
     private String firstName() {
