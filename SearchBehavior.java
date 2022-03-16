@@ -6,8 +6,8 @@ public interface SearchBehavior {
 
     public void displaySearch();
 
-    private boolean checkAvailabilty(int numofSeats);
+    public boolean checkAvailabilty(int numofSeats);
 
-    private boolean checkCapacity(int numInParty);
+    public boolean checkCapacity(int numInParty);
 
 }
