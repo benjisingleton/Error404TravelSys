@@ -1,0 +1,28 @@
+{
+    "rooms": [
+       {
+          "id": 1,
+          "price": 250.0,
+          "location": "New York City, New York",
+          "capacity": 6,
+          "smoking": "smoking",
+          "accessibleBath": true,
+          "rollshower": false,
+          "washDry": true,
+          "noExtraAmenities": false,
+          "bedType": "King"
+       },
+       {
+          "id": 2,
+          "price": 150.0,
+          "location": "Tokyo, Japan",
+          "capacity": 2,
+          "smoking": "non-smoking",
+          "accessibleBath": true,
+          "rollshower": true,
+          "washDry": true,
+          "noExtraAmenities": true,
+          "bedType": "Queen"
+       }
+    ]
+ }
