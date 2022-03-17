@@ -1,5 +1,5 @@
 /**
- * 
+ * Class to manage a flight
  * @author Benjamin Singleton
  */
 
@@ -10,6 +10,14 @@ class Flight {
     private double price;
     private Reservation flightReservation;
 
+    /**
+     * Sets local variables to passed in parameters
+     * @param deptAirport Departing airport
+     * @param arrivAirport Arriving airport
+     * @param plane Plane class with airline, seats, and capacity
+     * @param price Price of flight
+     * @param flightReservation Reservation class for flight
+     */
     public Flight (String deptAirport, String arrivAirport, Plane plane,
     double price, Reservation flightReservation) {
         this.deptAirport = deptAirport;

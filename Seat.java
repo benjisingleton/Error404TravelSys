@@ -1,5 +1,5 @@
 /**
- * 
+ * Class to manage seats on a plane
  * @author Benjamin Singleton
  */
 

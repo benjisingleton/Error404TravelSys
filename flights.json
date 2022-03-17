@@ -8,15 +8,17 @@
         "arrivAirport" : "Logan Airport",
         "timeOfDeparture" : "8:40 AM",
         "timeOfArrival" : "9:53 AM",
-        "seats" : [
-            "1A","1B","1C","1D",
-            "2A","2B","2C","2D",
-            "3A","3B","3C","3D",
-            "4A","4B","4C","4D",
-            "5A","5B","5C","5D",
-            "6A","6B","6C","6D",
-            "7A","7B","7C","7D"
-        ]
+        "seats":[
+                    {
+                        "1A":true,"1B":true,"1C":true,"1D":true,
+                        "2A":true,"2B":true,"2C":true,"2D":true,
+                        "3A":true,"3B":true,"3C":true,"3D":true,
+                        "4A":true,"4B":true,"4C":true,"4D":true,
+                        "5A":true,"5B":true,"5C":true,"5D":true,
+                        "6A":true,"6B":true,"6C":true,"6D":true,
+                        "7A":true,"7B":true,"7C":true,"7D":true
+                    }  
+                ]
     },
     {
         "airlineID" : 2,
@@ -26,16 +28,18 @@
         "arrivAirport" : "Charles de Gaulle",
         "timeOfDeparture" : "6:35 PM",
         "timeOfArrival" : "1:21 AM",
-        "seats" : [
-            "1A","1B","1C","1D","1E","1F",
-            "2A","2B","2C","2D","2E","2F",
-            "3A","3B","3C","3D","3E","3F",
-            "4A","4B","4C","4D","4E","4F",
-            "5A","5B","5C","5D","5E","5F",
-            "6A","6B","6C","6D","6E","6F",
-            "7A","7B","7C","7D","7E","7F",
-            "8A","8B","8C","8D","8E","8F",
-            "9A","9B","9C","9D","9E","9F"
-        ]
+        "seats":[
+                    {
+                        "1A":true,"1B":true,"1C":true,"1D":true,
+                        "2A":true,"2B":true,"2C":true,"2D":true,
+                        "3A":true,"3B":true,"3C":true,"3D":true,
+                        "4A":true,"4B":true,"4C":true,"4D":true,
+                        "5A":true,"5B":true,"5C":true,"5D":true,
+                        "6A":true,"6B":true,"6C":true,"6D":true,
+                        "7A":true,"7B":true,"7C":true,"7D":true,
+                        "8A":true,"8B":true,"8C":true,"8D":true,
+                        "9A":true,"9B":true,"9C":true,"9D":true
+                    }  
+                ]
     }
 ]

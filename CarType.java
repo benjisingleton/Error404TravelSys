@@ -1,5 +1,5 @@
 /**
- * 
+ * Different car types
  * @author Benjamin Singleton
  */
 
