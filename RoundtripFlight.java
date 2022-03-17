@@ -1,3 +1,6 @@
+/**
+ * @author Daniel Henington
+ */
 public class RoundtripFlight {
     
     private Flight deptFlight;

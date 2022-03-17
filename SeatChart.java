@@ -9,7 +9,7 @@ class SeatChart {
     private ArrayList<Seat> allSeats = new ArrayList<>();
     private ArrayList<Seat> userSeats = new ArrayList<>();
 
-    public SeatChart (ArrayList<Seat> allSeats, ArrayList<seat> userSeats) {
+    public SeatChart (ArrayList<Seat> allSeats, ArrayList<Seat> userSeats) {
         this.allSeats = allSeats;
         this.userSeats = userSeats;
     }
