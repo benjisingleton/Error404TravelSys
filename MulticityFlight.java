@@ -1,3 +1,7 @@
+/**
+ * @author Daniel Henington
+ */
+
 import java.util.ArrayList;
 
 public class MulticityFlight {
