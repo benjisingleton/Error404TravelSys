@@ -1,5 +1,5 @@
 /**
- * 
+ * Different room types
  * @author Benjamin Singleton
  */
 

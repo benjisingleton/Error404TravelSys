@@ -1,5 +1,5 @@
 /**
- * 
+ * Class to manage a car
  * @author Benjamin Singleton
  */
 
@@ -11,6 +11,15 @@
     private String dropOffLocation;
     private Reservation carReservation;
 
+    /**
+     * Sets local variables to passed in parameters
+     * @param type Type of car
+     * @param capacity Capacity of car
+     * @param price Price of car
+     * @param pickUpLocation Pickup location of the car
+     * @param dropOffLocation Dropoff location of the car
+     * @param carReservation Reservation class for a car
+     */
     public Car (CarType type, int capacity, double price,
     String pickUpLocation, String dropOffLocation, Reservation carReservation) {
         this.type = type;
