@@ -1,5 +1,5 @@
 /**
- * 
+ * Hotel amenities
  * @author Mostafa Mohamed Ali
  */
 public enum HotelAmenity {

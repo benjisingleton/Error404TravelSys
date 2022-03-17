@@ -1,5 +1,5 @@
 /**
- * 
+ * Class to manage Party Member
  * @author Mostafa Mohamed Ali
  */
 
@@ -9,6 +9,13 @@ class PartyMember{
     private int age;
     private boolean isAdult;
 
+    /**
+     * Sets local variables to passed in parameters
+     * @param firstName passenger first name
+     * @param lastName passenger last name
+     * @param age passenger age
+     * @param isAdult passenger is adult
+     */
     public PartyMember(String firstName, String lastName, int age, boolean isAdult) {
         this.firstName = firstName;
         this.lastName = lastName;
