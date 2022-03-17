@@ -1,6 +1,6 @@
 [
        {
-          "id": 1,
+          "roomID": 1,
           "price": 250.0,
           "location": "New York City, New York",
           "capacity": 6,
@@ -12,7 +12,7 @@
           "bedType": "King"
        },
        {
-          "id": 2,
+          "roomID": 2,
           "price": 150.0,
           "location": "Tokyo, Japan",
           "capacity": 2,
