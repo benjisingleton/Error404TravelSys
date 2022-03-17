@@ -1,0 +1,17 @@
+[
+    {
+        "carID": 1,
+        "carType": "Sedan",
+        "price": 120.0,
+        "Capacity": 5,
+        "pickUpLoc": "10000 W O'Hare Ave, Chicago, IL 60666",
+        "dropOffLoc": "10000 W O'Hare Ave, Chicago, IL 60666" 
+    },{
+        "carID": 2,
+        "carType": "Coupe",
+        "price": 160.0,
+        "Capacity": 4,
+        "pickUpLoc": "6000 N Terminal Pkwy, Atlanta, GA 30320",
+        "dropOffLoc": "3250 Airport Blvd, West Columbia, SC 29170"
+    }
+]
