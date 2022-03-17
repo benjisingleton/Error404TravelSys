@@ -28,7 +28,7 @@ public class Time {
     }
     //Other Methods
     public String toString() {
-        //AMs
+        //If AM Time
         if (checkAMHour(hour)) {
             return makeTimeString(hour, minute) + " am";
         }
