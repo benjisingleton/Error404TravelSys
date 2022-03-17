@@ -31,6 +31,6 @@ class SeatChart {
     }
 
     public Boolean checkAvailability() {
-
+        return true;
     }
 }

@@ -6,15 +6,18 @@
 class Seat {
     private int row;
     private char column;
-    private Boolean available;
+    private boolean available;
 
-    public Seat (int row, char column, Boolean available) {
+    public Seat (int row, char column, boolean available) {
         this.row = row;
         this.column = column;
         this.available = available;
     }
 
     public String toString() {
-
+        if (available) {
+            return "|_|";
+        }
+        return "|T|";
     }
 }

@@ -2,6 +2,7 @@
  * 
  * @author Benjamin Singleton
  */
+
 class Plane {
     private Airline airline;
     private int capacity;

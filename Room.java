@@ -12,7 +12,7 @@ import java.util.ArrayList;
     private int capacity;
     private Reservation roomReservation;
 
-    public Room (ArrayList<roomAmenity> roomAmenities, int floorNumber,
+    public Room (ArrayList<RoomAmenity> roomAmenities, int floorNumber,
     int roomNumber, int capacity, Reservation roomReservation) {
         this.roomAmenities = roomAmenities;
         this.floorNumber = floorNumber;
