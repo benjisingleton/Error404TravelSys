@@ -1,5 +1,5 @@
 /**
- * Class to Hotel
+ * Class to manage Hotel
  * @author Mostafa Mohamed Ali
  */
 import java.util.ArrayList;
