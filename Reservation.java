@@ -42,4 +42,8 @@ public class Reservation {
         this.endTime = endTime;
     }
     //Other Methods
+    public String toString() {
+        return startDate.toString() + ": " + startTime.toString() +
+        "\n" + endDate.toString() + ": " + endTime.toString(); 
+    }
 }

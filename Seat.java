@@ -4,19 +4,30 @@
  */
 
 class Seat {
-    private int row;
-    private char column;
+    private String seating;
     private boolean available;
 
     /**
      * Sets local variables to passed in parameters
-     * @param row Row of seat
-     * @param column column of seat
+     * @param seating The row and column of the seat (ex. "1A")
      * @param available Is the seat available
      */
-    public Seat (int row, char column, boolean available) {
-        this.row = row;
-        this.column = column;
+    public Seat (String seating, boolean available) {
+        this.seating = seating;
+        this.available = available;
+    }
+    //Getters
+    public String getSeating() {
+        return seating;
+    }
+    public boolean getAvailable() {
+        return available;
+    }
+    // Setters
+    public void setSeating(String seating) {
+        this.seating = seating;
+    }
+    public void setAvailable(boolean available) {
         this.available = available;
     }
 
@@ -28,6 +39,6 @@ class Seat {
         if (available) {
             return "|_|";
         }
-        return "|T|";
+        return "|*|";
     }
 }

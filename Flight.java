@@ -26,4 +26,36 @@ class Flight {
         this.price = price;
         this.flightReservation = flightReservation;
     }
+    //Getters
+    public String getDeptAirport() {
+        return deptAirport;
+    }
+    public String getArrivAirport() {
+        return arrivAirport;
+    }
+    public Plane getPlane() {
+        return plane;
+    }
+    public double getPrice() {
+        return price;
+    }
+    public Reservation getReservation() {
+        return flightReservation;
+    }
+    //Setters
+    public void setDeptAirport(String deptAirport) {
+        this.deptAirport = deptAirport;
+    }
+    public void setArrivAirport(String arrivAirport) {
+        this.arrivAirport = arrivAirport;
+    }
+    public void setPlane(Plane plane) {
+        this.plane = plane;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    public void setReservation(Reservation flightReservation) {
+        this.flightReservation = flightReservation;
+    }
 }

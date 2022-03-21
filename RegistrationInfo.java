@@ -56,4 +56,5 @@ public class RegistrationInfo {
     public void setFreqFlyer(boolean freqFlyer) {
         this.freqFlyer = freqFlyer;
     }
+    // Other Methods
 }

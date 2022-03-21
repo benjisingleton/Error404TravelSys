@@ -29,4 +29,42 @@
         this.dropOffLocation = dropOffLocation;
         this.carReservation = carReservation;
     }
+    //Getters
+    public CarType getCarType() {
+        return type;
+    }
+    public int getCapacity() {
+        return capacity;
+    }
+    public double getPrice() {
+        return price;
+    }
+    public String getPickUpLocation() {
+        return pickUpLocation;
+    }
+    public String getDropOffLocation() {
+        return dropOffLocation;
+    }
+    public Reservation getCarReservation() {
+        return carReservation;
+    }
+    //Setters
+    public void setCarType(CarType type) {
+        this.type = type; 
+    }
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    public void setPickUpLocation(String pickUpLocation) {
+        this.pickUpLocation = pickUpLocation;
+    }
+    public void setDropOffLocation(String dropOffLocation) {
+        this.dropOffLocation = dropOffLocation;
+    }
+    public void setCarReservation(Reservation carReservation) {
+        this.carReservation = carReservation;
+    }
 }
