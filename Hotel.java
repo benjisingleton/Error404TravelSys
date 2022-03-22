@@ -17,11 +17,36 @@ class Hotel{
      * @param rating hotel rating
      * @param rooms hotel rooms
      */
-    public Hotel (String address, ArrayList<HotelAmenity> hotelAmenities, int rating, ArrayList<Room> rooms) {
+     //Getters
+    public String getaddress() {
+        return address;
+    }
+
+    public ArrayList<HotelAmenities> gethotelAmenities() {
+        return hotelAmenities;
+    }
+
+    public int getrating() {
+        return rating;
+    }
+
+    public ArrayList<Room> getrooms() {
+        return rooms;
+    }
+
+    //Setters
+    public void setaddress() {
         this.address = address;
+    }
+
+    public void sethotelAmenities(ArrayList<HotelAmenities> hotelAmenities) {
         this.hotelAmenities = hotelAmenities;
+    }
+
+    public void setrating() {
         this.rating = rating;
+    }
+
+    public void setrooms() {
         this.rooms = rooms;
- }
- 
-}
+    }
