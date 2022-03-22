@@ -50,3 +50,21 @@ class Hotel{
     public void setrooms() {
         this.rooms = rooms;
     }
+
+    //Methods
+
+    public void printAddress() {
+
+    }
+
+    public void printhotelAmenities() {
+
+    }
+
+    public void printRating() {
+
+    }
+
+    public void printRooms() {
+        
+    }
