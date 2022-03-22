@@ -1,3 +1,17 @@
+
+
+/*
+------------------------------------------------
+
+    THIS CLASS WILL NO LONGER BE USED.
+    IT HAS BEEN MOVED AND CONSOLIDATED IN PLANE.JAVA.
+
+------------------------------------------------
+*/
+
+
+
+
 /**
  * Class to manage seat chart of flight
  * @author Benjamin Singleton
