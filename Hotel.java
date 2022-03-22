@@ -68,3 +68,5 @@ class Hotel{
     public void printRooms() {
         
     }
+
+}
