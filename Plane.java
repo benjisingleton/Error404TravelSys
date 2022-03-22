@@ -9,7 +9,7 @@ class Plane {
     private Airline airline;
     private int capacity;
     private Seat seat;
-    private ArrayList<Seat> allSeats = new ArryaList<>();
+    private ArrayList<Seat> allSeats = new ArrayList<>();
 
     /**
      * Sets local variables to passed in parameters
