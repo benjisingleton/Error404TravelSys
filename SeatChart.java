@@ -24,18 +24,34 @@ class SeatChart {
     }
 
     public void displayAll() {
-
+        for (int i = 0; i < allSeats.length(); i++) {
+            if (i % 4 == 0) {
+                System.out.println("\n");
+            }
+            System.out.print(allSeats.get(i));
+        }
     }
 
     public void displayFirstClass() {
-
+        for (int i = 0; i < 3; i++) {
+            if (i % 4 == 0) {
+                System.out.println("\n");
+            }
+            System.out.print(allSeats.get(i));
+        }
     }
 
     public void displayEconomy() {
-
+        for (int i = 3; i < (allSeats.length() - 3); i++) {
+            if (i % 4 == 0) {
+                System.out.println("\n");
+            }
+            System.out.print(allSeats.get(i));
+        }
     }
 
     public Boolean checkAvailability() {
+        // TO DO
         return true;
     }
 }
