@@ -8,18 +8,10 @@ public class RegistrationInfo {
     private String lastName;
     private String username;
     private String password;
-    private Long age;
+    private int age;
     private boolean freqFlyer;
 
-    public RegistrationInfo() {
-        firstName = "";
-        lastName = "";
-        username = "";
-        password = "";
-        age = (long) 0;
-        freqFlyer = false;
-    }
-    public RegistrationInfo(String firstName, String lastName, String username, String password, Long age, boolean freqFlyer) {
+    public RegistrationInfo(String firstName, String lastName, String username, String password,  int age, boolean freqFlyer) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -40,7 +32,7 @@ public class RegistrationInfo {
     protected String getPassword() {
         return password;
     }
-    public Long getAge() {
+    public int getAge() {
         return age;
     }
     public boolean getFreqFlyer() {
@@ -59,7 +51,7 @@ public class RegistrationInfo {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setAge(Long age) {
+    public void setAge(int age) {
         this.age = age;
     }
     public void setFreqFlyer(boolean freqFlyer) {

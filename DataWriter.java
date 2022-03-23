@@ -80,8 +80,44 @@ public class DataWriter extends DataConstants {
             tempObj.put(PM_AGE, currPMem.getAge());
             partyMem.add(tempObj);
         }
-        return partyMem;
-        
-        
+        return partyMem;   
+    }
+    public static void saveCars() {
+        Cars cars = Cars.getInstance();
+        ArrayList<Car> carList = cars.getCars();
+        JSONArray jsonCars = new JSONArray();
+
+        for (int i = 0; i < carList.size(); i++) {
+            jsonCars.add(getCarJSON(carList.get(i)));
+        }
+
+        try (FileWriter file = new FileWriter(CARS_FILE_NAME)) {
+            file.write(jsonCars.toJSONString());
+            file.flush();
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static JSONObject getCarJSON(Car car) {
+        JSONObject carDetails = new JSONObject();
+        carDetails.put(CAR_ID, car.getCarId().toString());
+        carDetails.put(CAR_TYPE, car.getCarType().getLabel());
+        carDetails.put(CAR_CAPACITY, car.getCapacity());
+        carDetails.put(CAR_PRICE, car.getPrice());
+        carDetails.put(CAR_PICKUP_LOCATION, car.getPickUpLocation());
+        carDetails.put(CAR_DROPOFF_LOCATION, car.getDropOffLocation());
+        carDetails.put(CAR_RESERVATION, getCarReservationJSON(car));
+        return carDetails;
+    }
+    public static JSONObject getCarReservationJSON(Car car) {
+        JSONObject carResJSON = new JSONObject();
+        Reservation carReservation = car.getCarReservation();
+        //Convert Dates and Times to Strings, rebuild later with split
+        carResJSON.put(START_DATE, carReservation.getStartDate().toString());
+        carResJSON.put(END_DATE, carReservation.getEndDate().toString());
+        carResJSON.put(START_TIME, carReservation.getStartTime().toString());
+        carResJSON.put(END_TIME, carReservation.getEndTime().toString());
+        return carResJSON;
     }
 }

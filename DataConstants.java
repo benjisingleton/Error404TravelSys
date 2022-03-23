@@ -26,6 +26,26 @@ public abstract class DataConstants {
     protected static final String PM_FIRST_NAME = "firstName";
     protected static final String PM_LAST_NAME = "lastName";
     protected static final String PM_AGE = "age";
-    
+// Car
+protected static final String CARS_FILE_NAME = "cars.json";
+protected static final String CAR_ID = "carId";
+protected static final String CAR_TYPE = "type";
+protected static final String CAR_CAPACITY = "capacity";
+protected static final String CAR_PRICE = "price";
+protected static final String CAR_PICKUP_LOCATION = "pickUpLocation";
+protected static final String CAR_DROPOFF_LOCATION = "dropOffLocation";
+protected static final String CAR_RESERVATION = "carReservation";
+// Reservation
+protected static final String START_DATE = "startDate";
+protected static final String END_DATE = "endDate";
+protected static final String START_TIME = "startTime";
+protected static final String END_TIME = "endTime";
+// Date
+protected static final String DATE_DAY = "day";
+protected static final String DATE_MONTH = "month";
+protected static final String DATE_YEAR = "year";
+// Time
+protected static final String TIME_HOUR = "hour";
+protected static final String TIME_MIN = "minute";
 
 }

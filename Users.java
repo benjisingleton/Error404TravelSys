@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * A class to hold all of the Registered Users
@@ -38,7 +39,7 @@ public class Users {
      * @param userInfo user's info
      * @param partyMembers user's bestest friends and family (maybe)
      */
-    public void addRegisteredUser(String userID, RegistrationInfo userInfo, ArrayList<PartyMember> partyMembers) {
+    public void addRegisteredUser(UUID userID, RegistrationInfo userInfo, ArrayList<PartyMember> partyMembers) {
         rUserList.add(new RegisteredUser(userID, userInfo, partyMembers));
     }
     /**

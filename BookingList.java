@@ -4,7 +4,7 @@ import java.util.HashMap;
  * A Registered User's List of all their bookings
  */
 public class BookingList {
-    
+    private ArrayList<String> bookingIDs = new ArrayList<>();
     private ArrayList<Flight> flightList = new ArrayList<>();
     private HashMap<Hotel, ArrayList<Room>> hotelBookings = new HashMap<>();
     private ArrayList<Car> carList = new ArrayList<>();

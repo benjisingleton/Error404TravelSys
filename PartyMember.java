@@ -6,7 +6,7 @@
 class PartyMember{
     private String firstName;
     private String lastName;
-    private Long age;
+    private int age;
 
     /**
      * Sets local variables to passed in parameters
@@ -14,7 +14,7 @@ class PartyMember{
      * @param lastName passenger last name
      * @param age passenger age
      */
-    public PartyMember(String firstName, String lastName, Long age) {
+    public PartyMember(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -26,7 +26,7 @@ class PartyMember{
     public String getLastName() {
         return lastName;
     }
-    public Long getAge() {
+    public int getAge() {
         return age;
     }
     public boolean isAdult() {
@@ -39,7 +39,7 @@ class PartyMember{
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public void setAge(Long age) {
+    public void setAge(int age) {
         this.age = age;
     }
     //Other Methods

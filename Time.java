@@ -12,6 +12,23 @@ public class Time {
         this.hour = hour;
         this.minute = 0;
     }
+    /**
+     * Alternative Constructor for Time
+     * @param time in the format of ("hh:mm am") 
+     * or ("hh:mm pm")
+     */
+    public Time(String time) {
+        //If we get "9:34 am", get {"9", "34 am"}
+        String[] firstCut = time.split(":");
+        //In our example this will have {"34", "am"}
+        String[] secondCut = firstCut[1].split(" ");
+        this.hour = Integer.parseInt(firstCut[0]);
+        this.minute = Integer.parseInt(secondCut[0]);
+        if (secondCut[1].equalsIgnoreCase("pm") && hour < 12 || 
+        (hour == 12 && secondCut[1].equalsIgnoreCase("am"))) {
+            this.hour += 12;
+        }
+    }
     //Getters
     public int getHour() {
         return hour;

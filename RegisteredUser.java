@@ -1,23 +1,24 @@
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Users Registered to our Booking App
  * @author rcd1
  */
 public class RegisteredUser extends Guest {
-    private String userID;
+    private UUID userID;
     private RegistrationInfo userInfo;
    // private BookingList savedBookings;
-    private ArrayList<PartyMember> partyMembers = new ArrayList<>();
 
-   public RegisteredUser(String userID, RegistrationInfo userInfo, /*BookingList savedBookings,*/ ArrayList<PartyMember> partyMembers) {
-       this.userID = userID;
-       this.userInfo = userInfo;
-      // this.savedBookings = savedBookings;
-       this.partyMembers = partyMembers;
-   }
+    private ArrayList<PartyMember> partyMembers = new ArrayList<>();
+    public RegisteredUser(UUID userID, RegistrationInfo userInfo, /*BookingList savedBookings,*/ ArrayList<PartyMember> partyMembers) {
+        this.userID = userID;
+        this.userInfo = userInfo;
+       // this.savedBookings = savedBookings;
+        this.partyMembers = partyMembers;
+    }
    // Getters
-   public String getUserID() {
+   public UUID getUserID() {
        return userID;
    }
    public RegistrationInfo getUserInfo() {
@@ -30,7 +31,7 @@ public class RegisteredUser extends Guest {
        return partyMembers;
    }
    // Setters
-   public void setUUID(String userID) {
+   public void setUUID(UUID userID) {
        this.userID = userID;
    }
    public void setUserInfo(RegistrationInfo userInfo) {
