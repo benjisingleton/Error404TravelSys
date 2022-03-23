@@ -17,7 +17,7 @@ public class testUserJSON {
         displayUsers();
 
         while(addUser()) {
-            String userID = UUID.randomUUID().toString();
+            UUID userID = UUID.randomUUID();
             RegistrationInfo userInfo = getUserInfo();
             ArrayList<PartyMember> partyMembers = new ArrayList<>();
             for (int i = 0; i < 3; i++)
@@ -37,9 +37,9 @@ public class testUserJSON {
 		return scanner.nextLine();
 	}
 
-    private Long getAge(String prompt) {
+    private int getInt(String prompt) {
         System.out.print(prompt + "Age: ");
-        Long age = scanner.nextLong();
+        int age = scanner.nextInt();
         scanner.nextLine();
         return age;
     }
@@ -49,7 +49,7 @@ public class testUserJSON {
 		String lastName = getField("Last Name");
         String userName = getField("Username");
         String password = getField("Password");
-        Long age = getAge("");
+        int age = getInt("");
 
         return new RegistrationInfo(firstName, lastName, userName, password, age, false);
     }
@@ -57,7 +57,7 @@ public class testUserJSON {
     private PartyMember getPartyMember() {
         String firstName = getField("Friend's First Name");
 		String lastName = getField("Friend's Last Name");
-        Long age = getAge("Friend's ");
+        int age = getInt("Friend's ");
 
         return new PartyMember(firstName, lastName, age);
     }

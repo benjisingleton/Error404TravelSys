@@ -15,6 +15,12 @@ public class Reservation {
         this.startTime = startTime;
         this.endTime = endTime;
     }
+    public Reservation(String startDate, String endDate, String startTime, String endTime) {
+        this.startDate = new Date(startDate);
+        this.endDate = new Date(endDate);
+        this.startTime = new Time(startTime);
+        this.endTime = new Time(endTime);
+    }
     //Getters
     public Date getStartDate() {
         return startDate;

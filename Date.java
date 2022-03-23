@@ -10,6 +10,17 @@ public class Date {
         this.day = day;
         this.year = year;
     }
+    /**
+     * Alternative Constructor
+     * Builds from a String
+     * @param date The date in format ("mm/dd/yy")
+     */
+    public Date(String date) {
+        String[] strToInt = date.split("/");
+        this.month = Integer.parseInt(strToInt[0]);
+        this.day = Integer.parseInt(strToInt[1]);
+        this.year = Integer.parseInt(strToInt[2]);
+    }
     //Getters
     public int getDay() {
         return day;

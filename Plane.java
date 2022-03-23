@@ -9,7 +9,7 @@ class Plane {
     private Airline airline;
     private int capacity;
     private Seat seat;
-    private ArrayList<Seat> allSeats = new ArryaList<>();
+    private ArrayList<Seat> allSeats = new ArrayList<>();
 
     /**
      * Sets local variables to passed in parameters
@@ -32,7 +32,7 @@ class Plane {
      * Displays all seats
      */
     public void displayAll() {
-        for (int i = 0; i < allSeats.length(); i++) {
+        for (int i = 0; i < allSeats.size(); i++) {
             if (i % 4 == 0) {
                 System.out.println("\n");
             }
@@ -56,7 +56,7 @@ class Plane {
      * Displays economy class
      */
     public void displayEconomy() {
-        for (int i = 3; i < (allSeats.length() - 3); i++) {
+        for (int i = 3; i < (allSeats.size() - 3); i++) {
             if (i % 4 == 0) {
                 System.out.println("\n");
             }
@@ -74,5 +74,31 @@ class Plane {
             return true;
         }
         return false;
+    }
+    //Getters
+    public Airline getAirline() {
+        return airline;
+    }
+    public int getCapacity() {
+        return capacity;
+    }
+    public Seat getSeat() {
+        return seat;
+    }
+    public ArrayList<Seat> getSeats() {
+        return allSeats;
+    }
+    //Setters
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
+    public void setSeats(ArrayList<Seat> allSeats) {
+        this.allSeats = allSeats;
     }
 }

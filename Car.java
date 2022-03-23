@@ -1,9 +1,12 @@
+import java.util.UUID;
+
 /**
  * Class to manage a car
  * @author Benjamin Singleton
  */
 
  class Car {
+    private UUID carId;
     private CarType type;
     private int capacity;
     private double price;
@@ -20,8 +23,9 @@
      * @param dropOffLocation Dropoff location of the car
      * @param carReservation Reservation class for a car
      */
-    public Car (CarType type, int capacity, double price,
+    public Car (UUID carId, CarType type, int capacity, double price,
     String pickUpLocation, String dropOffLocation, Reservation carReservation) {
+        this.carId = carId;
         this.type = type;
         this.capacity = capacity;
         this.price = price;
@@ -30,6 +34,9 @@
         this.carReservation = carReservation;
     }
     //Getters
+    public UUID getCarId() {
+        return carId;
+    }
     public CarType getCarType() {
         return type;
     }
@@ -49,6 +56,9 @@
         return carReservation;
     }
     //Setters
+    public void setCarId(UUID carId) {
+        this.carId = carId;
+    }
     public void setCarType(CarType type) {
         this.type = type; 
     }
@@ -66,5 +76,12 @@
     }
     public void setCarReservation(Reservation carReservation) {
         this.carReservation = carReservation;
+    }
+    // Other methods
+    public String toString() {
+        return "Type: " + type + "\nCapacity: " + capacity
+        + "\nPrice: " + price 
+        + "\nPick Up: " + pickUpLocation + "\nDrop Off: " + dropOffLocation
+        +"\n" + carReservation.toString();
     }
 }
