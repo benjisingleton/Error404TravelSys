@@ -24,10 +24,6 @@ class Plane {
         this.allSeats = allSeats;
     }
 
-    public void updateChart (int row, int column) {
-
-    }
-
     /**
      * Displays all seats
      */
