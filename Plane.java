@@ -81,12 +81,12 @@ class Plane {
      * otherwise it returns false
      */
     public boolean checkAllAvailability(ArrayList<Seat> allSeats) {
-        for (int i = 0; i < allSeats.length(); i++) {
+        for (int i = 0; i < allSeats.size(); i++) {
             if(allSeats.get(i).getAvailable()) {
                 return true;
             }
-            return false;
         }
+        return false;
     }
 
     //Getters
@@ -115,7 +115,7 @@ class Plane {
     public void setSeats(ArrayList<Seat> allSeats) {
         this.allSeats = allSeats;
     }
-    
+
     //Other methods
     public String testString() {
         return "\nAirline: " + airline.getName() + "\nCapacity: " +
