@@ -7,13 +7,12 @@ import java.util.ArrayList;
 public class HotelSearch implements SearchBehavior {
     public void configureSearch();
     public void displaySearch();
-    
+
     /**
     * Searches for the seatched hotel.
     * @return Returns the hotels
     */
     private Hotel hotelToSearch() {
-
         return Hotel;
 
     }
@@ -22,9 +21,9 @@ public class HotelSearch implements SearchBehavior {
     * @return Returns the hotel results.
     */
     private ArrayList<Hotel> hotelResults() {
-        return hotelResults;
-
+        System.out.println("Hotel Results: " hotelResults());
     }
+    
     /**
     * @return Returns the amount of party members.
     */
