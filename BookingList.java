@@ -1,20 +1,25 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 /**
  * A Registered User's List of all their bookings
  */
 public class BookingList {
-    private ArrayList<String> bookingIDs = new ArrayList<>();
+    private ArrayList<UUID> bookingIds = new ArrayList<>();
     private ArrayList<Flight> flightList = new ArrayList<>();
     private HashMap<Hotel, ArrayList<Room>> hotelBookings = new HashMap<>();
     private ArrayList<Car> carList = new ArrayList<>();
 
-    public BookingList(ArrayList<Flight> flightList, HashMap<Hotel, ArrayList<Room>> hotelBookings, ArrayList<Car> carList) {
+    public BookingList(ArrayList<UUID> bookingIds, ArrayList<Flight> flightList, HashMap<Hotel, ArrayList<Room>> hotelBookings, ArrayList<Car> carList) {
+        this.bookingIds = bookingIds;
         this.flightList = flightList;
         this.hotelBookings = hotelBookings;
         this.carList = carList;
     }
     //Getters
+    public ArrayList<UUID> getBookingIds() {
+        return bookingIds;
+    }
     public ArrayList<Flight> getFlightList() {
         return flightList;
     }
@@ -25,6 +30,9 @@ public class BookingList {
         return carList;
     }
     //Setters
+    public void setBookingIds(ArrayList<UUID> bookingIds) {
+        this.bookingIds = bookingIds;
+    }
     public void setFlightList(ArrayList<Flight> flightList) {
         this.flightList = flightList;
     }

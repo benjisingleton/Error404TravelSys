@@ -4,24 +4,24 @@
  */
 
 class Flight {
-    private String deptAirport;
-    private String arrivAirport;
+    private String deptLocation;
+    private String arrivLocation;
     private Plane plane;
     private double price;
     private Reservation flightReservation;
 
     /**
      * Sets local variables to passed in parameters
-     * @param deptAirport Departing airport
-     * @param arrivAirport Arriving airport
+     * @param deptLocation Departing Location
+     * @param arrivLocation Arriving Location
      * @param plane Plane class with airline, seats, and capacity
      * @param price Price of flight
      * @param flightReservation Reservation class for flight
      */
-    public Flight (String deptAirport, String arrivAirport, Plane plane,
+    public Flight (String deptLocation, String arrivLocation, Plane plane,
     double price, Reservation flightReservation) {
-        this.deptAirport = deptAirport;
-        this.arrivAirport = arrivAirport;
+        this.deptLocation = deptLocation;
+        this.arrivLocation = arrivLocation;
         this.plane = plane;
         this.price = price;
         this.flightReservation = flightReservation;
@@ -30,19 +30,19 @@ class Flight {
     //Getters
 
     /**
-     * Gets the departing airport
-     * @return Returns the departing airport
+     * Gets the departing location
+     * @return Returns the departing location
      */
-    public String getDeptAirport() {
-        return deptAirport;
+    public String getDeptLocation() {
+        return deptLocation;
     }
 
     /**
-     * Gets the arriving airport
-     * @return Returns the arriving airport
+     * Gets the arriving location
+     * @return Returns the arriving location
      */
-    public String getArrivAirport() {
-        return arrivAirport;
+    public String getArrivLocation() {
+        return arrivLocation;
     }
 
     /**
@@ -72,19 +72,19 @@ class Flight {
     //Setters
 
     /**
-     * Sets the departing airport
-     * @param deptAirport Departing airport
+     * Sets the departing location
+     * @param deptAirport Departing Location
      */
-    public void setDeptAirport(String deptAirport) {
-        this.deptAirport = deptAirport;
+    public void setDeptLocation(String deptLocation) {
+        this.deptLocation = deptLocation;
     }
 
     /**
-     * Sets the arriving airport
-     * @param arrivAirport Arriving airport
+     * Sets the arriving Location
+     * @param arrivLocation Arriving Location
      */
-    public void setArrivAirport(String arrivAirport) {
-        this.arrivAirport = arrivAirport;
+    public void setArrivLocation(String arrivLocation) {
+        this.arrivLocation = arrivLocation;
     }
 
     /**

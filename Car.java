@@ -79,7 +79,7 @@ import java.util.UUID;
     }
     // Other methods
     public String toString() {
-        return "Type: " + type + "\nCapacity: " + capacity
+        return "Type: " + type.getLabel() + "\nCapacity: " + capacity
         + "\nPrice: " + price 
         + "\nPick Up: " + pickUpLocation + "\nDrop Off: " + dropOffLocation
         +"\n" + carReservation.toString();

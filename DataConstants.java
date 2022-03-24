@@ -1,17 +1,21 @@
 
 public abstract class DataConstants {
-// Flights
-	protected static final String FLIGHTS_FILE_NAME = "flights.json";
-	protected static final String PRICE_OF_FLIGHT = "priceOfFlight";
+// Flight
+	protected static final String FLIGHTS_FILE_NAME = "jsonFiles/flights.json";
+	protected static final String F_DEPT_LOCATION = "deptLocation";
+    protected static final String F_ARRIV_LOCATION = "arrivLocation";
+    protected static final String F_PLANE = "plane";
+    protected static final String F_PRICE = "price";
+    protected static final String F_RESERVATION = "flightReservation";
+
+    protected static final String PRICE_OF_FLIGHT = "priceOfFlight";
 	protected static final String AIRLINE = "airline";
-	protected static final String DEPT_AIRPORT = "deptAirport";
-    protected static final String ARRIV_AIRPORT = "arrivAirport";
     protected static final String TIME_OF_DEPT = "timeOfDeparture";
     protected static final String TIME_OF_ARRIV = "timeOfArrival";
     protected static final String SEATS = "seats";
 
-// Registered Users
-    protected static final String USERS_FILE_NAME = "users.json";
+// Registered User
+    protected static final String USERS_FILE_NAME = "jsonFiles/users.json";
     protected static final String USER_ID = "userId";
     protected static final String USER_INFO = "userInfo";
     protected static final String USER_PARTY_MEMBERS = "partyMembers";
@@ -27,7 +31,7 @@ public abstract class DataConstants {
     protected static final String PM_LAST_NAME = "lastName";
     protected static final String PM_AGE = "age";
 // Car
-protected static final String CARS_FILE_NAME = "cars.json";
+protected static final String CARS_FILE_NAME = "jsonFiles/cars.json";
 protected static final String CAR_ID = "carId";
 protected static final String CAR_TYPE = "type";
 protected static final String CAR_CAPACITY = "capacity";
