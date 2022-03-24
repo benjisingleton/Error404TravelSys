@@ -5,7 +5,7 @@ import java.util.UUID;
  * @author Benjamin Singleton
  */
 
-class Flight {
+abstract class Flight {
     private UUID flightID;
     private String deptLocation;
     private String arrivLocation;

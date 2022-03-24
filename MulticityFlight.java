@@ -3,6 +3,17 @@
  * Class for multicity flightss
  */
 
+
+/*
+------------------------------------------------
+
+    THIS CLASS WILL NO LONGER BE USED.
+    IT HAS BEEN MOVED AND CONSOLIDATED IN FlightGroups.JAVA.
+
+------------------------------------------------
+*/
+
+
 import java.util.ArrayList;
 
 public class MulticityFlight {

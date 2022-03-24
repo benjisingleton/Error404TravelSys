@@ -2,6 +2,14 @@
  * @author Daniel Henington
  * A class for Round trip flights
  */
+/*
+------------------------------------------------
+
+    THIS CLASS WILL NO LONGER BE USED.
+    IT HAS BEEN MOVED AND CONSOLIDATED IN FlightGroups.JAVA.
+
+------------------------------------------------
+*/
 public class RoundtripFlight {
     
     private Flight deptFlight;

@@ -2,6 +2,14 @@
  * @author Daniel Henington
  * Class for Oneway Flights
  */
+/*
+------------------------------------------------
+
+    THIS CLASS WILL NO LONGER BE USED.
+    IT HAS BEEN MOVED AND CONSOLIDATED IN Flight.JAVA.
+
+------------------------------------------------
+*/
 public class OnewayFlight {
     
     private Flight flight;
