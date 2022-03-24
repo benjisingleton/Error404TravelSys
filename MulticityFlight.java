@@ -5,7 +5,7 @@
 
 import java.util.ArrayList;
 
-public class MulticityFlight {
+public class MulticityFlight implements SearchBehavior {
 
     private ArrayList<Flight> allFlights = new ArrayList<Flight>();;
     /**

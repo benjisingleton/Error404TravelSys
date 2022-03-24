@@ -2,7 +2,7 @@
  * @author Daniel Henington
  * Class for Oneway Flights
  */
-public class OnewayFlight {
+public class OnewayFlight implements SearchBehavior {
     
     private Flight flight;
     /**
