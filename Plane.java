@@ -97,4 +97,11 @@ class Plane {
     public void setSeats(ArrayList<Seat> allSeats) {
         this.allSeats = allSeats;
     }
+    //Other methods
+    public String testString() {
+        return "\nAirline: " + airline.getName() + "\nCapacity: " +
+        capacity + "\nSeat: " + seat.testString() 
+        + "\nAll Seats: " + allSeats.toString();
+    }
+    
 }

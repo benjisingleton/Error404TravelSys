@@ -6,7 +6,7 @@ import java.util.UUID;
  */
 
  class Car {
-    private UUID carId;
+    private UUID carID;
     private CarType type;
     private int capacity;
     private double price;
@@ -23,9 +23,9 @@ import java.util.UUID;
      * @param dropOffLocation Dropoff location of the car
      * @param carReservation Reservation class for a car
      */
-    public Car (UUID carId, CarType type, int capacity, double price,
+    public Car (UUID carID, CarType type, int capacity, double price,
     String pickUpLocation, String dropOffLocation, Reservation carReservation) {
-        this.carId = carId;
+        this.carID = carID;
         this.type = type;
         this.capacity = capacity;
         this.price = price;
@@ -34,8 +34,8 @@ import java.util.UUID;
         this.carReservation = carReservation;
     }
     //Getters
-    public UUID getCarId() {
-        return carId;
+    public UUID getCarID() {
+        return carID;
     }
     public CarType getCarType() {
         return type;
@@ -56,8 +56,8 @@ import java.util.UUID;
         return carReservation;
     }
     //Setters
-    public void setCarId(UUID carId) {
-        this.carId = carId;
+    public void setCarId(UUID carID) {
+        this.carID = carID;
     }
     public void setCarType(CarType type) {
         this.type = type; 
@@ -78,7 +78,7 @@ import java.util.UUID;
         this.carReservation = carReservation;
     }
     // Other methods
-    public String toString() {
+    public String testString() {
         return "Type: " + type.getLabel() + "\nCapacity: " + capacity
         + "\nPrice: " + price 
         + "\nPick Up: " + pickUpLocation + "\nDrop Off: " + dropOffLocation

@@ -20,19 +20,19 @@ public enum CarType {
     public static CarType getCT(String label) {
         switch (label) {
             case "Economy":
-            return CarType.ECONOMY;
+            return ECONOMY;
             case "Compact":
-            return CarType.COMPACT;
+            return COMPACT;
             case "Sedan":
-            return CarType.SEDAN;
+            return SEDAN;
             case "Luxury":
-            return CarType.LUXURY;
+            return LUXURY;
             case "Minivan":
-            return CarType.MINIVAN;
+            return MINIVAN;
             case "SUV":
-            return CarType.SUV;
+            return SUV;
         }
-        return CarType.ECONOMY;
+        return ECONOMY;
 
     }
 

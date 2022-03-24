@@ -22,7 +22,7 @@ public class testCarJSON {
             double price = getDouble("Price");
             String pickUpLocation = getField("Pick Up");
             String dropOffLocation = getField("Drop Off");
-            Reservation carReservation = getCarReservation(); 
+            Reservation carReservation = getReservation(); 
 
             cars.addCar(carId, type, capacity, price, pickUpLocation, dropOffLocation, carReservation);
         }
@@ -73,7 +73,7 @@ public class testCarJSON {
         return CarType.SEDAN;
     }
 
-    private Reservation getCarReservation() {
+    private Reservation getReservation() {
         Date sDate = new Date(getField("Date (mm/dd/yy"));
         Date eDate = new Date(getField("Date (mm/dd/yy"));
         Time sTime = new Time(getField("Time (hh:mm a/pm"));
@@ -95,7 +95,7 @@ public class testCarJSON {
         ArrayList<Car> carList = cars.getCars();
 
         for (Car c: carList) {
-            System.out.println(c.toString());
+            System.out.println(c.testString());
         }
     }
     public static void main(String[] args) {

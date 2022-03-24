@@ -13,7 +13,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants{
-//For Users
+/*------------------------------------For Users-------------------------------------------*/
 	public static ArrayList<RegisteredUser> loadUsers() {
 		ArrayList<RegisteredUser> rUsers = new ArrayList<>();
 
@@ -22,11 +22,11 @@ public class DataLoader extends DataConstants{
 			JSONParser parser = new JSONParser();
 			JSONArray usersJSON = (JSONArray)parser.parse(reader);
 
-			for(int i = 0; i < usersJSON.size(); i++) {
-				JSONObject rUserJSON = (JSONObject)usersJSON.get(i);
+			for(Object i: usersJSON) {
+				JSONObject rUserJSON = (JSONObject)i;
 				UUID userID = UUID.fromString((String)rUserJSON.get(USER_ID));
-				RegistrationInfo userInfo = rebuildUserInfo(rUserJSON);
-				ArrayList<PartyMember> partyMembers = rebuildPartyMembers(rUserJSON);
+				RegistrationInfo userInfo = rebuildUserInfo((JSONObject)rUserJSON.get(USER_INFO));
+				ArrayList<PartyMember> partyMembers = rebuildPartyMembers((JSONArray)rUserJSON.get(USER_PARTY_MEMBERS));
 
 				rUsers.add(new RegisteredUser(userID, userInfo, partyMembers));
 			}
@@ -42,8 +42,7 @@ public class DataLoader extends DataConstants{
 	 * @param rUserJSON the current user JSON object
 	 * @return a RegistrationInfo object
 	 */
-	private static RegistrationInfo rebuildUserInfo(JSONObject rUserJSON) {
-		JSONObject regInfo = (JSONObject)rUserJSON.get(USER_INFO);
+	private static RegistrationInfo rebuildUserInfo(JSONObject regInfo) {
 		String RFirstName = (String)regInfo.get(R_INFO_FIRST_NAME);
 		String RLastName = (String)regInfo.get(R_INFO_LAST_NAME);
 		String RUsername = (String)regInfo.get(R_INFO_USERNAME);
@@ -57,8 +56,7 @@ public class DataLoader extends DataConstants{
 	 * @param rUserJSON the current user JSON Object
 	 * @return An ArrayList<PartyMember>
 	 */
-	private static ArrayList<PartyMember> rebuildPartyMembers(JSONObject rUserJSON) {
-		JSONArray partyMembers = (JSONArray)rUserJSON.get(USER_PARTY_MEMBERS);
+	private static ArrayList<PartyMember> rebuildPartyMembers(JSONArray partyMembers ) {
 		ArrayList<PartyMember> newList = new ArrayList<>();
 		for (int i = 0; i < partyMembers.size(); i++) {
 			JSONObject pMember = (JSONObject)partyMembers.get(i);
@@ -69,7 +67,7 @@ public class DataLoader extends DataConstants{
 		}
 		return newList;
 	}
-//For Cars
+/*------------------------------------For Cars-------------------------------------------*/
 	public static ArrayList<Car> loadCars() {
 		ArrayList<Car> allCars = new ArrayList<>();
 
@@ -78,8 +76,8 @@ public class DataLoader extends DataConstants{
 			JSONParser parser = new JSONParser();
 			JSONArray allCarsJSON = (JSONArray)parser.parse(reader);
 
-			for (int i = 0; i < allCarsJSON.size(); i++) {
-				JSONObject carJSON = (JSONObject)allCarsJSON.get(i);
+			for (Object i : allCarsJSON) {
+				JSONObject carJSON = (JSONObject)i;
 				UUID carId = UUID.fromString((String)carJSON.get(CAR_ID));
 				CarType type = CarType.getCT((String)carJSON.get(CAR_TYPE));
 				int capacity = ((Long)carJSON.get(CAR_CAPACITY)).intValue();
@@ -89,11 +87,18 @@ public class DataLoader extends DataConstants{
 				Reservation carReservation = rebuildReservation((JSONObject)carJSON.get(CAR_RESERVATION));
 				allCars.add(new Car(carId, type, capacity, price, pickUpLocation, dropOffLocation, carReservation));
 			}
+
+			return allCars;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return allCars;
+		return null;
 	}
+	/**
+	 * Convert a JSONObject into a Reservation
+	 * @param jsonTemp
+	 * @return
+	 */
 	public static Reservation rebuildReservation(JSONObject jsonTemp) {
 		Date startDate = new Date((String)jsonTemp.get(START_DATE));
 		Date endDate =  new Date((String)jsonTemp.get(END_DATE));
@@ -102,4 +107,54 @@ public class DataLoader extends DataConstants{
 
 		return new Reservation(startDate, endDate, startTime, endTime);
 	}
+/*------------------------------------For Flights-------------------------------------------*/
+	public static ArrayList<Flight> loadFlights() {
+		ArrayList<Flight> flightList = new ArrayList<>();
+		
+		try {
+			FileReader reader = new FileReader(FLIGHTS_FILE_NAME);
+			JSONParser parser = new JSONParser();
+			JSONArray flightsJSON = (JSONArray)parser.parse(reader);
+
+			for (Object i : flightsJSON) {
+				JSONObject fJSON = (JSONObject)i;
+				UUID flightID = UUID.fromString((String)fJSON.get(FLIGHT_ID));
+				String deptLocation = (String)fJSON.get(F_DEPT_LOCATION);
+				String arrivLocation = (String)fJSON.get(F_ARRIV_LOCATION);
+				Plane plane = rebuildPlane((JSONObject)fJSON.get(F_PLANE));
+				double price = (double)fJSON.get(F_PRICE);
+				Reservation flightReservation = rebuildReservation((JSONObject)fJSON.get(F_RESERVATION));
+				
+				flightList.add(new Flight(flightID, deptLocation, arrivLocation, plane, price, flightReservation));
+			}
+			return flightList;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private static Plane rebuildPlane(JSONObject plInfo) {
+		Airline airline = Airline.getAL((String)plInfo.get(P_AIRLINE));
+		int capacity = ((Long)plInfo.get(P_CAPACITY)).intValue();
+		Seat seat = rebuildSeat((JSONObject)plInfo.get(P_SEAT));
+		ArrayList<Seat> allSeats = rebuildAllSeats((JSONArray)plInfo.get(P_ALL_SEATS));
+		return new Plane(airline, capacity, seat, allSeats);
+	}
+
+	private static Seat rebuildSeat(JSONObject seatInfo) {
+		String seating = (String)seatInfo.get(S_SEATING);
+		boolean available =  (boolean)seatInfo.get(S_AVAILABLE);
+		return new Seat(seating, available);
+	}
+	private static ArrayList<Seat> rebuildAllSeats(JSONArray aSeatsInfo) {
+		ArrayList<Seat> allSeats = new ArrayList<>();
+		for (Object i : aSeatsInfo) {
+			JSONObject seatJSON = (JSONObject)i;
+			allSeats.add(rebuildSeat(seatJSON));
+		}
+		return allSeats;
+	}
+
 }

@@ -1,9 +1,12 @@
+import java.util.UUID;
+
 /**
  * Class to manage a flight
  * @author Benjamin Singleton
  */
 
 class Flight {
+    private UUID flightID;
     private String deptLocation;
     private String arrivLocation;
     private Plane plane;
@@ -18,8 +21,9 @@ class Flight {
      * @param price Price of flight
      * @param flightReservation Reservation class for flight
      */
-    public Flight (String deptLocation, String arrivLocation, Plane plane,
+    public Flight (UUID flightID, String deptLocation, String arrivLocation, Plane plane,
     double price, Reservation flightReservation) {
+        this.flightID = flightID;
         this.deptLocation = deptLocation;
         this.arrivLocation = arrivLocation;
         this.plane = plane;
@@ -28,7 +32,9 @@ class Flight {
     }
 
     //Getters
-
+    public UUID getFlightID() {
+        return flightID;
+    }
     /**
      * Gets the departing location
      * @return Returns the departing location
@@ -70,7 +76,9 @@ class Flight {
     }
 
     //Setters
-
+    public void setFlightID(UUID flightID) {
+        this.flightID = flightID;
+    }
     /**
      * Sets the departing location
      * @param deptAirport Departing Location
@@ -109,5 +117,13 @@ class Flight {
      */
     public void setReservation(Reservation flightReservation) {
         this.flightReservation = flightReservation;
+    }
+
+    //Other Methods
+    public String testString() {
+        return "Departing From: " + deptLocation 
+        + "\nHeading to: " + arrivLocation
+        + "\nPlane: " + plane.testString()
+        + "\nPrice: " + price + "\n" + flightReservation.toString();
     }
 }

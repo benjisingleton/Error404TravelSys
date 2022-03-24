@@ -41,4 +41,11 @@ class Seat {
         }
         return "|*|";
     }
+    public String testString() {
+
+        if (available) {
+            return seating + ": " + "|_|";
+        }
+        return seating + ": " +  "|*|";
+    }
 }

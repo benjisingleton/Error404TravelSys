@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 class Hotel{
-    private UUID hotelId;
+    private UUID hotelID;
     private String address;
     private ArrayList<HotelAmenity> hotelAmenities = new ArrayList<HotelAmenity>();
     private int rating;
     private ArrayList<Room> rooms;
 
-    public Hotel(UUID hotelId, String address, int rating, ArrayList<HotelAmenity> hotelAmenities, ArrayList<Room> rooms) {
-        this.hotelId = hotelId;
+    public Hotel(UUID hotelID, String address, int rating, ArrayList<HotelAmenity> hotelAmenities, ArrayList<Room> rooms) {
+        this.hotelID = hotelID;
         this.address = address;
         this.rating = rating;
         this.hotelAmenities = hotelAmenities;
@@ -27,8 +27,8 @@ class Hotel{
      * @param rooms hotel rooms
      */
      //Getters
-    public UUID getHotelId() {
-        return hotelId;
+    public UUID getHotelID() {
+        return hotelID;
     }
 
     public String getAddress() {
@@ -48,8 +48,8 @@ class Hotel{
     }
 
     //Setters
-    public void setHotelId(UUID hotelId) {
-        this.hotelId = hotelId;
+    public void setHotelId(UUID hotelID) {
+        this.hotelID = hotelID;
     }
     
     public void setAddress(String address) {
