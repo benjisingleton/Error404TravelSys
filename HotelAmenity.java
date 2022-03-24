@@ -2,6 +2,7 @@
  * Hotel amenities
  * @author Mostafa Mohamed Ali
  */
+ 
 public enum HotelAmenity {
     PET_FRIENDLY("Pet-Friendly"), 
     STAIR_FREE_PATH_TO_ENTRANCE("Stair-Free Path-to-Entrance"), 
