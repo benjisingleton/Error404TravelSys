@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.UUID;
-
+/**
+ * A List of all the flights
+ * @author rcd1
+ */
 public class Flights {
     private static Flights flights = null;
     private static ArrayList<Flight> flightList = new ArrayList<>();

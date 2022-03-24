@@ -156,5 +156,70 @@ public class DataLoader extends DataConstants{
 		}
 		return allSeats;
 	}
+/*------------------------------------For Hotels-------------------------------------------*/
+	public static ArrayList<Hotel> loadHotels() {
+		ArrayList<Hotel> allHotels = new ArrayList<>();
+
+		try {
+			FileReader reader = new FileReader(HOTELS_FILE_NAME);
+			JSONParser parser = new JSONParser();
+			JSONArray allHotelsJSON = (JSONArray)parser.parse(reader);
+
+			for (Object i: allHotelsJSON) {
+				JSONObject hotelJSON = (JSONObject)i;
+				UUID hotelID = UUID.fromString((String)hotelJSON.get(H_ID));
+				String address = (String)hotelJSON.get(H_ADDRESS);
+				ArrayList<HotelAmenity> hotelAmenities = rebuildHAmenities((JSONArray)hotelJSON.get(H_AMENITIES));
+				int rating = ((Long)hotelJSON.get(H_RATING)).intValue();
+				ArrayList<Room> rooms = rebuildAllRooms((JSONArray)hotelJSON.get(H_ROOMS));
+				allHotels.add(new Hotel(hotelID, address, rating, hotelAmenities, rooms));
+			}
+			return allHotels;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	private static ArrayList<HotelAmenity> rebuildHAmenities(JSONArray jsonArray) {
+		ArrayList<HotelAmenity> newHAs = new ArrayList<>();
+		ArrayList<String> strToHA = (ArrayList<String>)jsonArray;
+		for (String i: strToHA) {
+			newHAs.add(HotelAmenity.getHA(i));
+		}
+		return newHAs;
+	}
+
+	private static ArrayList<Room> rebuildAllRooms(JSONArray jsonArray) {
+		ArrayList<Room> allRooms = new ArrayList<>();
+		for (Object i : jsonArray) {
+			JSONObject roomJSON = (JSONObject)i;
+			allRooms.add(rebuildRoom(roomJSON));
+		}
+		return allRooms;
+	}
+	private static Room rebuildRoom(JSONObject roomJSON) {
+		UUID roomID = UUID.fromString((String)roomJSON.get(RO_ID));
+		ArrayList<RoomAmenity> roomAmenities = rebuildRoAmenities((JSONArray)roomJSON.get(RO_AMENITIES));
+		int floorNumber = ((Long)roomJSON.get(RO_FLOOR_NUMBER)).intValue();
+		int capacity = ((Long)roomJSON.get(RO_CAPACITY)).intValue();
+		ArrayList<Reservation> roomReservations = rebuildRoReservations((JSONArray)roomJSON.get(RO_RESERVATIONS));
+		return new Room(roomID, roomAmenities, floorNumber, capacity, roomReservations);
+	}
+	private static ArrayList<Reservation> rebuildRoReservations(JSONArray jsonArray) {
+		ArrayList<Reservation> resList = new ArrayList<>();
+		for (Object i: jsonArray) {
+			resList.add(rebuildReservation((JSONObject)i));
+		}
+		return resList;
+	}
+	private static ArrayList<RoomAmenity> rebuildRoAmenities(JSONArray jsonArray) {
+		ArrayList<RoomAmenity> newList = new ArrayList<>();
+		ArrayList<String> strtoRA = (ArrayList<String>)jsonArray;
+		for (String i: strtoRA) {
+			newList.add(RoomAmenity.getRA(i));
+		}
+		return newList;
+	}
 
 }

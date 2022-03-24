@@ -168,5 +168,68 @@ public class DataWriter extends DataConstants {
         }
         return allSeatDetails;
     }
+/*------------------------------------For Hotels-------------------------------------------*/
+    public static void saveHotels() {
+        Hotels hotels = Hotels.getInstance();
+        ArrayList<Hotel> hotelList = hotels.getHotels();
+        JSONArray jsonHotels = new JSONArray();
 
+        for (Hotel i: hotelList) {
+            jsonHotels.add(getHotelJSON(i));
+        }
+
+        try (FileWriter file = new FileWriter(HOTELS_FILE_NAME)){
+            file.write(jsonHotels.toJSONString());
+            file.flush();
+            file.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private static JSONObject getHotelJSON(Hotel i) {
+        JSONObject hotelDetails = new JSONObject();
+        hotelDetails.put(H_ID, i.getHotelID().toString());
+        hotelDetails.put(H_ADDRESS, i.getAddress());
+        hotelDetails.put(H_AMENITIES, getAllHAmenJSON(i.getHotelAmenities()));
+        hotelDetails.put(H_RATING, i.getRating());
+        hotelDetails.put(H_ROOMS, getAllRoomsJSON(i.getRooms()));
+        return hotelDetails;
+    }
+    private static JSONArray getAllHAmenJSON(ArrayList<HotelAmenity> hotelAmenities) {
+        JSONArray allHAmen = new JSONArray();
+        for (HotelAmenity i : hotelAmenities) {
+            allHAmen.add(i.getPrint());
+        }
+        return allHAmen;
+    }
+
+    private static JSONArray getAllRoomsJSON(ArrayList<Room> rooms) {
+        JSONArray allRoomDetails = new JSONArray();
+        for (Room i : rooms) {
+            JSONObject roomDetails = new JSONObject();
+            roomDetails.put(RO_ID, i.getRoomID().toString());
+            roomDetails.put(RO_AMENITIES, getAllRoAmenJSON(i.getRoomAmenities()));
+            roomDetails.put(RO_FLOOR_NUMBER, i.getFloorNumber());
+            roomDetails.put(RO_CAPACITY, i.getCapacity());
+            roomDetails.put(RO_RESERVATIONS, getAllRoResJSON(i.getRoomReservations()));
+            allRoomDetails.add(roomDetails);
+        }
+        return allRoomDetails;
+    }
+
+    private static JSONArray getAllRoAmenJSON(ArrayList<RoomAmenity> roomAmenities) {
+        JSONArray allRoAmen = new JSONArray();
+        for (RoomAmenity i : roomAmenities) {
+            allRoAmen.add(i.getPrint());
+        }
+        return allRoAmen;
+    }
+
+    private static JSONArray getAllRoResJSON(ArrayList<Reservation> roomReservations) {
+        JSONArray allRoRes = new JSONArray();
+        for (Reservation i : roomReservations) {
+            allRoRes.add(getReservationJSON(i));
+        }
+        return allRoRes;
+    }
 }

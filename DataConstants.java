@@ -1,6 +1,6 @@
 
 public abstract class DataConstants {
-// Flight
+/*--------------------------------Flight---------------------------------*/
 protected static final String FLIGHTS_FILE_NAME = "jsonFiles/flights.json";
 protected static final String FLIGHT_ID = "flightID";
 protected static final String F_DEPT_LOCATION = "deptLocation";
@@ -16,8 +16,7 @@ protected static final String P_ALL_SEATS = "allSeats";
 // Seat
 protected static final String S_SEATING = "seating";
 protected static final String S_AVAILABLE = "available";
-
-// Registered User
+/*---------------------------Registered User---------------------------*/
 protected static final String USERS_FILE_NAME = "jsonFiles/users.json";
 protected static final String USER_ID = "userID";
 protected static final String USER_INFO = "userInfo";
@@ -33,7 +32,7 @@ protected static final String R_INFO_FREQFLYER = "freqflyer";
 protected static final String PM_FIRST_NAME = "firstName";
 protected static final String PM_LAST_NAME = "lastName";
 protected static final String PM_AGE = "age";
-// Car
+/*--------------------------------Car---------------------------------*/
 protected static final String CARS_FILE_NAME = "jsonFiles/cars.json";
 protected static final String CAR_ID = "carID";
 protected static final String CAR_TYPE = "type";
@@ -54,5 +53,17 @@ protected static final String DATE_YEAR = "year";
 // Time
 protected static final String TIME_HOUR = "hour";
 protected static final String TIME_MIN = "minute";
-
+/*--------------------------------Hotel---------------------------------*/
+protected static final String HOTELS_FILE_NAME = "jsonFiles/hotels.json";
+protected static final String H_ID = "hotelID";
+protected static final String H_ADDRESS = "address";
+protected static final String H_AMENITIES = "hotelAmenities";
+protected static final String H_RATING = "rating";
+protected static final String H_ROOMS = "rooms";
+// Room
+protected static final String RO_ID = "roomID";
+protected static final String RO_AMENITIES = "roomAmenities";
+protected static final String RO_FLOOR_NUMBER = "floorNumber";
+protected static final String RO_CAPACITY = "capacity";
+protected static final String RO_RESERVATIONS = "roomReservations";
 }

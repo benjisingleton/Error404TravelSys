@@ -4,54 +4,65 @@
  */
 
 import java.util.ArrayList;
+import java.util.UUID;
 
  class Room {
+    private UUID roomID;
     private ArrayList<RoomAmenity> roomAmenities = new ArrayList<>();
-    private Long floorNumber;
-    private Long roomNumber;
-    private Long capacity;
-    private Reservation roomReservation;
+    private int floorNumber;
+    private int capacity;
+    private ArrayList<Reservation> roomReservations;
 
     /**
      * Sets local variables to passed in parameters
      * @param roomAmenities List of room amenities
      * @param floorNumber Floor number of room
-     * @param roomNumber Room number of room
      * @param capacity Capacity of the room
-     * @param roomReservation Reservation class for room
+     * @param roomReservations Reservation class for room
      */
-    public Room (ArrayList<RoomAmenity> roomAmenities, Long floorNumber,
-    Long roomNumber, Long capacity, Reservation roomReservation) {
+    public Room (UUID roomID, ArrayList<RoomAmenity> roomAmenities, int floorNumber, int capacity, ArrayList<Reservation> roomReservations) {
+        this.roomID = roomID;
         this.roomAmenities = roomAmenities;
         this.floorNumber = floorNumber;
-        this.roomNumber = roomNumber;
         this.capacity = capacity;
-        this.roomReservation = roomReservation;
+        this.roomReservations = roomReservations;
     }
     //Getters
+    public UUID getRoomID() {
+        return roomID;
+    }
     public ArrayList<RoomAmenity> getRoomAmenities() {
         return roomAmenities;
     }
-    public Long getFloorNumber() {
+    public int getFloorNumber() {
         return floorNumber;
     }
-    public Long getRoomNumber() {
-        return roomNumber;
-    }
-    public Long getCapacity() {
+    // public int getRoomNumber() {
+    //     return roomNumber;
+    // }
+    public int getCapacity() {
         return capacity;
     }
-    public Reservation getRoomReservation() {
-        return roomReservation;
+    public ArrayList<Reservation> getRoomReservations() {
+        return roomReservations;
     }
     //Setters
+    public void setUUID(UUID roomID) {
+        this.roomID = roomID;
+    }
     public void setRoomAmenities(ArrayList<RoomAmenity> roomAmenities) {
         this.roomAmenities = roomAmenities;
     }
-    public void setFloorNumber(Long floorNumber) {
+    public void setFloorNumber(int floorNumber) {
         this.floorNumber = floorNumber;
     }
-    public void setRoomNumber(Long roomNumber) {
-        this.roomNumber = roomNumber;
+    // public void setRoomNumber(int roomNumber) {
+    //     this.roomNumber = roomNumber;
+    // }
+    //Other Methods
+    public String testString() {
+        return "Amenities: " + roomAmenities.toString() +
+        "\nFloor Number: " + floorNumber + "Capacity: " 
+        + capacity + "Room Reservations: " + roomReservations.toString();
     }
  }

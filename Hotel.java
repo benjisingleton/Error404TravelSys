@@ -85,5 +85,11 @@ class Hotel{
     public void printRooms() {
         
     }
+    public String testString() {
+        return "Address: " + address + "\nAmenities: "
+        + hotelAmenities.toString() + "\nRating: " +
+        rating + "\nRooms" + rooms.toString();
+
+    }
 
 }
