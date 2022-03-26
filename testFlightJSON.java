@@ -204,7 +204,7 @@ public class testFlightJSON {
 
     public static void main(String[] args) {
         testFlightJSON test = new testFlightJSON();
-        //test.playFlightGroup();
-        test.playFlight();
+        test.playFlightGroup();
+        //test.playFlight();
     }
 }

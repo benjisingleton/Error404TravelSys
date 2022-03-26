@@ -71,17 +71,35 @@ class Plane {
     //     }
     // }
 
+    // IF SEAT IS AVAILABLE, TRUE IS RETURNED
+
     /**
      * Checks specific seats availability
      * @param seat Specific seat to check
      * @return Returns true if available, false otherwise
      */
-    public Boolean checkAvailability(Seat seat) {
+    public boolean checkAvailability(Seat seat) {
         if(seat.getAvailable()) {
             return true;
         }
         return false;
     }
+
+    /**
+     * Checks if whole plane is available
+     * @param allSeats ArrayList of all seats
+     * @return Returns true if at least one seat is available,
+     * otherwise it returns false
+     */
+    public boolean checkAllAvailability(ArrayList<Seat> allSeats) {
+        for (int i = 0; i < allSeats.size(); i++) {
+            if(allSeats.get(i).getAvailable()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //Getters
     public Airline getAirline() {
         return airline;
@@ -108,6 +126,7 @@ class Plane {
     public void setSeats(ArrayList<Seat> allSeats) {
         this.allSeats = allSeats;
     }
+
     //Other methods
     public String testString() {
         return "\nAirline: " + airline.getName() + "\nCapacity: " +
