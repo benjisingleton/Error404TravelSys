@@ -117,6 +117,23 @@ public class DataWriter extends DataConstants {
         return resJSON;
     }
 /*------------------------------------For Flights-------------------------------------------*/
+    public static void saveFlightGroups() {
+        Flights flights = Flights.getInstance();
+        ArrayList<FlightGroup> fGroupList = flights.getFlightGroups();
+        JSONArray jsonFGroups = new JSONArray();
+
+        for (FlightGroup i : fGroupList) {
+            jsonFGroups.add(getFlightGroupJSON(i));
+        }
+
+        try (FileWriter file = new FileWriter(FLIGHT_GROUPS_FILE_NAME)){
+            file.write(jsonFGroups.toJSONString());
+            file.flush();
+            file.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public static void saveFlights() {
         Flights flights = Flights.getInstance();
         ArrayList<Flight> flightList = flights.getFlights();
@@ -125,7 +142,7 @@ public class DataWriter extends DataConstants {
         for (int i = 0; i < flightList.size(); i++) {
             jsonFlights.add(getFlightJSON(flightList.get(i)));
         }
-
+        // Write to flights.json and flightgroups.json
         try (FileWriter file = new FileWriter(FLIGHTS_FILE_NAME)) {
             file.write(jsonFlights.toJSONString());
             file.flush();
@@ -133,7 +150,24 @@ public class DataWriter extends DataConstants {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
+ 
+    private static JSONObject getFlightGroupJSON(FlightGroup fGroup) {
+        JSONObject fGrDetails = new JSONObject();
+        fGrDetails.put(FLIGHT_GROUPS_ID, fGroup.getFlightGroupID().toString());
+        fGrDetails.put(FLIGHT_GROUPS_ALL_FLIGHTS, getAllFlightsJSON(fGroup.getAllFlights()));
+        return fGrDetails;
+    }
+    
+    private static JSONArray getAllFlightsJSON(ArrayList<Flight> allFlights) {
+        JSONArray allFDetails = new JSONArray();
+        for (Flight i : allFlights) {
+            allFDetails.add(getFlightJSON(i));
+        }
+        return allFDetails;
+    }
+
     private static JSONObject getFlightJSON(Flight flight) {
         JSONObject flightDetails = new JSONObject();
         flightDetails.put(FLIGHT_ID, flight.getFlightID().toString());
@@ -186,6 +220,7 @@ public class DataWriter extends DataConstants {
             e.printStackTrace();
         }
     }
+
     private static JSONObject getHotelJSON(Hotel i) {
         JSONObject hotelDetails = new JSONObject();
         hotelDetails.put(H_ID, i.getHotelID().toString());
@@ -195,6 +230,7 @@ public class DataWriter extends DataConstants {
         hotelDetails.put(H_ROOMS, getAllRoomsJSON(i.getRooms()));
         return hotelDetails;
     }
+
     private static JSONArray getAllHAmenJSON(ArrayList<HotelAmenity> hotelAmenities) {
         JSONArray allHAmen = new JSONArray();
         for (HotelAmenity i : hotelAmenities) {
@@ -232,4 +268,5 @@ public class DataWriter extends DataConstants {
         }
         return allRoRes;
     }
+    
 }

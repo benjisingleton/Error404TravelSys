@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.UUID;
+
 /**
  * A List of all the flights
  * @author rcd1
@@ -7,9 +8,11 @@ import java.util.UUID;
 public class Flights {
     private static Flights flights = null;
     private static ArrayList<Flight> flightList = new ArrayList<>();
+    private static ArrayList<FlightGroup> flightGroupList = new ArrayList<>();
 
     private Flights() {
         flightList = DataLoader.loadFlights();
+        flightGroupList = DataLoader.loadFlightGroups();
     }
 
     public static Flights getInstance() {
@@ -23,11 +26,20 @@ public class Flights {
         return flightList;
     }
 
+    public ArrayList<FlightGroup> getFlightGroups() {
+        return flightGroupList;
+    }
+
     public void addFlight(UUID flightID, String deptLocation, String arrivLocation, Plane plane, double price, Reservation flightReservation) {
         flightList.add(new Flight(flightID, deptLocation, arrivLocation, plane, price, flightReservation));
     }
 
+    public void addFlightGroup(UUID flightGroupID, ArrayList<Flight> allFlights) {
+        flightGroupList.add(new FlightGroup(flightGroupID, allFlights));
+    }
+
     public void logout() {
         DataWriter.saveFlights();
+        DataWriter.saveFlightGroups();
     }
 }

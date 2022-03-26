@@ -168,12 +168,12 @@ public class testHotelJSON {
         scanner.nextLine();
         return temp;
     }
-    private double getDouble(String prompt) {
-        System.out.print(prompt + ": ");
-        double price = scanner.nextDouble();
-        scanner.nextLine();
-        return price;
-    }
+    // private double getDouble(String prompt) {
+    //     System.out.print(prompt + ": ");
+    //     double price = scanner.nextDouble();
+    //     scanner.nextLine();
+    //     return price;
+    // }
     private Reservation getReservation() {
         Date sDate = new Date(getField("Date (mm/dd/yy)"));
         Date eDate = new Date(getField("Date (mm/dd/yy)"));

@@ -108,6 +108,46 @@ public class DataLoader extends DataConstants{
 		return new Reservation(startDate, endDate, startTime, endTime);
 	}
 /*------------------------------------For Flights-------------------------------------------*/
+	public static ArrayList<FlightGroup> loadFlightGroups() {
+		ArrayList<FlightGroup> fGroupList = new ArrayList<>();
+
+		try {
+			FileReader reader = new FileReader(FLIGHT_GROUPS_FILE_NAME);
+			JSONParser parser = new JSONParser();
+			JSONArray fGroupsJSON = (JSONArray)parser.parse(reader);
+
+			for (Object i : fGroupsJSON) {
+				JSONObject fGroupJSON = (JSONObject)i;
+				UUID flightGroupID = UUID.fromString((String)fGroupJSON.get(FLIGHT_GROUPS_ID));
+				ArrayList<Flight> allFlights = rebuildAllFlights((JSONArray)fGroupJSON.get(FLIGHT_GROUPS_ALL_FLIGHTS));
+
+				fGroupList.add(new FlightGroup(flightGroupID, allFlights));
+			}
+			return fGroupList;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+}
+	
+	private static ArrayList<Flight> rebuildAllFlights(JSONArray jsonArray) {
+		ArrayList<Flight> allFlights = new ArrayList<>();
+		for (Object i : jsonArray) {
+			allFlights.add(rebuildFlight((JSONObject)i));
+		}
+		return allFlights;
+	}
+
+	private static Flight rebuildFlight(JSONObject i) {
+		JSONObject fJSON = (JSONObject)i;
+				UUID flightID = UUID.fromString((String)fJSON.get(FLIGHT_ID));
+				String deptLocation = (String)fJSON.get(F_DEPT_LOCATION);
+				String arrivLocation = (String)fJSON.get(F_ARRIV_LOCATION);
+				Plane plane = rebuildPlane((JSONObject)fJSON.get(F_PLANE));
+				double price = (double)fJSON.get(F_PRICE);
+				Reservation flightReservation = rebuildReservation((JSONObject)fJSON.get(F_RESERVATION));
+		return new Flight(flightID, deptLocation, arrivLocation, plane, price, flightReservation);
+	}
 	public static ArrayList<Flight> loadFlights() {
 		ArrayList<Flight> flightList = new ArrayList<>();
 		
@@ -116,16 +156,8 @@ public class DataLoader extends DataConstants{
 			JSONParser parser = new JSONParser();
 			JSONArray flightsJSON = (JSONArray)parser.parse(reader);
 
-			for (Object i : flightsJSON) {
-				JSONObject fJSON = (JSONObject)i;
-				UUID flightID = UUID.fromString((String)fJSON.get(FLIGHT_ID));
-				String deptLocation = (String)fJSON.get(F_DEPT_LOCATION);
-				String arrivLocation = (String)fJSON.get(F_ARRIV_LOCATION);
-				Plane plane = rebuildPlane((JSONObject)fJSON.get(F_PLANE));
-				double price = (double)fJSON.get(F_PRICE);
-				Reservation flightReservation = rebuildReservation((JSONObject)fJSON.get(F_RESERVATION));
-				
-				flightList.add(new Flight(flightID, deptLocation, arrivLocation, plane, price, flightReservation));
+			for (Object i : flightsJSON) {				
+				flightList.add(rebuildFlight((JSONObject)i));
 			}
 			return flightList;
 			
@@ -221,5 +253,6 @@ public class DataLoader extends DataConstants{
 		}
 		return newList;
 	}
+	
 
 }

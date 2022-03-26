@@ -44,8 +44,8 @@ class Seat {
     public String testString() {
 
         if (available) {
-            return seating + ": " + "|_|";
+            return "|_|";
         }
-        return seating + ": " +  "|*|";
+        return  "|*|";
     }
 }

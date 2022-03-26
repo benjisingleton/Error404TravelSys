@@ -1,6 +1,9 @@
 
 public abstract class DataConstants {
 /*--------------------------------Flight---------------------------------*/
+protected static final String FLIGHT_GROUPS_FILE_NAME = "jsonFiles/flightGroups.json";
+protected static final String FLIGHT_GROUPS_ID = "flightGroupID";
+protected static final String FLIGHT_GROUPS_ALL_FLIGHTS = "allFlights";
 protected static final String FLIGHTS_FILE_NAME = "jsonFiles/flights.json";
 protected static final String FLIGHT_ID = "flightID";
 protected static final String F_DEPT_LOCATION = "deptLocation";

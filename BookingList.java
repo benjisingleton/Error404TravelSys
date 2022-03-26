@@ -7,12 +7,17 @@ import java.util.UUID;
 public class BookingList {
     private ArrayList<UUID> bookingIds = new ArrayList<>();
     private ArrayList<Flight> flightList = new ArrayList<>();
+    private ArrayList<FlightGroup> flightGroupList = new ArrayList<>();
     private HashMap<Hotel, ArrayList<Room>> hotelBookings = new HashMap<>();
     private ArrayList<Car> carList = new ArrayList<>();
 
-    public BookingList(ArrayList<UUID> bookingIds, ArrayList<Flight> flightList, HashMap<Hotel, ArrayList<Room>> hotelBookings, ArrayList<Car> carList) {
+    
+    public BookingList(ArrayList<UUID> bookingIds, ArrayList<Flight> flightList,
+            ArrayList<FlightGroup> flightGroupList, HashMap<Hotel, ArrayList<Room>> hotelBookings,
+            ArrayList<Car> carList) {
         this.bookingIds = bookingIds;
         this.flightList = flightList;
+        this.flightGroupList = flightGroupList;
         this.hotelBookings = hotelBookings;
         this.carList = carList;
     }
@@ -22,6 +27,9 @@ public class BookingList {
     }
     public ArrayList<Flight> getFlightList() {
         return flightList;
+    }
+    public ArrayList<FlightGroup> getFlightGroupList() {
+        return flightGroupList;
     }
     public HashMap<Hotel, ArrayList<Room>> getHotelBookings() {
         return hotelBookings;
@@ -35,6 +43,9 @@ public class BookingList {
     }
     public void setFlightList(ArrayList<Flight> flightList) {
         this.flightList = flightList;
+    }
+    public void setFlightGroupList(ArrayList<FlightGroup> flightGroupList) {
+        this.flightGroupList = flightGroupList;
     }
     public void setHotelBookings(HashMap<Hotel, ArrayList<Room>> hotelBookings) {
         this.hotelBookings = hotelBookings;
@@ -55,4 +66,6 @@ public class BookingList {
     public void printAll() {
 
     }
+    
+    
 }

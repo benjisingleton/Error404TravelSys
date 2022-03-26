@@ -5,7 +5,7 @@ import java.util.UUID;
  * @author Benjamin Singleton
  */
 
-abstract class Flight {
+ class Flight {
     private UUID flightID;
     private String deptLocation;
     private String arrivLocation;
@@ -126,4 +126,8 @@ abstract class Flight {
         + "\nPlane: " + plane.testString()
         + "\nPrice: " + price + "\n" + flightReservation.toString();
     }
+    public String printSeatChart() {
+        return plane.displayAll();
+    }
+
 }

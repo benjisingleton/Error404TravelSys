@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -9,7 +10,7 @@ public class testFlightJSON {
         scanner = new Scanner(System.in);
     }
 
-    public void play() {
+    public void playFlight() {
         Flights flights = Flights.getInstance();
 
         System.out.println("****** Current Flights *****");
@@ -31,6 +32,47 @@ public class testFlightJSON {
         flights.logout();
     }
 
+    public void playFlightGroup() {
+        Flights flights = Flights.getInstance();
+
+        System.out.println("****** Current Flight Groups *****");
+        displayFlightGroups();
+
+        while(addFlightGroup()) {
+            UUID flightGroupID = UUID.randomUUID();
+            ArrayList<Flight> allFlights = new ArrayList<>();
+            int numFlights = getInt("How many flights in this group?");
+            for (int i = 0; i < numFlights; i++) {
+                allFlights.add(getFlight());
+            }
+            flights.addFlightGroup(flightGroupID, allFlights);
+        }
+
+        System.out.println("***** Flight Groups Now *****");
+        displayFlightGroups();
+        flights.logout();
+    }
+    
+    
+    private boolean addFlightGroup() {
+        System.out.print("Would you like to add a new flight group? (Y or N): ");
+
+        String input = scanner.nextLine();
+        
+        if(input.toLowerCase().trim().equals("y")) return true;
+        return false;
+    }
+
+    private Flight getFlight() {
+        UUID flightID = UUID.randomUUID();
+        String deptLocation = getField("Leaving From");
+        String arrivLocation = getField("Going to");
+        Plane plane = getPlane();
+        double price = getDouble("Price");
+        Reservation flightReservation = getReservation();
+        return new Flight(flightID, deptLocation, arrivLocation, plane, price, flightReservation);
+    }
+
     private boolean addFlight() {
         System.out.print("Would you like to add a new flight? (Y or N): ");
 
@@ -39,6 +81,14 @@ public class testFlightJSON {
         if(input.toLowerCase().trim().equals("y")) return true;
         return false;
     }
+
+    private void displayFlightGroups() {
+        Flights flights = Flights.getInstance();
+        ArrayList<FlightGroup> fGroupList = flights.getFlightGroups();
+        for (FlightGroup fG : fGroupList) {
+            System.out.println(fG.toString());
+        }
+    }   
 
     private void displayFlights() {
         Flights flights = Flights.getInstance();
@@ -59,9 +109,33 @@ public class testFlightJSON {
 
     private ArrayList<Seat> getAllSeats() {
         ArrayList<Seat> temp = new ArrayList<>();
-        int size = getInt("Capacity");
+        int size = 120;
+        int rowCount = 0;
+        Random r = new Random();
         for (int i = 0; i < size; i++) {
-            temp.add(getSeat());
+            
+            if (i%6 == 0)
+            rowCount++;
+            switch(i%6) {
+                case 0 :
+                temp.add(new Seat((rowCount + "A"), r.nextBoolean()));
+                break;
+                case 1:
+                temp.add(new Seat((rowCount + "B"), r.nextBoolean()));
+                break;
+                case 2:
+                temp.add(new Seat((rowCount + "C"), r.nextBoolean()));
+                break;
+                case 3:
+                temp.add(new Seat((rowCount + "D"), r.nextBoolean()));
+                break;
+                case 4:
+                temp.add(new Seat((rowCount + "E"), r.nextBoolean()));
+                break;
+                case 5:
+                temp.add(new Seat((rowCount + "F"), r.nextBoolean()));
+                break;
+            }
         }
         return temp;
     }
@@ -112,12 +186,14 @@ public class testFlightJSON {
         scanner.nextLine();
         return temp;
     }
+   
     private double getDouble(String prompt) {
         System.out.print(prompt + ": ");
         double price = scanner.nextDouble();
         scanner.nextLine();
         return price;
     }
+   
     private Reservation getReservation() {
         Date sDate = new Date(getField("Date (mm/dd/yy"));
         Date eDate = new Date(getField("Date (mm/dd/yy"));
@@ -128,6 +204,7 @@ public class testFlightJSON {
 
     public static void main(String[] args) {
         testFlightJSON test = new testFlightJSON();
-        test.play();
+        //test.playFlightGroup();
+        test.playFlight();
     }
 }

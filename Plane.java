@@ -27,38 +27,49 @@ class Plane {
     /**
      * Displays all seats
      */
-    public void displayAll() {
-        for (int i = 0; i < allSeats.size(); i++) {
-            if (i % 4 == 0) {
-                System.out.println("\n");
+    public String displayAll() {
+        String chart = "    A   B   C   D   E   F ";
+        int row = 0;
+                   //  " 3 |_| |_| |_| |_| |_| |_|"
+        for (int i = 0; i < capacity; i++) {
+            if (i%6 == 0) {
+            row++;
+                if (row < 10) {
+                    chart += "\n " + row;
+                } else {
+                    chart += "\n" + row;
+                }
             }
-            System.out.print(allSeats.get(i));
+            
+            chart += " " + allSeats.get(i).testString();
         }
+        chart += "\nTaken: |*|\nAvailable: |_|";
+        return chart;
     }
 
-    /**
-     * Displays first class
-     */
-    public void displayFirstClass() {
-        for (int i = 0; i < 3; i++) {
-            if (i % 4 == 0) {
-                System.out.println("\n");
-            }
-            System.out.print(allSeats.get(i));
-        }
-    }
+    // /**
+    //  * Displays first class
+    //  */
+    // public void displayFirstClass() {
+    //     for (int i = 0; i < 3; i++) {
+    //         if (i % 4 == 0) {
+    //             System.out.println("\n");
+    //         }
+    //         System.out.print(allSeats.get(i));
+    //     }
+    // }
 
-    /**
-     * Displays economy class
-     */
-    public void displayEconomy() {
-        for (int i = 3; i < (allSeats.size() - 3); i++) {
-            if (i % 4 == 0) {
-                System.out.println("\n");
-            }
-            System.out.print(allSeats.get(i));
-        }
-    }
+    // /**
+    //  * Displays economy class
+    //  */
+    // public void displayEconomy() {
+    //     for (int i = 3; i < (allSeats.size() - 3); i++) {
+    //         if (i % 4 == 0) {
+    //             System.out.println("\n");
+    //         }
+    //         System.out.print(allSeats.get(i));
+    //     }
+    // }
 
     /**
      * Checks specific seats availability
@@ -101,7 +112,7 @@ class Plane {
     public String testString() {
         return "\nAirline: " + airline.getName() + "\nCapacity: " +
         capacity + "\nSeat: " + seat.testString() 
-        + "\nAll Seats: " + allSeats.toString();
+        + "\nAll Seats:\n" + displayAll();
     }
     
 }
