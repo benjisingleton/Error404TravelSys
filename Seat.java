@@ -20,7 +20,7 @@ class Seat {
     public String getSeating() {
         return seating;
     }
-    public boolean getAvailable() {
+    public boolean isAvailable() {
         return available;
     }
     // Setters

@@ -42,8 +42,75 @@ public class DataWriter extends DataConstants {
         JSONObject rUserDetails = new JSONObject();
         rUserDetails.put(USER_ID, rUser.getUserID().toString());
         rUserDetails.put(USER_INFO, getRInfoJSON(rUser.getUserInfo()));
+        rUserDetails.put(USER_BOOKINGS, getAllBookingIDs(rUser.getSavedBookings()));
         rUserDetails.put(USER_PARTY_MEMBERS,getPMembersJSON(rUser.getPartyMembers()));
         return rUserDetails;
+    }
+    private static JSONObject getAllBookingIDs(BookingList savedBookings) {
+        JSONObject allBookingIDs = new JSONObject();
+        // Flights
+        allBookingIDs.put(B_F_AND_S_IDs, getFBookingIDsJSON(savedBookings.getFlightList()));
+        // Flight Groups
+        allBookingIDs.put(B_FGIDS, getFGBookingIDsJSON(savedBookings.getFlightGroupList()));
+        // Hotels and Rooms
+        allBookingIDs.put(B_H_AND_R_IDS, getAllHotelBookingIDsJSON(savedBookings.getHotelBookings()));
+        // Cars
+        allBookingIDs.put(B_CIDS, getCarBookingIDsJSON(savedBookings.getCarList()));
+        
+        
+        return allBookingIDs;
+    }
+    
+    private static JSONArray getFBookingIDsJSON(ArrayList<Flight> flightList) {
+        JSONArray fAndSIDs = new JSONArray();
+        for (Flight f : flightList) {
+            JSONObject fAndSJSON = new JSONObject();
+            fAndSJSON.put(B_FID, f.getFlightID().toString());
+            fAndSJSON.put(B_SIDS, getSeatIDJSON(f.getUserSeats()));
+            fAndSIDs.add(fAndSJSON);
+        }
+        return fAndSIDs;
+    }
+
+    private static JSONArray getSeatIDJSON(ArrayList<Seat> userSeats) {
+        JSONArray sJSON = new JSONArray();
+        for (Seat s: userSeats) {
+            sJSON.add(s.getSeating());
+        }
+        return sJSON;
+    }
+    private static JSONArray getCarBookingIDsJSON(ArrayList<Car> carList) {
+        JSONArray cIDs = new JSONArray();
+        for (Car c : carList) {
+            cIDs.add(c.getCarID().toString());
+        }
+        return cIDs;
+    }
+    private static JSONArray getFGBookingIDsJSON(ArrayList<FlightGroup> flightGroupList) {
+        JSONArray fGIDs = new JSONArray();
+            for (FlightGroup fG : flightGroupList) {
+                fGIDs.add(fG.getFlightGroupID().toString());
+            }
+        return fGIDs;
+    }
+    
+
+    private static JSONArray getAllHotelBookingIDsJSON(ArrayList<Hotel> hotelBookings) {
+        JSONArray allHotelDetails = new JSONArray();
+        for (Hotel h : hotelBookings) {
+            allHotelDetails.add(getHAndRIDsJSON(h));
+        }
+        return allHotelDetails;
+    }
+    private static JSONObject getHAndRIDsJSON(Hotel h) {
+        JSONObject tempObj = new JSONObject();
+        JSONArray roomIDs = new JSONArray();
+        for (Room i : h.getRooms()) {
+            roomIDs.add(i.getRoomID().toString());
+        }
+        tempObj.put(B_HID, h.getHotelID().toString());
+        tempObj.put(B_ROOM_IDS, roomIDs);
+        return tempObj;
     }
     /**
      * Convert the Registration Info object into a JSON object
@@ -96,6 +163,7 @@ public class DataWriter extends DataConstants {
             e.printStackTrace();
         }
     }
+    
     private static JSONObject getCarJSON(Car car) {
         JSONObject carDetails = new JSONObject();
         carDetails.put(CAR_ID, car.getCarID().toString());
@@ -107,6 +175,7 @@ public class DataWriter extends DataConstants {
         carDetails.put(CAR_RESERVATION, getReservationJSON(car.getCarReservation()));
         return carDetails;
     }
+    
     private static JSONObject getReservationJSON(Reservation reservation) {
         JSONObject resJSON = new JSONObject();
         //Convert Dates and Times to Strings, rebuild later with split
@@ -134,6 +203,7 @@ public class DataWriter extends DataConstants {
             e.printStackTrace();
         }
     }
+ 
     public static void saveFlights() {
         Flights flights = Flights.getInstance();
         ArrayList<Flight> flightList = flights.getFlights();
@@ -171,18 +241,18 @@ public class DataWriter extends DataConstants {
     private static JSONObject getFlightJSON(Flight flight) {
         JSONObject flightDetails = new JSONObject();
         flightDetails.put(FLIGHT_ID, flight.getFlightID().toString());
-        flightDetails.put(F_DEPT_LOCATION, flight.getDeptLocation());
-        flightDetails.put(F_ARRIV_LOCATION, flight.getArrivLocation());
+        flightDetails.put(F_DEPT_AIRPORT, flight.getDeptAirportCode());
+        flightDetails.put(F_ARRIV_AIRPORT, flight.getArrivAirportCode());
         flightDetails.put(F_PLANE, getFPlaneJSON(flight.getPlane()));
         flightDetails.put(F_PRICE, flight.getPrice());
-        flightDetails.put(F_RESERVATION, getReservationJSON(flight.getReservation()));
+        flightDetails.put(F_RESERVATION, getReservationJSON(flight.getFlightReservation()));
         return flightDetails;
     }
 
     private static JSONObject getFPlaneJSON(Plane plane) {
         JSONObject planeDetails = new JSONObject();
         planeDetails.put(P_AIRLINE, plane.getAirline().getName());
-        planeDetails.put(P_CAPACITY, plane.getCapacity());
+        // planeDetails.put(P_CAPACITY, plane.getCapacity());
         planeDetails.put(P_SEAT, getSeatJSON(plane.getSeat()));
         planeDetails.put(P_ALL_SEATS, getAllSeatsJSON(plane.getSeats()));
         return planeDetails;
@@ -191,7 +261,7 @@ public class DataWriter extends DataConstants {
     private static JSONObject getSeatJSON(Seat seat) {
         JSONObject seatDetails = new JSONObject();
         seatDetails.put(S_SEATING, seat.getSeating());
-        seatDetails.put(S_AVAILABLE, seat.getAvailable());
+        seatDetails.put(S_AVAILABLE, seat.isAvailable());
         return seatDetails;
     }
 

@@ -26,9 +26,10 @@ public class DataLoader extends DataConstants{
 				JSONObject rUserJSON = (JSONObject)i;
 				UUID userID = UUID.fromString((String)rUserJSON.get(USER_ID));
 				RegistrationInfo userInfo = rebuildUserInfo((JSONObject)rUserJSON.get(USER_INFO));
+				BookingList savedBookings = rebuildBookingList((JSONObject)rUserJSON.get(USER_BOOKINGS));
 				ArrayList<PartyMember> partyMembers = rebuildPartyMembers((JSONArray)rUserJSON.get(USER_PARTY_MEMBERS));
 
-				rUsers.add(new RegisteredUser(userID, userInfo, partyMembers));
+				rUsers.add(new RegisteredUser(userID, userInfo, savedBookings, partyMembers));
 			}
 
 			return rUsers;
@@ -37,6 +38,69 @@ public class DataLoader extends DataConstants{
 		}
 		return null;
 	}
+	private static BookingList rebuildBookingList(JSONObject bookingObject) {
+		ArrayList<Flight> flightList = rebuildAllFlightsByUUID((JSONArray)bookingObject.get(B_F_AND_S_IDs));
+		ArrayList<FlightGroup> flightGroupList = rebuildAllFGroupsByUUID((ArrayList<String>)bookingObject.get(B_FGIDS));
+		ArrayList<Hotel> hotelBookings = rebuildHotelsByUUID((JSONArray)bookingObject.get(B_H_AND_R_IDS));
+		ArrayList<Car> carList = rebuildCarsByUUID((ArrayList<String>)bookingObject.get(B_CIDS));
+		return new BookingList(flightList, flightGroupList, hotelBookings, carList);
+	}
+
+	private static ArrayList<Flight> rebuildAllFlightsByUUID(JSONArray fAndSIDs) {
+			Flights flights = Flights.getInstance();
+			ArrayList<Flight> flightList = new ArrayList<>();
+			for (Object i : fAndSIDs) {
+				JSONObject fAndSJSON = (JSONObject)i;
+				UUID flightID = UUID.fromString((String)fAndSJSON.get(B_FID));
+				Flight flight = flights.getFlightByUUID(flightID);
+				flight = flights.getUserSeatsByID(flight, (ArrayList<String>)fAndSJSON.get(B_SIDS));
+				
+				flightList.add(flight);
+			}
+			return flightList;
+		}
+	
+	private static ArrayList<FlightGroup> rebuildAllFGroupsByUUID(ArrayList<String> bookingFGIDs) {
+			Flights flights = Flights.getInstance();
+			ArrayList<FlightGroup> flightGroupList = new ArrayList<>();
+			for (String i : bookingFGIDs) {
+				flightGroupList.add(flights.getFlightGroupByUUID(UUID.fromString(i)));
+			}
+			return flightGroupList;
+		}
+
+
+	private static Hotel rebuildHotelBookingsByUUID(JSONObject hotelJSON) {
+			Hotels hotels = Hotels.getInstance();
+			UUID hotelID = UUID.fromString((String)hotelJSON.get(B_HID));
+			ArrayList<UUID> roomIDs = new ArrayList<>();
+			ArrayList<String> roomStrs = (ArrayList<String>)hotelJSON.get(B_ROOM_IDS);
+			for (String i : roomStrs) {
+				roomIDs.add(UUID.fromString(i));
+			}
+
+			return hotels.getHotelBookingByUUID(hotelID, roomIDs);
+		}
+	
+	private static ArrayList<Hotel> rebuildHotelsByUUID(JSONArray bookingHIDs) {
+		ArrayList<Hotel> hotelBookings = new ArrayList<>();
+		for (Object i : bookingHIDs) {
+			JSONObject hotelJSON = (JSONObject)i;
+			hotelBookings.add(rebuildHotelBookingsByUUID(hotelJSON));
+		}
+		return hotelBookings;
+	}
+	
+	private static ArrayList<Car> rebuildCarsByUUID(ArrayList<String> bookingCIDs) {
+		Cars cars = Cars.getInstance();
+		ArrayList<Car> carList = new ArrayList<>();
+		for (String i : bookingCIDs) {
+			carList.add(cars.getCarByUUID(UUID.fromString(i)));
+		}
+		return carList;
+	}
+	
+	
 	/**
 	 * Convert the JSON object back into a RegistrationInfo
 	 * @param rUserJSON the current user JSON object
@@ -141,8 +205,8 @@ public class DataLoader extends DataConstants{
 	private static Flight rebuildFlight(JSONObject i) {
 		JSONObject fJSON = (JSONObject)i;
 				UUID flightID = UUID.fromString((String)fJSON.get(FLIGHT_ID));
-				String deptLocation = (String)fJSON.get(F_DEPT_LOCATION);
-				String arrivLocation = (String)fJSON.get(F_ARRIV_LOCATION);
+				String deptLocation = (String)fJSON.get(F_DEPT_AIRPORT);
+				String arrivLocation = (String)fJSON.get(F_ARRIV_AIRPORT);
 				Plane plane = rebuildPlane((JSONObject)fJSON.get(F_PLANE));
 				double price = (double)fJSON.get(F_PRICE);
 				Reservation flightReservation = rebuildReservation((JSONObject)fJSON.get(F_RESERVATION));
@@ -169,10 +233,10 @@ public class DataLoader extends DataConstants{
 
 	private static Plane rebuildPlane(JSONObject plInfo) {
 		Airline airline = Airline.getAL((String)plInfo.get(P_AIRLINE));
-		int capacity = ((Long)plInfo.get(P_CAPACITY)).intValue();
+		// int capacity = ((Long)plInfo.get(P_CAPACITY)).intValue();
 		Seat seat = rebuildSeat((JSONObject)plInfo.get(P_SEAT));
 		ArrayList<Seat> allSeats = rebuildAllSeats((JSONArray)plInfo.get(P_ALL_SEATS));
-		return new Plane(airline, capacity, seat, allSeats);
+		return new Plane(airline, seat, allSeats);
 	}
 
 	private static Seat rebuildSeat(JSONObject seatInfo) {
@@ -180,6 +244,7 @@ public class DataLoader extends DataConstants{
 		boolean available =  (boolean)seatInfo.get(S_AVAILABLE);
 		return new Seat(seating, available);
 	}
+	
 	private static ArrayList<Seat> rebuildAllSeats(JSONArray aSeatsInfo) {
 		ArrayList<Seat> allSeats = new ArrayList<>();
 		for (Object i : aSeatsInfo) {

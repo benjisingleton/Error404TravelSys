@@ -19,17 +19,20 @@ public class testHotelJSON {
         displayHotels();
 
         while(addHotel()) {
-            UUID hotelID = UUID.randomUUID();
-            String address = getField("Address");
-            ArrayList<HotelAmenity> hotelAmenities = getHAmenities();
-            int rating = getInt("Rating");
-            ArrayList<Room> rooms = getAllRooms();
-
-            hotels.addHotel(hotelID, address, hotelAmenities, rating, rooms);
+            hotels.addHotel(getHotel());
         }
         System.out.println("***** Hotels Now *****");
         displayHotels();
         hotels.logout();
+    }
+
+    protected Hotel getHotel() {
+        UUID hotelID = UUID.randomUUID();
+        String address = getField("Address");
+        ArrayList<HotelAmenity> hotelAmenities = getHAmenities();
+        int rating = getInt("Rating");
+        ArrayList<Room> rooms = getAllRooms();
+        return new Hotel(hotelID, address, rating, hotelAmenities, rooms);
     }
 
     private boolean addHotel() {
@@ -148,7 +151,7 @@ public class testHotelJSON {
         return hams;
     }
 
-    private void displayHotels() {
+    protected void displayHotels() {
         Hotels hotels = Hotels.getInstance();
         ArrayList<Hotel> hList = hotels.getHotels();
 
@@ -174,7 +177,7 @@ public class testHotelJSON {
     //     scanner.nextLine();
     //     return price;
     // }
-    private Reservation getReservation() {
+    protected Reservation getReservation() {
         Date sDate = new Date(getField("Date (mm/dd/yy)"));
         Date eDate = new Date(getField("Date (mm/dd/yy)"));
         Time sTime = new Time(getField("Time (hh:mm a/pm)"));

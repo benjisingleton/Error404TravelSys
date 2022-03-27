@@ -1,3 +1,4 @@
+package oldClasses;
 /**
  * @author Daniel Henington
  * Class for multicity flightss

@@ -6,8 +6,8 @@ protected static final String FLIGHT_GROUPS_ID = "flightGroupID";
 protected static final String FLIGHT_GROUPS_ALL_FLIGHTS = "allFlights";
 protected static final String FLIGHTS_FILE_NAME = "jsonFiles/flights.json";
 protected static final String FLIGHT_ID = "flightID";
-protected static final String F_DEPT_LOCATION = "deptLocation";
-protected static final String F_ARRIV_LOCATION = "arrivLocation";
+protected static final String F_DEPT_AIRPORT = "deptAirportCode";
+protected static final String F_ARRIV_AIRPORT = "deptAirportCode";
 protected static final String F_PLANE = "plane";
 protected static final String F_PRICE = "price";
 protected static final String F_RESERVATION = "flightReservation";
@@ -23,6 +23,7 @@ protected static final String S_AVAILABLE = "available";
 protected static final String USERS_FILE_NAME = "jsonFiles/users.json";
 protected static final String USER_ID = "userID";
 protected static final String USER_INFO = "userInfo";
+protected static final String USER_BOOKINGS = "savedBookings";
 protected static final String USER_PARTY_MEMBERS = "partyMembers";
 // Registration Info
 protected static final String R_INFO_FIRST_NAME = "firstName";
@@ -31,6 +32,15 @@ protected static final String R_INFO_USERNAME = "username";
 protected static final String R_INFO_PASSWORD = "password";
 protected static final String R_INFO_AGE = "age";
 protected static final String R_INFO_FREQFLYER = "freqflyer";
+// Booking List
+protected static final String B_F_AND_S_IDs = "flightAndSeatIDs";
+protected static final String B_FID = "flightID";
+protected static final String B_SIDS = "seatIDs";
+protected static final String B_FGIDS = "fGroupIDs";
+protected static final String B_CIDS = "carIDs";
+protected static final String B_H_AND_R_IDS = "hotelAndRoomIDs";
+protected static final String B_HID = "hotelID";
+protected static final String B_ROOM_IDS = "roomIDs";
 // Party Member
 protected static final String PM_FIRST_NAME = "firstName";
 protected static final String PM_LAST_NAME = "lastName";

@@ -17,11 +17,11 @@ class Plane {
      * @param capacity Capacity of plane
      * @param seat Seat in the plane
      */
-    public Plane (Airline airline, int capacity, Seat seat, ArrayList<Seat> allSeats) {
+    public Plane (Airline airline, Seat seat, ArrayList<Seat> allSeats) {
         this.airline = airline;
-        this.capacity = capacity;
         this.seat = seat;
         this.allSeats = allSeats;
+        this.capacity = checkSeatsLeft();
     }
 
     /**
@@ -31,7 +31,7 @@ class Plane {
         String chart = "    A   B   C   D   E   F ";
         int row = 0;
                    //  " 3 |_| |_| |_| |_| |_| |_|"
-        for (int i = 0; i < capacity; i++) {
+        for (int i = 0; i < allSeats.size(); i++) {
             if (i%6 == 0) {
             row++;
                 if (row < 10) {
@@ -41,88 +41,58 @@ class Plane {
                 }
             }
             
-            chart += " " + allSeats.get(i).testString();
+            chart += " " + allSeats.get(i).toString();
         }
         chart += "\nTaken: |*|\nAvailable: |_|";
         return chart;
     }
 
-    // /**
-    //  * Displays first class
-    //  */
-    // public void displayFirstClass() {
-    //     for (int i = 0; i < 3; i++) {
-    //         if (i % 4 == 0) {
-    //             System.out.println("\n");
-    //         }
-    //         System.out.print(allSeats.get(i));
-    //     }
-    // }
-
-    // /**
-    //  * Displays economy class
-    //  */
-    // public void displayEconomy() {
-    //     for (int i = 3; i < (allSeats.size() - 3); i++) {
-    //         if (i % 4 == 0) {
-    //             System.out.println("\n");
-    //         }
-    //         System.out.print(allSeats.get(i));
-    //     }
-    // }
 
     // IF SEAT IS AVAILABLE, TRUE IS RETURNED
 
     /**
-     * Checks specific seats availability
-     * @param seat Specific seat to check
-     * @return Returns true if available, false otherwise
-     */
-    public boolean checkAvailability(Seat seat) {
-        if(seat.getAvailable()) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Checks if whole plane is available
+     * Checks how many seats are available
      * @param allSeats ArrayList of all seats
-     * @return Returns true if at least one seat is available,
-     * otherwise it returns false
+     * @return the number of seats available
      */
-    public boolean checkAllAvailability(ArrayList<Seat> allSeats) {
-        for (int i = 0; i < allSeats.size(); i++) {
-            if(allSeats.get(i).getAvailable()) {
-                return true;
-            }
+    public int checkSeatsLeft() {
+        int totalSeatsLeft = 0;
+        for (Seat s : allSeats) {
+            if (s.isAvailable()) totalSeatsLeft++;
         }
-        return false;
+        return totalSeatsLeft;
     }
 
     //Getters
     public Airline getAirline() {
         return airline;
     }
+
     public int getCapacity() {
         return capacity;
     }
+
     public Seat getSeat() {
         return seat;
     }
+
     public ArrayList<Seat> getSeats() {
         return allSeats;
     }
+
     //Setters
     public void setAirline(Airline airline) {
         this.airline = airline;
     }
+
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
     public void setSeat(Seat seat) {
         this.seat = seat;
     }
+    
     public void setSeats(ArrayList<Seat> allSeats) {
         this.allSeats = allSeats;
     }
@@ -130,7 +100,7 @@ class Plane {
     //Other methods
     public String testString() {
         return "\nAirline: " + airline.getName() + "\nCapacity: " +
-        capacity + "\nSeat: " + seat.testString() 
+        capacity + "\nSeat: " + seat.toString() 
         + "\nAll Seats:\n" + displayAll();
     }
     

@@ -63,4 +63,8 @@ public class RegistrationInfo {
         "\nUsername: " + username + "\nPassword: " + password + 
         "\nAge: " + age + "\nFrequent Flyer: " + freqFlyer;
     }
+
+    public boolean tryLogin(String username, String password) {
+        return username.equals(this.username) && password.equals(this.password);
+    }
 }

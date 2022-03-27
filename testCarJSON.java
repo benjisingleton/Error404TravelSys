@@ -16,39 +16,45 @@ public class testCarJSON {
         displayCars();
 
         while(addCar()) {
-            UUID carId = UUID.randomUUID();
-            CarType type = getCarType();
-            int capacity = getInt("Capacity");
-            double price = getDouble("Price");
-            String pickUpLocation = getField("Pick Up");
-            String dropOffLocation = getField("Drop Off");
-            Reservation carReservation = getReservation(); 
+             
 
-            cars.addCar(carId, type, capacity, price, pickUpLocation, dropOffLocation, carReservation);
+            cars.addCar(getCar());
         }
         System.out.println("***** Cars Now *****");
         displayCars();
         cars.logout();
     }
 
-    private String getField(String prompt) {
+    protected Car getCar() {
+        UUID carID = UUID.randomUUID();
+        CarType type = getCarType();
+        int capacity = getInt("Capacity");
+        double price = getDouble("Price");
+        String pickUpLocation = getField("Pick Up");
+        String dropOffLocation = getField("Drop Off");
+        Reservation carReservation = getReservation();
+        return new Car(carID, type, capacity, price, pickUpLocation, dropOffLocation, carReservation);
+    }
+
+
+    protected String getField(String prompt) {
 		System.out.print(prompt + ": ");
 		return scanner.nextLine();
 	}
 
-    private int getInt(String prompt) {
+    protected int getInt(String prompt) {
         System.out.print(prompt + ": ");
         int age = scanner.nextInt();
         scanner.nextLine();
         return age;
     }
-    private double getDouble(String prompt) {
+    protected double getDouble(String prompt) {
         System.out.print(prompt + ": ");
         double age = scanner.nextDouble();
         scanner.nextLine();
         return age;
     }
-    private CarType getCarType() {
+    protected CarType getCarType() {
         System.out.println("Car Types: ");
         for (int i = 0; i < CarType.values().length; i++) {
             System.out.println(i + ": " + CarType.values()[i]);
@@ -73,7 +79,7 @@ public class testCarJSON {
         return CarType.SEDAN;
     }
 
-    private Reservation getReservation() {
+    protected Reservation getReservation() {
         Date sDate = new Date(getField("Date (mm/dd/yy"));
         Date eDate = new Date(getField("Date (mm/dd/yy"));
         Time sTime = new Time(getField("Time (hh:mm a/pm"));
@@ -81,7 +87,7 @@ public class testCarJSON {
         return new Reservation(sDate, eDate, sTime, eTime);
     }
 
-    private boolean addCar() {
+    protected boolean addCar() {
         System.out.print("Would you like to add a new car? (Y or N): ");
 
         String input = scanner.nextLine();
@@ -90,7 +96,7 @@ public class testCarJSON {
         return false;
     }
 
-    private void displayCars() {
+    protected void displayCars() {
         Cars cars = Cars.getInstance();
         ArrayList<Car> carList = cars.getCars();
 

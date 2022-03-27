@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+
 /**
  * @author Daniel Henington
  */
-public interface SearchBehavior {
-    public void configureSearch();
-    public void displaySearch();
+public abstract class SearchBehavior {
+    public abstract void configureSearch();
+    public abstract void Search();
+    public abstract void displaySearch();
 }

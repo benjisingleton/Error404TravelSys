@@ -39,8 +39,8 @@ public class Users {
      * @param userInfo user's info
      * @param partyMembers user's bestest friends and family (maybe)
      */
-    public void addRegisteredUser(UUID userID, RegistrationInfo userInfo, ArrayList<PartyMember> partyMembers) {
-        rUserList.add(new RegisteredUser(userID, userInfo, partyMembers));
+    public void addRegisteredUser(UUID userID, RegistrationInfo userInfo, BookingList savedBookings, ArrayList<PartyMember> partyMembers) {
+        rUserList.add(new RegisteredUser(userID, userInfo, savedBookings, partyMembers));
     }
     /**
      * We're done here, save the Users where you do

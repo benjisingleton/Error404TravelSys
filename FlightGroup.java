@@ -28,8 +28,12 @@ public class FlightGroup {
 
     @Override
     public String toString() {
+        String allFStr = "";
+        for (Flight f : allFlights) {
+            allFStr += f.toString() + "\n";
+        }
+        return allFStr;
         
-        return "FlightGroups [allFlights=" + allFlights +  "]";
     }
 
     

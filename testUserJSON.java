@@ -12,6 +12,9 @@ public class testUserJSON {
 
     public void play() {
         Users users = Users.getInstance();
+        Cars cars = Cars.getInstance();
+        Flights flights = Flights.getInstance();
+        Hotels hotels = Hotels.getInstance();
 
         System.out.println("***** Current Users *****");
         displayUsers();
@@ -19,18 +22,52 @@ public class testUserJSON {
         while(addUser()) {
             UUID userID = UUID.randomUUID();
             RegistrationInfo userInfo = getUserInfo();
+            clear();
+            BookingList savedBookings = new BookingList();
+            clear();
+            fillWithBookings(savedBookings);
             ArrayList<PartyMember> partyMembers = new ArrayList<>();
-            for (int i = 0; i < 3; i++)
             fillWithPartyMembers(partyMembers);
+            clear();
 
-            users.addRegisteredUser(userID, userInfo, partyMembers);
+
+            users.addRegisteredUser(userID, userInfo, savedBookings, partyMembers);
         }
         System.out.println("***** Your updated list of users *****");
         displayUsers();
         users.logout();
+        cars.logout();
+        flights.logout();
+        hotels.logout();
 
         System.out.println("\nSee ya later!");
     }
+
+    private void fillWithBookings(BookingList savedBookings) {
+        Cars cars = Cars.getInstance();
+        Flights flights = Flights.getInstance();
+        Hotels hotels = Hotels.getInstance();
+        testFlightJSON tesFlight = new testFlightJSON();
+        testCarJSON tesCar = new testCarJSON();
+        testHotelJSON tesHot = new testHotelJSON();
+        
+        Car c1 = tesCar.getCar();
+        clear();
+        Flight f1 = tesFlight.getFlight();
+        f1.setUserSeats(tesFlight.chooseSeats(f1));
+        clear();
+        Hotel h1 = tesHot.getHotel();
+        clear();
+        cars.addCar(c1);
+        flights.addFlight(f1);
+        hotels.addHotel(h1);
+        
+        savedBookings.getCarList().add(c1);
+        savedBookings.getFlightList().add(f1);
+        savedBookings.getHotelBookings().add(h1);
+        
+    }
+
 
     private String getField(String prompt) {
 		System.out.print(prompt + ": ");
@@ -83,7 +120,13 @@ public class testUserJSON {
         
         for (RegisteredUser user : userList) {
             System.out.println(user.getUserInfo());
+            System.out.println(user.getSavedBookings().getFlightList().get(0).getUserSeats());
+            user.getSavedBookings().printFlights();
         }
+    }
+
+    private void clear() {
+        System.out.print("\033[H\033[2J");
     }
     public static void main(String[] args) {
         testUserJSON test = new testUserJSON();

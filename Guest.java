@@ -1,15 +1,16 @@
 public class Guest {
-    private SearchBehavior search;
+    // private SearchBehavior search;
 
     public Guest() {
-        // TODO
+        
     }
 
-    public void setSearchBehavior(SearchBehavior searchBehavior) {
-        // TODO
-    }
+    // public void setSearchBehavior(SearchBehavior searchBehavior) {
+    //     this.search = searchBehavior;
+    // }
 
-    public void Search() {
-        // TODO
-    }
+    // public void Search() {
+    //     search.Search();
+
+    // }
 }

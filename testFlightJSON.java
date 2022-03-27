@@ -17,14 +17,7 @@ public class testFlightJSON {
         displayFlights();
 
         while(addFlight()) {
-            UUID flightID = UUID.randomUUID();
-            String deptLocation = getField("Leaving From");
-            String arrivLocation = getField("Going to");
-            Plane plane = getPlane();
-            double price = getDouble("Price");
-            Reservation flightReservation = getReservation();
-
-            flights.addFlight(flightID, deptLocation, arrivLocation, plane, price, flightReservation);
+            flights.addFlight(getFlight());
         }
 
         System.out.println("***** Flights Now *****");
@@ -54,7 +47,7 @@ public class testFlightJSON {
     }
     
     
-    private boolean addFlightGroup() {
+    protected boolean addFlightGroup() {
         System.out.print("Would you like to add a new flight group? (Y or N): ");
 
         String input = scanner.nextLine();
@@ -63,7 +56,7 @@ public class testFlightJSON {
         return false;
     }
 
-    private Flight getFlight() {
+    protected Flight getFlight() {
         UUID flightID = UUID.randomUUID();
         String deptLocation = getField("Leaving From");
         String arrivLocation = getField("Going to");
@@ -73,7 +66,15 @@ public class testFlightJSON {
         return new Flight(flightID, deptLocation, arrivLocation, plane, price, flightReservation);
     }
 
-    private boolean addFlight() {
+    protected ArrayList<Seat> chooseSeats(Flight f) {
+        f.printSeatChart();
+        System.out.println("Please choose some seats fren :):");
+        f.addUserSeat(getSeat());
+        f.addUserSeat(getSeat());
+        return f.getUserSeats();
+    }
+
+    protected boolean addFlight() {
         System.out.print("Would you like to add a new flight? (Y or N): ");
 
         String input = scanner.nextLine();
@@ -82,7 +83,7 @@ public class testFlightJSON {
         return false;
     }
 
-    private void displayFlightGroups() {
+    protected void displayFlightGroups() {
         Flights flights = Flights.getInstance();
         ArrayList<FlightGroup> fGroupList = flights.getFlightGroups();
         for (FlightGroup fG : fGroupList) {
@@ -90,30 +91,28 @@ public class testFlightJSON {
         }
     }   
 
-    private void displayFlights() {
+    protected void displayFlights() {
         Flights flights = Flights.getInstance();
         ArrayList<Flight> flightList = flights.getFlights();
 
         for (Flight f: flightList) {
-            System.out.println(f.testString());
+            System.out.println(f.toString());
         }
     }
 
-    private Plane getPlane() {
+    protected Plane getPlane() {
         Airline airline = getAirline();
         ArrayList<Seat> allSeats = getAllSeats();
         Seat seat = getSeat();
-        int capacity = allSeats.size();
-        return new Plane(airline, capacity, seat, allSeats);
+        return new Plane(airline, seat, allSeats);
     }
 
-    private ArrayList<Seat> getAllSeats() {
+    protected ArrayList<Seat> getAllSeats() {
         ArrayList<Seat> temp = new ArrayList<>();
         int size = 120;
         int rowCount = 0;
         Random r = new Random();
         for (int i = 0; i < size; i++) {
-            
             if (i%6 == 0)
             rowCount++;
             switch(i%6) {
@@ -140,19 +139,19 @@ public class testFlightJSON {
         return temp;
     }
 
-    private Seat getSeat() {
-        String seating = getField("Seating (\"A1\")");
-        boolean available = getBool("Avalable? (T/F):");
-        return new Seat(seating, available);
+    protected Seat getSeat() {
+        String seating = getField("Seating (\"1A\"):");
+        // boolean available = getBool("Avalable? (T/F):");
+        return new Seat(seating, false);
     }
 
-    private boolean getBool(String string) {
+    protected boolean getBool(String string) {
         String bool = getField(string);
         return bool.trim().equalsIgnoreCase("t");
 
     }
 
-    private Airline getAirline() {
+    protected Airline getAirline() {
         System.out.println("Flight Types: ");
         for (int i = 0; i < Airline.values().length; i++) {
             System.out.println(i + ": " + Airline.values()[i]);
@@ -175,26 +174,26 @@ public class testFlightJSON {
         return Airline.DELTA;
     }
 
-    private String getField(String prompt) {
+    protected String getField(String prompt) {
 		System.out.print(prompt + ": ");
 		return scanner.nextLine();
 	}
 
-    private int getInt(String prompt) {
+    protected int getInt(String prompt) {
         System.out.print(prompt + ": ");
         int temp = scanner.nextInt();
         scanner.nextLine();
         return temp;
     }
    
-    private double getDouble(String prompt) {
+    protected double getDouble(String prompt) {
         System.out.print(prompt + ": ");
         double price = scanner.nextDouble();
         scanner.nextLine();
         return price;
     }
    
-    private Reservation getReservation() {
+    protected Reservation getReservation() {
         Date sDate = new Date(getField("Date (mm/dd/yy"));
         Date eDate = new Date(getField("Date (mm/dd/yy"));
         Time sTime = new Time(getField("Time (hh:mm a/pm"));

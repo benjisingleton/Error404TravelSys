@@ -18,12 +18,30 @@ public class Cars {
     public ArrayList<Car> getCars() {
         return carList;
     }
+
     public void addCar(UUID carID, CarType type, int capacity, Double price, String pickUpLocation, String dropOffLocation, Reservation carReservation) {
         carList.add(new Car(carID, type, capacity, price, pickUpLocation, dropOffLocation, carReservation));
+    }
+
+    public void addCar(Car c) {
+        carList.add(c);
+    }
+
+
+    public Car getCarByUUID(UUID carID) {
+        for (Car c : carList) {
+            if (carID.equals(c.getCarID())) {
+                return c;
+            }
+        }
+        System.out.println("Cars.java could not find by UUID");
+        return null;
     }
 
     public void logout() {
         DataWriter.saveCars();
     }
+
+    
     
 }

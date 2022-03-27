@@ -1,1 +1,1 @@
-[{"rooms":[{"floorNumber":2,"roomReservations":[{"endDate":"03\/28\/22","startTime":"08:00 am","endTime":"01:00 pm","startDate":"03\/24\/22"}],"roomAmenities":["Twin Bed","Queen Bed","King Bed"],"roomID":"62cfe1b6-d9bf-4ae3-9366-eb53238d9f03","capacity":2}],"address":"test","hotelAmenities":["Stair-Free Path-to-Entrance","Pool","Free Wifi"],"rating":5,"hotelID":"8bc035d2-7733-4317-a4d8-2fe123010b6e"}]
+[{"rooms":[],"address":"Seattle","hotelAmenities":["Stair-Free Path-to-Entrance","Parking","Free Wifi","Pool"],"rating":3,"hotelID":"bc431bfc-a7df-406b-9528-315120fa36fa"}]

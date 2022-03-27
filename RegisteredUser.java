@@ -8,13 +8,14 @@ import java.util.UUID;
 public class RegisteredUser extends Guest {
     private UUID userID;
     private RegistrationInfo userInfo;
-   // private BookingList savedBookings;
+    private BookingList savedBookings;
+
 
     private ArrayList<PartyMember> partyMembers = new ArrayList<>();
-    public RegisteredUser(UUID userID, RegistrationInfo userInfo, /*BookingList savedBookings,*/ ArrayList<PartyMember> partyMembers) {
+    public RegisteredUser(UUID userID, RegistrationInfo userInfo, BookingList savedBookings, ArrayList<PartyMember> partyMembers) {
         this.userID = userID;
         this.userInfo = userInfo;
-       // this.savedBookings = savedBookings;
+       this.savedBookings = savedBookings;
         this.partyMembers = partyMembers;
     }
    // Getters
@@ -24,9 +25,9 @@ public class RegisteredUser extends Guest {
    public RegistrationInfo getUserInfo() {
        return userInfo;
    }
-//    public BookingList getSavedBookings() {
-//        return savedBookings;
-//    }
+   public BookingList getSavedBookings() {
+       return savedBookings;
+   }
    public ArrayList<PartyMember> getPartyMembers() {
        return partyMembers;
    }
@@ -34,21 +35,26 @@ public class RegisteredUser extends Guest {
    public void setUUID(UUID userID) {
        this.userID = userID;
    }
+   
    public void setUserInfo(RegistrationInfo userInfo) {
        this.userInfo = userInfo;
    }
-//    public void setSavedBookings(BookingList savedBookings) {
-//        this.savedBookings = savedBookings;
-//    }
+   
+   public void setSavedBookings(BookingList savedBookings) {
+       this.savedBookings = savedBookings;
+   }
+
    public void setPartyMembers(ArrayList<PartyMember> partyMembers) {
        this.partyMembers = partyMembers;
    }
+
    // Other Methods
    public void addFlight() {
 
    }
-   public void addHotelBooking(Hotel hotel, ArrayList<Room> rooms) {
-
+   public void addHotelBooking(Hotel hotel) {
+       savedBookings.addHotelBooking(hotel);
+        
    }
    public void addCar(Car car) {
 
@@ -56,12 +62,16 @@ public class RegisteredUser extends Guest {
    public void removeFlight(Flight Flight) {
 
    }
-   public void removeHotelBooking(Hotel hotel, ArrayList<Room> rooms) {
+   public void removeHotelBooking(Hotel hotel) {
 
    }
    public void removeCar(Car car) {
        
    }
 
+   public boolean tryLogin(String username, String password) {
+      return userInfo.tryLogin(username, password);
+   }
 
 }
+
