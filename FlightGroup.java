@@ -28,7 +28,7 @@ public class FlightGroup {
 
     @Override
     public String toString() {
-        String allFStr = "";
+        String allFStr = "\n";
         for (Flight f : allFlights) {
             allFStr += f.toString() + "\n";
         }

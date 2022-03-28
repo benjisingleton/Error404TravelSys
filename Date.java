@@ -19,7 +19,7 @@ public class Date {
         this.day = Integer.parseInt(strToInt[1]);
         this.year = Integer.parseInt(strToInt[2]);
     }
-    //Getters
+/*------------------------------------------Getters----------------------------------------*/
     public int getDay() {
         return day;
     }
@@ -29,17 +29,7 @@ public class Date {
     public int getYear(){
         return year;
     }
-    //Setters
-    public void setDay(int day) {
-        this.day = day;
-    }
-    public void setMonth(int month) {
-        this.month = month;
-    }
-    public void setYear(int year) {
-        this.year = year;
-    }
-    // Other Methods
+/*----------------------------------------Other Methods--------------------------------------*/
     public String toString() {
         return makeDateString(month, day, year);
     }
@@ -90,8 +80,13 @@ public class Date {
         }
         return "Invalid Date";
     }
-    public boolean checkDate(Date startDate) {
+    /**
+     * Compare Two Dates
+     * @param compDate the Date being compared to
+     * @return whether or not the Dates are the same
+     */
+    public boolean checkDate(Date compDate) {
         
-        return month == startDate.getMonth() && day == startDate.getDay() && year == startDate.getYear();
+        return month == compDate.getMonth() && day == compDate.getDay() && year == compDate.getYear();
     }
 }

@@ -16,7 +16,11 @@ public enum CarType {
     private CarType(String label) {
         this.label = label;
     }
-
+    /**
+     * Get the CarType based on the label associated with it
+     * @param label the label of a CarType
+     * @return the CarType associated with the label
+     */
     public static CarType getCT(String label) {
         switch (label) {
             case "Economy":
@@ -35,7 +39,10 @@ public enum CarType {
         return ECONOMY;
 
     }
-
+    /**
+     * Get the label of the CarType
+     * @return the String representation of the CarType
+     */
     public String getLabel() {
         return label;
     }

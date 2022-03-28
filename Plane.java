@@ -81,17 +81,6 @@ class Plane {
     }
 
     //Setters
-    public void setAirline(Airline airline) {
-        this.airline = airline;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public void setSeat(Seat seat) {
-        this.seat = seat;
-    }
     
     public void setSeats(ArrayList<Seat> allSeats) {
         this.allSeats = allSeats;
@@ -116,17 +105,14 @@ class Plane {
         return seatString;
     }
 
-    public void updateSeats(ArrayList<Seat> userSeats) {
-        for (Seat u : userSeats) {
-            for (Seat s : allSeats) {
-                if (u.getSeating().equalsIgnoreCase(s.getSeating())) {
-                    s.setAvailable(false);
-                }
+    public void updateSeat(Seat userSeat) {
+        for (Seat s : allSeats) {
+            if (userSeat.getSeating().equalsIgnoreCase(s.getSeating())) {
+                s.setAvailable(false);
+                break;
             }
         }
-    }
-
-    public void updateSeat(Seat userSeat) {
+        setSeats(allSeats);
     }
     
 }

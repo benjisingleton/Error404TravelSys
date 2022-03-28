@@ -27,7 +27,7 @@ public class testUserJSON {
             clear();
             // fillWithBookings(savedBookings);
             ArrayList<PartyMember> partyMembers = new ArrayList<>();
-            fillWithPartyMembers(partyMembers);
+           // fillWithPartyMembers(partyMembers);
             clear();
 
 

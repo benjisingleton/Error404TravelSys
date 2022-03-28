@@ -15,7 +15,11 @@ public enum Airline {
     private Airline(String name) {
         this.name = name;
     }
-
+    /**
+     * Get the Airline Enumeration based on its String
+     * @param name the String associated with the Airline
+     * @return the Airline of the string
+     */
     public static Airline getAL(String name) {
         switch(name) {
             case "Delta Airlines":
@@ -31,7 +35,10 @@ public enum Airline {
         }
         return DELTA;
     }
-
+    /**
+     * Get the name of the Airline
+     * @return a String representation of the Airline enumeration
+     */
     public String getName() {
         return name;
     }

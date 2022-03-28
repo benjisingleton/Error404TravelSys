@@ -13,12 +13,9 @@ protected static final String F_PRICE = "price";
 protected static final String F_RESERVATION = "flightReservation";
 // Plane
 protected static final String P_AIRLINE = "airline";
-protected static final String P_CAPACITY = "capacity";
-protected static final String P_SEAT = "seat";
 protected static final String P_ALL_SEATS = "allSeats";
-// Seat
-protected static final String S_SEATING = "seating";
-protected static final String S_AVAILABLE = "available";
+/*---------------------------------------------------------------------*/
+
 /*---------------------------Registered User---------------------------*/
 protected static final String USERS_FILE_NAME = "jsonFiles/users.json";
 protected static final String USER_ID = "userID";
@@ -45,7 +42,9 @@ protected static final String B_ROOM_IDS = "roomIDs";
 protected static final String PM_FIRST_NAME = "firstName";
 protected static final String PM_LAST_NAME = "lastName";
 protected static final String PM_AGE = "age";
-/*--------------------------------Car---------------------------------*/
+/*---------------------------------------------------------------------*/
+
+/*--------------------------------Car----------------------------------*/
 protected static final String CARS_FILE_NAME = "jsonFiles/cars.json";
 protected static final String CAR_ID = "carID";
 protected static final String CAR_TYPE = "type";
@@ -66,6 +65,8 @@ protected static final String DATE_YEAR = "year";
 // Time
 protected static final String TIME_HOUR = "hour";
 protected static final String TIME_MIN = "minute";
+/*----------------------------------------------------------------------*/
+
 /*--------------------------------Hotel---------------------------------*/
 protected static final String HOTELS_FILE_NAME = "jsonFiles/hotels.json";
 protected static final String H_ID = "hotelID";
@@ -79,4 +80,5 @@ protected static final String RO_AMENITIES = "roomAmenities";
 protected static final String RO_FLOOR_NUMBER = "floorNumber";
 protected static final String RO_CAPACITY = "capacity";
 protected static final String RO_RESERVATIONS = "roomReservations";
+/*----------------------------------------------------------------------*/
 }

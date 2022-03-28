@@ -101,7 +101,7 @@ public class testCarJSON {
         ArrayList<Car> carList = cars.getCars();
 
         for (Car c: carList) {
-            System.out.println(c.testString());
+            System.out.println(c.toString());
         }
     }
     public static void main(String[] args) {

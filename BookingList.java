@@ -3,7 +3,6 @@ import java.util.ArrayList;
  * A Registered User's List of all their bookings
  */
 public class BookingList {
-    // private ArrayList<UUID> bookingIds = new ArrayList<>();
     private ArrayList<Flight> flightList = new ArrayList<>();
     private ArrayList<FlightGroup> flightGroupList = new ArrayList<>();
     private ArrayList<Hotel> hotelBookings = new ArrayList<>();

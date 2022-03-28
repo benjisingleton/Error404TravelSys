@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-
+/**
+ * The UI for the BookingApp
+ */
 public class BookingAppUI extends BookingAppUIConstants {
     private Scanner scanner;
     private BookingApp bookingApp;
@@ -56,6 +58,8 @@ public class BookingAppUI extends BookingAppUIConstants {
                     break;
             }
         }
+        clear();
+        System.out.println("See ya later!");
         bookingApp.logout();
     }
 
@@ -160,6 +164,7 @@ public class BookingAppUI extends BookingAppUIConstants {
     private void searchOnewayFlight() {
 
         if (!isGuest) {
+            bookingApp.prepPartyMembers();
             if(getYesOrNo("Would you like to add a party member?"))
             addPartyMembers();
             userOneWayFlightSearch();
@@ -170,7 +175,6 @@ public class BookingAppUI extends BookingAppUIConstants {
     }
 
     private void addPartyMembers() {
-        bookingApp.prepPartyMembers();
         while(true) {
         bookingApp.addPartyMember(getPartyMember());
             if(!getYesOrNo("Would you like to add another party member?")) return;
@@ -223,26 +227,27 @@ public class BookingAppUI extends BookingAppUIConstants {
     private void bookAOneWayFlight(String fOrFG, ArrayList<Object> searchResults) {
         int userChoice = chooseFlight(searchResults);
             if (fOrFG.charAt(userChoice) == 'f') {
-                Flight userFlight = chooseFlightSeats((Flight)searchResults.get(userChoice));
+                Flight userFlight = bookingApp.getFlight((Flight)searchResults.get(userChoice));
+                chooseFlightSeats(userFlight);
                 bookingApp.addUserFlight(userFlight);
                 
             } else if (fOrFG.charAt(userChoice) == 'G') {
-                FlightGroup userFG = (FlightGroup)searchResults.get(userChoice);
+                FlightGroup userFG = bookingApp.getFGroup((FlightGroup)searchResults.get(userChoice));
                 for (Flight f : userFG.getAllFlights()) {
-                    f = chooseFlightSeats(f);
+                    chooseFlightSeats(f);
                 }
                 bookingApp.addUserFGroup(userFG);
             }
     }
 /*------------------------------------------------------------------------------------*/
-    private Flight chooseFlightSeats(Flight userFlight) {
+    private void chooseFlightSeats(Flight userFlight) {
         for (int i = 0; i < bookingApp.getTotalTravelers(); i++) {
             System.out.println(userFlight.getSeatChart());
             Seat userSeat = chooseASeat();
             userFlight.addUserSeat(userSeat);
-            bookingApp.updateFlightChart(userFlight.getFlightID(), userSeat);
+            bookingApp.updateFlightChart(userFlight, userSeat);
         }
-        return userFlight;
+        return;
     }
 
     private Seat chooseASeat() {

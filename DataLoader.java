@@ -13,7 +13,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants{
-/*------------------------------------For Users-------------------------------------------*/
+/*------------------------------------For Users------------------------------------------*/
+	/**
+	 * Convert users.json into an ArrayList<RegisteredUser>
+	 * @return the list of all saved users
+	 */
 	public static ArrayList<RegisteredUser> loadUsers() {
 		ArrayList<RegisteredUser> rUsers = new ArrayList<>();
 
@@ -38,6 +42,13 @@ public class DataLoader extends DataConstants{
 		}
 		return null;
 	}
+/*------------------------------Rebuild BookingList-----------------------------*/
+	/**
+	 * Convert the JSONObject stored in users.json
+	 * into the user's BookingList
+	 * @param bookingObject the JSONObject representation of the Bookinglist
+	 * @return the BookingList object
+	 */
 	private static BookingList rebuildBookingList(JSONObject bookingObject) {
 		ArrayList<Flight> flightList = rebuildAllFlightsByUUID((JSONArray)bookingObject.get(B_F_AND_S_IDs));
 		ArrayList<FlightGroup> flightGroupList = rebuildAllFGroupsByUUID((ArrayList<String>)bookingObject.get(B_FGIDS));
@@ -45,7 +56,12 @@ public class DataLoader extends DataConstants{
 		ArrayList<Car> carList = rebuildCarsByUUID((ArrayList<String>)bookingObject.get(B_CIDS));
 		return new BookingList(flightList, flightGroupList, hotelBookings, carList);
 	}
-
+	/**
+	 * Converts a JSONArray stored in the BookingObject
+	 * into the user's list of booked flights
+	 * @param fAndSIDs an array of the flight UUIDs and their saved seatings
+	 * @return An ArrayList<Flight> for the user's BookingList
+	 */
 	private static ArrayList<Flight> rebuildAllFlightsByUUID(JSONArray fAndSIDs) {
 			Flights flights = Flights.getInstance();
 			ArrayList<Flight> flightList = new ArrayList<>();
@@ -59,7 +75,11 @@ public class DataLoader extends DataConstants{
 			}
 			return flightList;
 		}
-	
+	/**
+	 * Convert an ArrayList<String> into an ArrayList<FlightGroup> for the user's BookingList
+	 * @param bookingFGIDs a list of the user's saved FlightGroup UUIDs
+	 * @return an ArrayList<FlightGroup>
+	 */
 	private static ArrayList<FlightGroup> rebuildAllFGroupsByUUID(ArrayList<String> bookingFGIDs) {
 			Flights flights = Flights.getInstance();
 			ArrayList<FlightGroup> flightGroupList = new ArrayList<>();
@@ -68,9 +88,25 @@ public class DataLoader extends DataConstants{
 			}
 			return flightGroupList;
 		}
-
-
-	private static Hotel rebuildHotelBookingsByUUID(JSONObject hotelJSON) {
+		/**
+		 * Converts the JSONArray into the user's Hotel bookings
+		 * @param bookingHIDs a JSONArray with the hotel's id and rooms' ids
+		 * @return An ArrayList<Hotel> for the users BookingList
+		 */
+		private static ArrayList<Hotel> rebuildHotelsByUUID(JSONArray bookingHIDs) {
+			ArrayList<Hotel> hotelBookings = new ArrayList<>();
+			for (Object i : bookingHIDs) {
+				JSONObject hotelJSON = (JSONObject)i;
+				hotelBookings.add(rebuildHotelBookingByUUID(hotelJSON));
+			}
+			return hotelBookings;
+		}
+		/**
+		 * Convert the JSONObject into a Hotel
+		 * @param hotelJSON a JSONObject containing the Hotel's UUID and the rooms ids
+		 * @return a Hotel filled with the reserved rooms
+		 */
+	private static Hotel rebuildHotelBookingByUUID(JSONObject hotelJSON) {
 			Hotels hotels = Hotels.getInstance();
 			UUID hotelID = UUID.fromString((String)hotelJSON.get(B_HID));
 			ArrayList<UUID> roomIDs = new ArrayList<>();
@@ -81,16 +117,11 @@ public class DataLoader extends DataConstants{
 
 			return hotels.getHotelBookingByUUID(hotelID, roomIDs);
 		}
-	
-	private static ArrayList<Hotel> rebuildHotelsByUUID(JSONArray bookingHIDs) {
-		ArrayList<Hotel> hotelBookings = new ArrayList<>();
-		for (Object i : bookingHIDs) {
-			JSONObject hotelJSON = (JSONObject)i;
-			hotelBookings.add(rebuildHotelBookingsByUUID(hotelJSON));
-		}
-		return hotelBookings;
-	}
-	
+		/**
+		 * Convert the list of Car IDs into an ArrayList<Car> for the user's BookingList
+		 * @param bookingCIDs the list of Car IDs
+		 * @return an ArrayList<Car>
+		 */	
 	private static ArrayList<Car> rebuildCarsByUUID(ArrayList<String> bookingCIDs) {
 		Cars cars = Cars.getInstance();
 		ArrayList<Car> carList = new ArrayList<>();
@@ -99,8 +130,7 @@ public class DataLoader extends DataConstants{
 		}
 		return carList;
 	}
-	
-	
+/*---------------------------------------------------------------------------------------*/
 	/**
 	 * Convert the JSON object back into a RegistrationInfo
 	 * @param rUserJSON the current user JSON object
@@ -131,7 +161,13 @@ public class DataLoader extends DataConstants{
 		}
 		return newList;
 	}
+/*---------------------------------------------------------------------------------------*/
+
 /*------------------------------------For Cars-------------------------------------------*/
+	/**
+	 * Convert cars.json into an ArrayList<Car>
+	 * @return the list of all saved rental cars
+	 */
 	public static ArrayList<Car> loadCars() {
 		ArrayList<Car> allCars = new ArrayList<>();
 
@@ -158,20 +194,13 @@ public class DataLoader extends DataConstants{
 		}
 		return null;
 	}
-	/**
-	 * Convert a JSONObject into a Reservation
-	 * @param jsonTemp
-	 * @return
-	 */
-	public static Reservation rebuildReservation(JSONObject jsonTemp) {
-		Date startDate = new Date((String)jsonTemp.get(START_DATE));
-		Date endDate =  new Date((String)jsonTemp.get(END_DATE));
-		Time startTime = new Time((String)jsonTemp.get(START_TIME));
-		Time endTime = new Time((String)jsonTemp.get(END_TIME));
+/*---------------------------------------------------------------------------------------*/
 
-		return new Reservation(startDate, endDate, startTime, endTime);
-	}
 /*------------------------------------For Flights-------------------------------------------*/
+	/**
+	 * Convert flightGroups.json into an ArrayList<FlightGroup>
+	 * @return the list of all saved flight groups
+	 */
 	public static ArrayList<FlightGroup> loadFlightGroups() {
 		ArrayList<FlightGroup> fGroupList = new ArrayList<>();
 
@@ -193,7 +222,11 @@ public class DataLoader extends DataConstants{
 		}
 		return null;
 }
-	
+	/**
+	 * Convert a JSONArray into an ArrayList<Flight>
+	 * @param jsonArray the list of all flights in a FlightGroup
+	 * @return an ArrayList<Flight>
+	 */
 	private static ArrayList<Flight> rebuildAllFlights(JSONArray jsonArray) {
 		ArrayList<Flight> allFlights = new ArrayList<>();
 		for (Object i : jsonArray) {
@@ -201,17 +234,10 @@ public class DataLoader extends DataConstants{
 		}
 		return allFlights;
 	}
-
-	private static Flight rebuildFlight(JSONObject i) {
-		JSONObject fJSON = (JSONObject)i;
-				UUID flightID = UUID.fromString((String)fJSON.get(FLIGHT_ID));
-				String deptLocation = (String)fJSON.get(F_DEPT_AIRPORT);
-				String arrivLocation = (String)fJSON.get(F_ARRIV_AIRPORT);
-				Plane plane = rebuildPlane((JSONObject)fJSON.get(F_PLANE));
-				double price = (double)fJSON.get(F_PRICE);
-				Reservation flightReservation = rebuildReservation((JSONObject)fJSON.get(F_RESERVATION));
-		return new Flight(flightID, deptLocation, arrivLocation, plane, price, flightReservation);
-	}
+	/**
+	 * Convert flights.json into an ArrayList<Flight>
+	 * @return the list of all saved direct flights
+	 */
 	public static ArrayList<Flight> loadFlights() {
 		ArrayList<Flight> flightList = new ArrayList<>();
 		
@@ -230,7 +256,26 @@ public class DataLoader extends DataConstants{
 		}
 		return null;
 	}
-
+	/**
+	 * Convert a JSONObject into a Flight
+	 * @param flightObject the JSONObject storing the Flight's information
+	 * @return a Flight object
+	 */
+	private static Flight rebuildFlight(JSONObject flightObject) {
+		JSONObject fJSON = flightObject;
+				UUID flightID = UUID.fromString((String)fJSON.get(FLIGHT_ID));
+				String deptLocation = (String)fJSON.get(F_DEPT_AIRPORT);
+				String arrivLocation = (String)fJSON.get(F_ARRIV_AIRPORT);
+				Plane plane = rebuildPlane((JSONObject)fJSON.get(F_PLANE));
+				double price = (double)fJSON.get(F_PRICE);
+				Reservation flightReservation = rebuildReservation((JSONObject)fJSON.get(F_RESERVATION));
+		return new Flight(flightID, deptLocation, arrivLocation, plane, price, flightReservation);
+	}
+	/**
+	 * Convert a JSONObject into a Plane
+	 * @param plInfo the JSONObject storing the Plane's information 
+	 * @return a Plane object
+	 */
 	private static Plane rebuildPlane(JSONObject plInfo) {
 		Airline airline = Airline.getAL((String)plInfo.get(P_AIRLINE));
 		// int capacity = ((Long)plInfo.get(P_CAPACITY)).intValue();
@@ -238,13 +283,11 @@ public class DataLoader extends DataConstants{
 		ArrayList<Seat> allSeats = rebuildAllSeats((String)plInfo.get(P_ALL_SEATS));
 		return new Plane(airline, new Seat(), allSeats);
 	}
-
-	// private static Seat rebuildSeat(JSONObject seatInfo) {
-	// 	String seating = (String)seatInfo.get(S_SEATING);
-	// 	boolean available =  (boolean)seatInfo.get(S_AVAILABLE);
-	// 	return new Seat(seating, available);
-	// }
-	
+	/**
+	 * Rebuild a Plane's ArrayList<Seat>
+	 * @param aSeatsInfo the string containing 'f's and 't's for each seat 
+	 * @return an ArrayList<Seat>
+	 */
 	private static ArrayList<Seat> rebuildAllSeats(String aSeatsInfo) {
 		ArrayList<Seat> allSeats = new ArrayList<>();
 		String columns = "ABCDEF";
@@ -258,7 +301,13 @@ public class DataLoader extends DataConstants{
 		}
 		return allSeats;
 	}
+/*-----------------------------------------------------------------------------------------*/
+
 /*------------------------------------For Hotels-------------------------------------------*/
+	/**
+	 * Convert hotels.json into an ArrayList<Hotel>
+	 * @return the list of all saved hotels
+	 */
 	public static ArrayList<Hotel> loadHotels() {
 		ArrayList<Hotel> allHotels = new ArrayList<>();
 
@@ -282,7 +331,11 @@ public class DataLoader extends DataConstants{
 		}
 		return null;
 	}
-	
+	/**
+	 * Convert a JSONArray into an ArrayList<HotelAmenity>
+	 * @param jsonArray the JSONArray containing the HotelAmenities
+	 * @return an ArrayList<HotelAmenity>
+	 */
 	private static ArrayList<HotelAmenity> rebuildHAmenities(JSONArray jsonArray) {
 		ArrayList<HotelAmenity> newHAs = new ArrayList<>();
 		ArrayList<String> strToHA = (ArrayList<String>)jsonArray;
@@ -291,7 +344,11 @@ public class DataLoader extends DataConstants{
 		}
 		return newHAs;
 	}
-
+	/**
+	 * Convert a JSONArray into an ArrayList<Room>
+	 * @param jsonArray the JSONArray containing the info for all the Rooms
+	 * @return an ArrayList<Room>
+	 */
 	private static ArrayList<Room> rebuildAllRooms(JSONArray jsonArray) {
 		ArrayList<Room> allRooms = new ArrayList<>();
 		for (Object i : jsonArray) {
@@ -300,6 +357,11 @@ public class DataLoader extends DataConstants{
 		}
 		return allRooms;
 	}
+	/**
+	 * Convert a JSONObject into a Room
+	 * @param roomJSON the JSONObject containing the info for the Room
+	 * @return a Room
+	 */
 	private static Room rebuildRoom(JSONObject roomJSON) {
 		UUID roomID = UUID.fromString((String)roomJSON.get(RO_ID));
 		ArrayList<RoomAmenity> roomAmenities = rebuildRoAmenities((JSONArray)roomJSON.get(RO_AMENITIES));
@@ -308,6 +370,11 @@ public class DataLoader extends DataConstants{
 		ArrayList<Reservation> roomReservations = rebuildRoReservations((JSONArray)roomJSON.get(RO_RESERVATIONS));
 		return new Room(roomID, roomAmenities, floorNumber, capacity, roomReservations);
 	}
+	/**
+	 * Convert a JSONArray into an ArrayList<Reservation>
+	 * @param jsonArray the JSONArray containing the info for all the Room's Reservations
+	 * @return an ArrayList<Reservation>
+	 */
 	private static ArrayList<Reservation> rebuildRoReservations(JSONArray jsonArray) {
 		ArrayList<Reservation> resList = new ArrayList<>();
 		for (Object i: jsonArray) {
@@ -315,6 +382,11 @@ public class DataLoader extends DataConstants{
 		}
 		return resList;
 	}
+	/**
+	 * Convert a JSONArray into an ArrayList<RoomAmenity>
+	 * @param jsonArray the JSONArray containing the info for all the Room's Amenities
+	 * @return an ArrayList<RoomAmenity>
+	 */
 	private static ArrayList<RoomAmenity> rebuildRoAmenities(JSONArray jsonArray) {
 		ArrayList<RoomAmenity> newList = new ArrayList<>();
 		ArrayList<String> strtoRA = (ArrayList<String>)jsonArray;
@@ -323,6 +395,22 @@ public class DataLoader extends DataConstants{
 		}
 		return newList;
 	}
-	
+/*------------------------------------------------------------------------------------*/
+
+/*---------------------------------Used by All----------------------------------------*/
+	/**
+	 * Convert a JSONObject into a Reservation
+	 * @param jsonTemp
+	 * @return
+	 */
+	public static Reservation rebuildReservation(JSONObject jsonTemp) {
+		Date startDate = new Date((String)jsonTemp.get(START_DATE));
+		Date endDate =  new Date((String)jsonTemp.get(END_DATE));
+		Time startTime = new Time((String)jsonTemp.get(START_TIME));
+		Time endTime = new Time((String)jsonTemp.get(END_TIME));
+
+		return new Reservation(startDate, endDate, startTime, endTime);
+	}
+/*------------------------------------------------------------------------------------*/
 
 }

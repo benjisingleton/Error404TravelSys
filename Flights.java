@@ -69,8 +69,7 @@ public class Flights {
 
         return otherResults;
     }
-
-    /*-------------------- For DataLoader --------------------*/
+    
     public Flight getFlightByUUID(UUID flightID) {
         for (Flight i: flightList) {
             if (flightID.equals(i.getFlightID()))
@@ -89,7 +88,7 @@ public class Flights {
                 }
             }
         }
-        flight = flight.setUserSeats(userSeats);
+        flight.setUserSeats(userSeats);
         return flight;
     }
     
@@ -108,13 +107,15 @@ public class Flights {
         DataWriter.saveFlightGroups();
     }
 
-    public void updateFlightChart(UUID flightID, Seat userSeat) {
-        for (Flight f : flightList) {
-            if (flightID.equals(f.getFlightID())) {
-                f.updateSeat(userSeat);
+    public void updateFlightChart(Flight flight, Seat userSeat) {
+        for (int i = 0; i < flightList.size(); i++) {
+            if (flight.getFlightID().equals(flightList.get(i).getFlightID())) {
+                flightList.set(i, flight);
+                return;
             }
         }
     }
+
 
 
     
