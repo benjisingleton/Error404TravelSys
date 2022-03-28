@@ -234,22 +234,27 @@ public class DataLoader extends DataConstants{
 	private static Plane rebuildPlane(JSONObject plInfo) {
 		Airline airline = Airline.getAL((String)plInfo.get(P_AIRLINE));
 		// int capacity = ((Long)plInfo.get(P_CAPACITY)).intValue();
-		Seat seat = rebuildSeat((JSONObject)plInfo.get(P_SEAT));
-		ArrayList<Seat> allSeats = rebuildAllSeats((JSONArray)plInfo.get(P_ALL_SEATS));
-		return new Plane(airline, seat, allSeats);
+		// Seat seat = rebuildSeat((JSONObject)plInfo.get(P_SEAT));
+		ArrayList<Seat> allSeats = rebuildAllSeats((String)plInfo.get(P_ALL_SEATS));
+		return new Plane(airline, new Seat(), allSeats);
 	}
 
-	private static Seat rebuildSeat(JSONObject seatInfo) {
-		String seating = (String)seatInfo.get(S_SEATING);
-		boolean available =  (boolean)seatInfo.get(S_AVAILABLE);
-		return new Seat(seating, available);
-	}
+	// private static Seat rebuildSeat(JSONObject seatInfo) {
+	// 	String seating = (String)seatInfo.get(S_SEATING);
+	// 	boolean available =  (boolean)seatInfo.get(S_AVAILABLE);
+	// 	return new Seat(seating, available);
+	// }
 	
-	private static ArrayList<Seat> rebuildAllSeats(JSONArray aSeatsInfo) {
+	private static ArrayList<Seat> rebuildAllSeats(String aSeatsInfo) {
 		ArrayList<Seat> allSeats = new ArrayList<>();
-		for (Object i : aSeatsInfo) {
-			JSONObject seatJSON = (JSONObject)i;
-			allSeats.add(rebuildSeat(seatJSON));
+		String columns = "ABCDEF";
+		for (int i = 0; i < aSeatsInfo.length(); i++ ) {
+			String seating = (i%6) + columns.charAt(i%6) + "";
+			if (aSeatsInfo.charAt(i) == 't') {
+				allSeats.add(new Seat(seating, true));
+			} else {
+				allSeats.add(new Seat(seating, false));
+			}
 		}
 		return allSeats;
 	}

@@ -103,5 +103,30 @@ class Plane {
         capacity + "\nSeat: " + seat.toString() 
         + "\nAll Seats:\n" + displayAll();
     }
+
+    public String createSeatString() {
+        String seatString = "";
+        for (Seat s : allSeats) {
+            if (s.isAvailable()) {
+                seatString += "t";
+            } else {
+                seatString += "f";
+            }
+        }
+        return seatString;
+    }
+
+    public void updateSeats(ArrayList<Seat> userSeats) {
+        for (Seat u : userSeats) {
+            for (Seat s : allSeats) {
+                if (u.getSeating().equalsIgnoreCase(s.getSeating())) {
+                    s.setAvailable(false);
+                }
+            }
+        }
+    }
+
+    public void updateSeat(Seat userSeat) {
+    }
     
 }

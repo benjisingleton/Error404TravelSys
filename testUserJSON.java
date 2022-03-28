@@ -25,7 +25,7 @@ public class testUserJSON {
             clear();
             BookingList savedBookings = new BookingList();
             clear();
-            fillWithBookings(savedBookings);
+            // fillWithBookings(savedBookings);
             ArrayList<PartyMember> partyMembers = new ArrayList<>();
             fillWithPartyMembers(partyMembers);
             clear();
@@ -120,7 +120,7 @@ public class testUserJSON {
         
         for (RegisteredUser user : userList) {
             System.out.println(user.getUserInfo());
-            System.out.println(user.getSavedBookings().getFlightList().get(0).getUserSeats());
+            // System.out.println(user.getSavedBookings().getFlightList().get(0).getUserSeats());
             user.getSavedBookings().printFlights();
         }
     }

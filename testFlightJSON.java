@@ -67,7 +67,7 @@ public class testFlightJSON {
     }
 
     protected ArrayList<Seat> chooseSeats(Flight f) {
-        f.printSeatChart();
+        f.getSeatChart();
         System.out.println("Please choose some seats fren :):");
         f.addUserSeat(getSeat());
         f.addUserSeat(getSeat());
@@ -97,6 +97,7 @@ public class testFlightJSON {
 
         for (Flight f: flightList) {
             System.out.println(f.toString());
+            System.out.println(f.getSeatChart());
         }
     }
 
@@ -203,7 +204,7 @@ public class testFlightJSON {
 
     public static void main(String[] args) {
         testFlightJSON test = new testFlightJSON();
-        test.playFlightGroup();
-        //test.playFlight();
+        // test.playFlightGroup();
+        test.playFlight();
     }
 }

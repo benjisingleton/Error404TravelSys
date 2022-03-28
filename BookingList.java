@@ -52,13 +52,13 @@ public class BookingList {
     //Other Methods
     public void printFlights() {
         for (int i = 0; i < flightList.size(); i++) {
-            System.out.println("Flight #" + (i+1) +":\n" + flightList.get(i).toString());
+            System.out.println("Direct Flight #" + (i+1) +":\n" + flightList.get(i).toString());
         }
     }
 
     public void printFlightGroups() {
         for (int i = 0; i < flightGroupList.size(); i++) {
-            System.out.println("Flight #" + (i+1) +":\n" + flightGroupList.get(i).toString());
+            System.out.println("Multistop Flight #" + (i+1) +":\n" + flightGroupList.get(i).toString());
         }
     }
     public void printHotelBookings() {
@@ -72,8 +72,18 @@ public class BookingList {
 
     }
 
+    public void addFlight(Flight flight) {
+        flightList.add(flight);
+    }
+
+    public void addFlightGroup(FlightGroup fGroup) {
+        flightGroupList.add(fGroup);
+    }
+
     public void addHotelBooking(Hotel hotel) {
     }
+
+
     
     
 }

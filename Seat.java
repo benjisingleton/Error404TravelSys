@@ -16,6 +16,10 @@ class Seat {
         this.seating = seating;
         this.available = available;
     }
+    public Seat() {
+        this.seating = "1A";
+        this.available = false;
+    }
     //Getters
     public String getSeating() {
         return seating;

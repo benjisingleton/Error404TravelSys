@@ -14,6 +14,7 @@ import java.util.UUID;
     private double price;
     private Reservation flightReservation;
     private ArrayList<Seat> userSeats = new ArrayList<>();
+    // private ArrayList<PartyMember> partyMembers = new ArrayList<>();
 
 
     
@@ -30,11 +31,10 @@ import java.util.UUID;
     //Other Methods
     public String toString() {
         return "Departing From: " + deptAirportCode 
-        + "\nHeading to: " + deptAirportCode
-        + "\nPlane: " + plane.testString()
+        + "\nHeading to: " + arrivAirportCode
         + "\nPrice: " + price + "\n" + flightReservation.toString();
     }
-    public String printSeatChart() {
+    public String getSeatChart() {
         return plane.displayAll();
     }
 
@@ -90,12 +90,24 @@ import java.util.UUID;
         return userSeats;
     }
 
-    public void setUserSeats(ArrayList<Seat> userSeats) {
+    public Flight setUserSeats(ArrayList<Seat> userSeats) {
         this.userSeats = userSeats;
+        return this;
     }
 
     public void addUserSeat(Seat userSeat) {
         userSeats.add(userSeat);
+    }
+
+    public boolean checkFlight(String deptAirportCode, String arrivAirportCode, Date deptDate) {
+        return deptAirportCode.equalsIgnoreCase(this.deptAirportCode) && arrivAirportCode.equalsIgnoreCase(this.arrivAirportCode) 
+        && deptDate.checkDate(flightReservation.getStartDate());
+    }
+    public void updateSeats(ArrayList<Seat> userSeats) {
+        plane.updateSeats(userSeats);
+    }
+    public void updateSeat(Seat userSeat) {
+        plane.updateSeat(userSeat);
     }
 
 }

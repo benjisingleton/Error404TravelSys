@@ -253,25 +253,25 @@ public class DataWriter extends DataConstants {
         JSONObject planeDetails = new JSONObject();
         planeDetails.put(P_AIRLINE, plane.getAirline().getName());
         // planeDetails.put(P_CAPACITY, plane.getCapacity());
-        planeDetails.put(P_SEAT, getSeatJSON(plane.getSeat()));
-        planeDetails.put(P_ALL_SEATS, getAllSeatsJSON(plane.getSeats()));
+        // planeDetails.put(P_SEAT, getSeatJSON(plane.getSeat()));
+        planeDetails.put(P_ALL_SEATS, plane.createSeatString());
         return planeDetails;
     }
 
-    private static JSONObject getSeatJSON(Seat seat) {
-        JSONObject seatDetails = new JSONObject();
-        seatDetails.put(S_SEATING, seat.getSeating());
-        seatDetails.put(S_AVAILABLE, seat.isAvailable());
-        return seatDetails;
-    }
+    // private static JSONObject getSeatJSON(Seat seat) {
+    //     JSONObject seatDetails = new JSONObject();
+    //     seatDetails.put(S_SEATING, seat.getSeating());
+    //     seatDetails.put(S_AVAILABLE, seat.isAvailable());
+    //     return seatDetails;
+    // }
 
-    private static JSONArray getAllSeatsJSON(ArrayList<Seat> allSeats) {
-        JSONArray allSeatDetails = new JSONArray();
-        for (Seat i: allSeats) {
-            allSeatDetails.add(getSeatJSON(i));
-        }
-        return allSeatDetails;
-    }
+    // private static JSONArray getAllSeatsJSON(ArrayList<Seat> allSeats) {
+    //     JSONArray allSeatDetails = new JSONArray();
+    //     for (Seat i: allSeats) {
+    //         allSeatDetails.add(getSeatJSON(i));
+    //     }
+    //     return allSeatDetails;
+    // }
 /*------------------------------------For Hotels-------------------------------------------*/
     public static void saveHotels() {
         Hotels hotels = Hotels.getInstance();

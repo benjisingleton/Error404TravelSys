@@ -90,4 +90,8 @@ public class Date {
         }
         return "Invalid Date";
     }
+    public boolean checkDate(Date startDate) {
+        
+        return month == startDate.getMonth() && day == startDate.getDay() && year == startDate.getYear();
+    }
 }

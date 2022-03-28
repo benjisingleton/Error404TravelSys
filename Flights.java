@@ -46,11 +46,28 @@ public class Flights {
         flightGroupList.add(fGroup);
     }
 
-    public ArrayList<Flight> searchForAFlight() {
-        ArrayList<Flight> searchResults = new ArrayList<>();
+    public ArrayList<Flight> searchForDirectFlights(String deptAirportCode, String arrivAirportCode, Date deptDate) {
+        ArrayList<Flight> directResults = new ArrayList<>();
 
-        return searchResults;
+        for (Flight f : flightList) {
+            if (f.checkFlight(deptAirportCode, arrivAirportCode, deptDate)) {
+                directResults.add(f);
+            }
+        }
 
+        return directResults;
+
+    }   
+
+    public ArrayList<FlightGroup> searchForOtherFlights(String deptAirportCode, String arrivAirportCode, Date deptDate) {
+        ArrayList<FlightGroup> otherResults = new ArrayList<>();
+        for (FlightGroup fG : flightGroupList) {
+            if(fG.checkFlightGroup(deptAirportCode, arrivAirportCode, deptDate)) {
+                otherResults.add(fG);
+            }
+        }
+
+        return otherResults;
     }
 
     /*-------------------- For DataLoader --------------------*/
@@ -63,14 +80,16 @@ public class Flights {
         return null;
     }
 
-    public Flight getUserSeatsByID(Flight flight, ArrayList<String> userSeats) {
-        for (String seating : userSeats) {
+    public Flight getUserSeatsByID(Flight flight, ArrayList<String> userSeatIDs) {
+        ArrayList<Seat> userSeats = new ArrayList<>();
+        for (String seating : userSeatIDs) {
             for (Seat s : flight.getPlane().getSeats()) {
                 if (seating.equals(s.getSeating())) {
-                    flight.addUserSeat(s);
+                    userSeats.add(s);
                 }
             }
         }
+        flight = flight.setUserSeats(userSeats);
         return flight;
     }
     
@@ -88,6 +107,15 @@ public class Flights {
         DataWriter.saveFlights();
         DataWriter.saveFlightGroups();
     }
+
+    public void updateFlightChart(UUID flightID, Seat userSeat) {
+        for (Flight f : flightList) {
+            if (flightID.equals(f.getFlightID())) {
+                f.updateSeat(userSeat);
+            }
+        }
+    }
+
 
     
 

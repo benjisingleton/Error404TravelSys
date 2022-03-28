@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch testHotelJSON",
+            "request": "launch",
+            "mainClass": "testHotelJSON",
+            "projectName": "Error404TravelSys_44d000a6"
+        },
+        {
+            "type": "java",
             "name": "Launch BookingAppUI",
             "request": "launch",
             "mainClass": "BookingAppUI",
