@@ -317,7 +317,13 @@ public class BookingAppUI extends BookingAppUIConstants {
         return false;
     }
     private void searchForHotel() {
-        clear();
+        System.out.println("\n=-------- Search for a Hotel --------=");
+        System.out.println("First we will need your preferences:");
+        String address = getString("What city (address) is the hotel in?: ");
+        if (address == null) return;
+        Hotel hotel = new Hotel();
+        System.out.println(hotel.hotelAmmenites);
+        //Enum hotelAmmenites = getString("prompt");
     }
 
     private void searchForCar() {

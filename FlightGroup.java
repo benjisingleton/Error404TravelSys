@@ -44,14 +44,8 @@ public class FlightGroup {
     }
 
     public void addUserSeatToAllFlights(Seat userSeat) {
-            for (Flight f: allFlights) {
-                f.addUserSeat(userSeat);
-            }
+        for (Flight f: allFlights) {
+            f.addUserSeat(userSeat);
+        }
     }
-
-    
-
-   
-    
-
 }

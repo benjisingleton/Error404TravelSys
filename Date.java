@@ -86,7 +86,6 @@ public class Date {
      * @return whether or not the Dates are the same
      */
     public boolean checkDate(Date compDate) {
-        
         return month == compDate.getMonth() && day == compDate.getDay() && year == compDate.getYear();
     }
 }
