@@ -11,6 +11,13 @@ public class RegisteredUser {
     private BookingList savedBookings;
     private ArrayList<PartyMember> partyMembers = new ArrayList<>();
 
+    /**
+     * Sets local variables to passed in parameters
+     * @param userID for user to userId
+     * @param userInfo for user to userInfo
+     * @param savedBookings for user to savedBookings
+     * @param partyMembers for user to partyMembers
+     */
     public RegisteredUser(UUID userID, RegistrationInfo userInfo, BookingList savedBookings, ArrayList<PartyMember> partyMembers) {
         this.userID = userID;
         this.userInfo = userInfo;
