@@ -348,11 +348,15 @@ public class BookingAppUI extends BookingAppUIConstants {
         while(true) {
             String tempRoomAmenity = getString("-");
             if (tempRoomAmenity.equalsIgnoreCase("q")) {
-                System.out.println("Saved your entered preferences (if any), moving on.\n");
+                System.out.println("Saved your entered preferences (if any), Searching . . .\n");
                 break;
             }
             roomAmenities.add(tempRoomAmenity);
         }
+
+        ArrayList<Object> searchResults = bookingApp.searchForHotel(address, rating, hotelAmenities, roomAmenities);
+        printSearchResults(searchResults);
+        sleep(3000);
     }
 
     private void printHotelAmenityQs() {
