@@ -323,7 +323,7 @@ public class DataLoader extends DataConstants{
 				ArrayList<HotelAmenity> hotelAmenities = rebuildHAmenities((JSONArray)hotelJSON.get(H_AMENITIES));
 				int rating = ((Long)hotelJSON.get(H_RATING)).intValue();
 				ArrayList<Room> rooms = rebuildAllRooms((JSONArray)hotelJSON.get(H_ROOMS));
-				allHotels.add(new Hotel(hotelID, address, rating, hotelAmenities, rooms));
+				allHotels.add(new Hotel(hotelID, address, rating, price, hotelAmenities, rooms));
 			}
 			return allHotels;
 		} catch (Exception e) {
