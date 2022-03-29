@@ -92,4 +92,9 @@ class Hotel{
 
     }
 
+    public boolean checkHotel(String address, String rating,
+    ArrayList<String> hotelAmenities, ArrayList<String> roomAmenitites) {
+        return address.equalsIgnoreCase(this.address) && rating == this.rating 
+        && hotelAmenities.containsAll(this.hotelAmenities) && roomAmenitites.containsAll(this.rooms);
+    }
 }

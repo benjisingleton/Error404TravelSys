@@ -132,8 +132,8 @@ public class BookingApp {
         ArrayList<Hotel> allHotels = hotels.searchForHotel(address, rating, hotelAmenities, roomAmenities);
         ArrayList<Object> allHotelsOther = new ArrayList<>();
         for (Hotel h : allHotels) {
-        allHotelsOther.add(h);
-        fOrFG += "h";
+            allHotelsOther.add(h);
+            fOrFG += "h";
         } 
         allHotelsOther.add(fOrFG);
         return allHotelsOther;

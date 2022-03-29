@@ -68,5 +68,18 @@ public class Hotels {
         DataWriter.saveHotels();
     }
 
+    public ArrayList<Hotel> searchForHotel(String address, int rating,
+    ArrayList<String> hotelAmenities, ArrayList<String> roomAmenities) {
+        ArrayList<Flight> directResults = new ArrayList<>();
+
+        for (Hotel h : allHotels) {
+            if (h.checkHotel(deptAirportCode, arrivAirportCode, deptDate)) {
+                directResults.add(f);
+            }
+        }
+
+        return directResults;
+
+    }  
     
 }
