@@ -70,7 +70,7 @@ public class Hotels {
 
     public ArrayList<Hotel> searchForHotel(String address, int rating,
     ArrayList<String> hotelAmenities, ArrayList<String> roomAmenities) {
-        ArrayList<Flight> directResults = new ArrayList<>();
+        ArrayList<Hotel> directResults = new ArrayList<>();
 
         for (Hotel h : allHotels) {
             if (h.checkHotel(deptAirportCode, arrivAirportCode, deptDate)) {
