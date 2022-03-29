@@ -11,13 +11,15 @@ class Hotel{
     private ArrayList<HotelAmenity> hotelAmenities = new ArrayList<HotelAmenity>();
     private int rating;
     private ArrayList<Room> rooms;
+    private int price;
 
-    public Hotel(UUID hotelID, String address, int rating, ArrayList<HotelAmenity> hotelAmenities, ArrayList<Room> rooms) {
+    public Hotel(UUID hotelID, String address, int rating, int price, ArrayList<HotelAmenity> hotelAmenities, ArrayList<Room> rooms) {
         this.hotelID = hotelID;
         this.address = address;
         this.rating = rating;
         this.hotelAmenities = hotelAmenities;
         this.rooms = rooms;
+        this.price = price;
     }
     /**
      * Sets local variables to passed in parameters
@@ -37,6 +39,10 @@ class Hotel{
 
     public int getRating() {
         return rating;
+    }
+
+    public int getPrice() {
+        return price;
     }
     
     public ArrayList<HotelAmenity> getHotelAmenities() {
@@ -62,6 +68,10 @@ class Hotel{
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public void setRooms(ArrayList<Room> rooms) {
@@ -116,13 +126,14 @@ class Hotel{
      * Check hotel exists
      * @param address Place of hotel
      * @param rating Rating of hotel
+     * @param price Price of hotel
      * @param hotelAmenities Hotel amenities the user is looking for
      * @param roomAmenitites Room amenities the user is looking for
      * @return
      */
-    public boolean checkHotel(String address, int rating,
+    public boolean checkHotel(String address, int rating,  int price, 
     ArrayList<String> hotelAmenities, ArrayList<String> roomAmenitites) {
-        return address.equalsIgnoreCase(this.address) && rating == this.rating 
+        return address.equalsIgnoreCase(this.address) && rating == this.rating && price == this.price
         && hotelAmenities.containsAll(this.hotelAmenities) && roomAmenitites.containsAll(this.rooms);
     }
 }

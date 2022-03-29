@@ -68,12 +68,12 @@ public class Hotels {
         DataWriter.saveHotels();
     }
 
-    public ArrayList<Hotel> searchForHotel(String address, int rating,
+    public ArrayList<Hotel> searchForHotel(String address, int rating, int price, 
     ArrayList<String> hotelAmenities, ArrayList<String> roomAmenities) {
         ArrayList<Hotel> directResults = new ArrayList<>();
 
         for (Hotel h : hotelList) {
-            if (h.checkHotel(address, rating, hotelAmenities, roomAmenities)) {
+            if (h.checkHotel(address, rating, price, hotelAmenities, roomAmenities)) {
                 directResults.add(h);
             }
         }

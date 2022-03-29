@@ -303,6 +303,13 @@ public class BookingAppUI extends BookingAppUIConstants {
         scanner.nextLine();
         return info;
     }
+
+    private int getPrice(String prompt) {
+        System.out.print(prompt + "Price: ");
+        int info = scanner.nextInt();
+        scanner.nextLine();
+        return info;
+    }
     
     private String checkString(String userInput) {
         while (true) {
@@ -336,9 +343,8 @@ public class BookingAppUI extends BookingAppUIConstants {
         String address = getString("What city (address) is the hotel in?: ");
         if (address == null) return;
         int rating = getIntRating("What is the rating of the hotel you would like (x/5 stars)?: ");
-        Date bookDate = getDate("What date would you like to book for?: ");
-        if (bookDate == null) return;
-
+        int price = getPrice("What is the price you are searching for?: ");
+        
         printHotelAmenityQs();
         ArrayList<String> hotelAmenities = new ArrayList<>();
         while(true) {
@@ -361,7 +367,7 @@ public class BookingAppUI extends BookingAppUIConstants {
             roomAmenities.add(tempRoomAmenity);
         }
 
-        ArrayList<Object> searchResults = bookingApp.searchForHotel(address, rating, hotelAmenities, roomAmenities);
+        ArrayList<Object> searchResults = bookingApp.searchForHotel(address, rating, price, hotelAmenities, roomAmenities);
         printSearchResults(searchResults);
         sleep(3000);
     }
