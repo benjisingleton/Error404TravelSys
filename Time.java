@@ -3,11 +3,21 @@ public class Time {
     private int hour;
     private int minute;
 
+    /**
+    * Sets the local variables to their passed in parameters
+    * @param hour for the time
+    * @param minute for the time
+    */
     public Time(int hour, int minute) {
         this.hour = hour;
         this.minute = minute;
     }
 
+    /**
+    * Sets the local variables to their passed in parameters
+    * @param hour for the time
+    * @param minute set to 0
+    */
     public Time(int hour) {
         this.hour = hour;
         this.minute = 0;
