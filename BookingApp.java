@@ -12,6 +12,9 @@ public class BookingApp {
     private Users users;
     private RegisteredUser mainUser;
 
+    /**
+     * Gets the classes instances and sets them to the classes
+     */
     private BookingApp() {
         flights = Flights.getInstance();
         hotels = Hotels.getInstance();
@@ -20,6 +23,10 @@ public class BookingApp {
         mainUser = new RegisteredUser();
     }
 
+    /**
+     * Checks for the Booking App
+     * @return booking app
+     */
     public static BookingApp getInstance() {
         if(bookingApp == null) {
             bookingApp = new BookingApp();
@@ -28,6 +35,12 @@ public class BookingApp {
     }
 
 
+    /**
+     * Get the login details
+     * @param String username and password associated with the user
+     * @return boolean
+     */
+    
     public boolean tryLogin(String username, String password) {
         for (RegisteredUser u : users.getRegisteredUsers()) {
             if(u.tryLogin(username, password)) {

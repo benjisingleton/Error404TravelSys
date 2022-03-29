@@ -39,6 +39,7 @@ public enum CarType {
         return ECONOMY;
 
     }
+
     /**
      * Get the label of the CarType
      * @return the String representation of the CarType

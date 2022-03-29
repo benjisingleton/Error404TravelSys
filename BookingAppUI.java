@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * The UI for the BookingApp
  */
+
 public class BookingAppUI extends BookingAppUIConstants {
     private Scanner scanner;
     private BookingApp bookingApp;
@@ -354,8 +355,8 @@ public class BookingAppUI extends BookingAppUIConstants {
             roomAmenities.add(tempRoomAmenity);
         }
 
-        ArrayList<Object> searchResults = bookingApp.searchForHotel(address, rating, hotelAmenities, roomAmenities);
-        printSearchResults(searchResults);
+        //ArrayList<Object> searchResults = bookingApp.searchForHotel(address, rating, hotelAmenities, roomAmenities);
+        //printSearchResults(searchResults);
         sleep(3000);
     }
 
