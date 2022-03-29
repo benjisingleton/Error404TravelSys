@@ -295,6 +295,13 @@ public class BookingAppUI extends BookingAppUIConstants {
         scanner.nextLine();
         return info;
     }
+
+    private int getIntRating(String prompt) {
+        System.out.print(prompt + "Rating: ");
+        int info = scanner.nextInt();
+        scanner.nextLine();
+        return info;
+    }
     
     private String checkString(String userInput) {
         while (true) {
@@ -321,9 +328,34 @@ public class BookingAppUI extends BookingAppUIConstants {
         System.out.println("First we will need your preferences.\n");
         String address = getString("What city (address) is the hotel in?: ");
         if (address == null) return;
-        int rating = getInt("What is the rating of the hotel you would like (x/5 stars)?: ");
+        int rating = getIntRating("What is the rating of the hotel you would like (x/5 stars)?: ");
         Date bookDate = getDate("What date would you like to book for?: ");
         if (bookDate == null) return;
+
+        printHotelAmenityQs();
+        ArrayList<String> hotelAmenities = new ArrayList<>();
+        while(true) {
+            String tempHotelAmenity = getString("-");
+            if (tempHotelAmenity.equalsIgnoreCase("q")) {
+                System.out.println("Saved your entered preferences (if any), moving on.\n");
+                break;
+            }
+            hotelAmenities.add(tempHotelAmenity);
+        }
+        
+        printRoomAmenityQs();
+        ArrayList<String> roomAmenities = new ArrayList<>();
+        while(true) {
+            String tempRoomAmenity = getString("-");
+            if (tempRoomAmenity.equalsIgnoreCase("q")) {
+                System.out.println("Saved your entered preferences (if any), moving on.\n");
+                break;
+            }
+            roomAmenities.add(tempRoomAmenity);
+        }
+    }
+
+    private void printHotelAmenityQs() {
         System.out.println("Now we will need you to input all (if any) hotel amenities you want.");
         System.out.println("Here are your options:\n");
         System.out.println("Pet-Friendly");
@@ -333,11 +365,21 @@ public class BookingAppUI extends BookingAppUIConstants {
         System.out.println("Pool");
         System.out.println("Air Conditioning\n");
         System.out.println("Enter each amenity one at a time seperated by pressing the return key.");
-        ArrayList<String> hotelAmeneties = new ArrayList<>();
-        while(true) {
-            String tempHotelAmenity = getString("-");
-            hotelAmeneties.add(tempHotelAmenity);
-        }
+        System.out.println("Enter q or Q to quit entering amenities.");
+    }
+
+    private void printRoomAmenityQs() {
+        System.out.println("Now we will need you to input all (if any) room amenities you want.");
+        System.out.println("Here are your options:\n");
+        System.out.println("Smoking");
+        System.out.println("Accessible Bathroom");
+        System.out.println("Roll-In-Shower");
+        System.out.println("Washer and Dryer");
+        System.out.println("Queen Bed");
+        System.out.println("King Bed");
+        System.out.println("Twin Bed");
+        System.out.println("Double Bed");
+        System.out.println("Studio Bed\n");
     }
 
     private void searchForCar() {
