@@ -2,10 +2,17 @@
     "configurations": [
         {
             "type": "java",
+<<<<<<< HEAD
             "name": "Launch BookingAppUI",
             "request": "launch",
             "mainClass": "BookingAppUI",
             "projectName": "Error404TravelSys_df852084"
+=======
+            "name": "CodeLens (Launch) - BookingAppUI",
+            "request": "launch",
+            "mainClass": "BookingAppUI",
+            "projectName": "Error404TravelSys_ff677086"
+>>>>>>> 6a428941b4c8d41e47aa11717e9d8941b9adef31
         },
         {
             "type": "java",

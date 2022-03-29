@@ -136,6 +136,24 @@ public class BookingApp {
     }
 
 /*--------------------------------------------------------------------------------------------*/
+
+
+/*----------------------------------------Hotel Methods--------------------------------------*/
+    public ArrayList<Object> searchForHotel(String address, int rating,
+    ArrayList<String> hotelAmenities, ArrayList<String> roomAmenities) {
+        String fOrFG = "";
+        ArrayList<Hotel> allHotels = hotels.searchForHotel(address, rating, hotelAmenities, roomAmenities);
+        ArrayList<Object> allHotelsOther = new ArrayList<>();
+        for (Hotel h : allHotels) {
+            allHotelsOther.add(h);
+            fOrFG += "h";
+        } 
+        allHotelsOther.add(fOrFG);
+        return allHotelsOther;
+    }
+/*--------------------------------------------------------------------------------------------*/
+
+
     /**
      * Shut it down
      */
