@@ -11,6 +11,15 @@ public class RegistrationInfo {
     private int age;
     private boolean freqFlyer;
 
+    /**
+     * Sets local variables to passed in parameters
+     * @param user's firstname
+     * @param user's lastname
+     * @param user's username
+     * @param user's password
+     * @param user's age
+     * @param to set if the user is a frequent flyer
+     */
     public RegistrationInfo(String firstName, String lastName, String username, String password,  int age, boolean freqFlyer) {
         this.firstName = firstName;
         this.lastName = lastName;
