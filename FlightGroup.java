@@ -37,7 +37,6 @@ public class FlightGroup {
     }
 
     public boolean checkFlightGroup(String deptAirportCode, String arrivAirportCode, Date deptDate) {
-        
         return deptAirportCode.equalsIgnoreCase(allFlights.get(0).getDeptAirportCode()) 
         && arrivAirportCode.equalsIgnoreCase(allFlights.get(allFlights.size()-1).getArrivAirportCode())
         && deptDate.checkDate(allFlights.get(0).getFlightReservation().getStartDate());
