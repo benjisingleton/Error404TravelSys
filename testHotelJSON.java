@@ -32,7 +32,7 @@ public class testHotelJSON {
         ArrayList<HotelAmenity> hotelAmenities = getHAmenities();
         int rating = getInt("Rating");
         ArrayList<Room> rooms = getAllRooms();
-        return new Hotel(hotelID, address, rating, hotelAmenities, rooms);
+        return new Hotel(hotelID, address, rating, price, hotelAmenities, rooms);
     }
 
     private boolean addHotel() {
