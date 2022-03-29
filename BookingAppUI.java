@@ -318,12 +318,26 @@ public class BookingAppUI extends BookingAppUIConstants {
     }
     private void searchForHotel() {
         System.out.println("\n=-------- Search for a Hotel --------=");
-        System.out.println("First we will need your preferences:");
+        System.out.println("First we will need your preferences.\n");
         String address = getString("What city (address) is the hotel in?: ");
         if (address == null) return;
-        Hotel hotel = new Hotel();
-        System.out.println(hotel.hotelAmmenites);
-        //Enum hotelAmmenites = getString("prompt");
+        int rating = getInt("What is the rating of the hotel you would like (x/5 stars)?: ");
+        Date bookDate = getDate("What date would you like to book for?: ");
+        if (bookDate == null) return;
+        System.out.println("Now we will need you to input all (if any) hotel amenities you want.");
+        System.out.println("Here are your options:\n");
+        System.out.println("Pet-Friendly");
+        System.out.println("Stair-Free Path-to-Entrance");
+        System.out.println("Parking");
+        System.out.println("Free Wifi");
+        System.out.println("Pool");
+        System.out.println("Air Conditioning\n");
+        System.out.println("Enter each amenity one at a time seperated by pressing the return key.");
+        ArrayList<String> hotelAmeneties = new ArrayList<>();
+        while(true) {
+            String tempHotelAmenity = getString("-");
+            hotelAmeneties.add(tempHotelAmenity);
+        }
     }
 
     private void searchForCar() {
