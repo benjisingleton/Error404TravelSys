@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - BookingAppUI",
+            "request": "launch",
+            "mainClass": "BookingAppUI",
+            "projectName": "Error404TravelSys_ff677086"
+        },
+        {
+            "type": "java",
             "name": "Launch testHotelJSON",
             "request": "launch",
             "mainClass": "testHotelJSON",
