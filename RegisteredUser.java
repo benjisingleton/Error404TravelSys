@@ -14,7 +14,7 @@ public class RegisteredUser {
     public RegisteredUser(UUID userID, RegistrationInfo userInfo, BookingList savedBookings, ArrayList<PartyMember> partyMembers) {
         this.userID = userID;
         this.userInfo = userInfo;
-       this.savedBookings = savedBookings;
+        this.savedBookings = savedBookings;
         this.partyMembers = partyMembers;
     }
    public RegisteredUser() {
@@ -85,9 +85,9 @@ public class RegisteredUser {
    public boolean tryLogin(String username, String password) {
       return userInfo.tryLogin(username, password);
    }
-public void addPartyMember(PartyMember partyMember) {
-    partyMembers.add(partyMember);
-}
+   public void addPartyMember(PartyMember partyMember) {
+      partyMembers.add(partyMember);
+   }
 
 }
 
