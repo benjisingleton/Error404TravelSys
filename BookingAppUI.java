@@ -324,6 +324,12 @@ public class BookingAppUI extends BookingAppUIConstants {
         if (input.equals("y")) return true;
         return false;
     }
+
+    /**
+     * Basic logic for searching for hotel.
+     * Asking user for information.
+     * Uses other classes to search.
+     */
     private void searchForHotel() {
         System.out.println("\n=-------- Search for a Hotel --------=");
         System.out.println("First we will need your preferences.\n");
@@ -355,11 +361,14 @@ public class BookingAppUI extends BookingAppUIConstants {
             roomAmenities.add(tempRoomAmenity);
         }
 
-        //ArrayList<Object> searchResults = bookingApp.searchForHotel(address, rating, hotelAmenities, roomAmenities);
-        //printSearchResults(searchResults);
+        ArrayList<Object> searchResults = bookingApp.searchForHotel(address, rating, hotelAmenities, roomAmenities);
+        printSearchResults(searchResults);
         sleep(3000);
     }
 
+    /**
+     * Print hotel amenities
+     */
     private void printHotelAmenityQs() {
         System.out.println("Now we will need you to input all (if any) hotel amenities you want.");
         System.out.println("Here are your options:\n");
@@ -373,6 +382,9 @@ public class BookingAppUI extends BookingAppUIConstants {
         System.out.println("Enter q or Q to quit entering amenities.");
     }
 
+    /**
+     * Print room amenities
+     */
     private void printRoomAmenityQs() {
         System.out.println("Now we will need you to input all (if any) room amenities you want.");
         System.out.println("Here are your options:\n");
@@ -385,6 +397,8 @@ public class BookingAppUI extends BookingAppUIConstants {
         System.out.println("Twin Bed");
         System.out.println("Double Bed");
         System.out.println("Studio Bed\n");
+        System.out.println("Enter each amenity one at a time seperated by pressing the return key.");
+        System.out.println("Enter q or Q to quit entering amenities.");
     }
 
     private void searchForCar() {

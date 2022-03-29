@@ -74,17 +74,37 @@ class Hotel{
 
     }
 
+    /**
+     * Prints hotel amenities
+     */
     public void printhotelAmenities() {
-
+        System.out.println("Pet-Friendly");
+        System.out.println("Stair-Free Path-to-Entrance");
+        System.out.println("Parking");
+        System.out.println("Free Wifi");
+        System.out.println("Pool");
+        System.out.println("Air Conditioning");
     }
 
     public void printRating() {
 
     }
 
+    /**
+     * Prints room amenities
+     */
     public void printRooms() {
-        
+        System.out.println("Smoking");
+        System.out.println("Accessible Bathroom");
+        System.out.println("Roll-In-Shower");
+        System.out.println("Washer and Dryer");
+        System.out.println("Queen Bed");
+        System.out.println("King Bed");
+        System.out.println("Twin Bed");
+        System.out.println("Double Bed");
+        System.out.println("Studio Bed");
     }
+
     public String testString() {
         return "Address: " + address + "\nAmenities: "
         + hotelAmenities.toString() + "\nRating: " +
@@ -92,7 +112,15 @@ class Hotel{
 
     }
 
-    public boolean checkHotel(String address, String rating,
+    /**
+     * Check hotel exists
+     * @param address Place of hotel
+     * @param rating Rating of hotel
+     * @param hotelAmenities Hotel amenities the user is looking for
+     * @param roomAmenitites Room amenities the user is looking for
+     * @return
+     */
+    public boolean checkHotel(String address, int rating,
     ArrayList<String> hotelAmenities, ArrayList<String> roomAmenitites) {
         return address.equalsIgnoreCase(this.address) && rating == this.rating 
         && hotelAmenities.containsAll(this.hotelAmenities) && roomAmenitites.containsAll(this.rooms);

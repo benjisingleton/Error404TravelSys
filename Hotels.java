@@ -72,9 +72,9 @@ public class Hotels {
     ArrayList<String> hotelAmenities, ArrayList<String> roomAmenities) {
         ArrayList<Hotel> directResults = new ArrayList<>();
 
-        for (Hotel h : allHotels) {
-            if (h.checkHotel(deptAirportCode, arrivAirportCode, deptDate)) {
-                directResults.add(f);
+        for (Hotel h : hotelList) {
+            if (h.checkHotel(address, rating, hotelAmenities, roomAmenities)) {
+                directResults.add(h);
             }
         }
 
