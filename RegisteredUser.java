@@ -19,7 +19,7 @@ public class RegisteredUser {
     }
    public RegisteredUser() {
     }
-// Getters
+   // Getters
    public UUID getUserID() {
        return userID;
    }

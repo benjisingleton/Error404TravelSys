@@ -42,7 +42,11 @@ class PartyMember{
     public void setAge(int age) {
         this.age = age;
     }
-    //Other Methods
+    
+    /**
+     * Returns Party Member details
+     * @return firstname, lastname, and age
+     */
     public String toString() {
         return "First Name: " + firstName + "\nLast Name: " + lastName +
         "\nAge: " + age;

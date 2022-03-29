@@ -35,6 +35,7 @@ public enum HotelAmenity {
         return AIR_CONDITIONING;
     }
 
+    //calls print
     public String getPrint() {
         return print;
     }

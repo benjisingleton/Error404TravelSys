@@ -25,7 +25,8 @@ import java.util.UUID;
         this.price = price;
         this.flightReservation = flightReservation;
     }
-    
+
+    //Getters
     public UUID getFlightID() {
         return flightID;
     }
@@ -71,7 +72,6 @@ import java.util.UUID;
         return plane.displayAll();
     }
 
-    //Other Methods
     public String toString() {
         return "Departing From: " + deptAirportCode 
         + "\nHeading to: " + arrivAirportCode

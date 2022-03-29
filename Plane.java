@@ -81,7 +81,6 @@ class Plane {
     }
 
     //Setters
-    
     public void setSeats(ArrayList<Seat> allSeats) {
         this.allSeats = allSeats;
     }

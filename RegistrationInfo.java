@@ -19,6 +19,7 @@ public class RegistrationInfo {
         this.age = age;
         this.freqFlyer = freqFlyer;
     }
+
     //Getters
     public String getFirstName() {
         return firstName;
@@ -38,6 +39,7 @@ public class RegistrationInfo {
     public boolean getFreqFlyer() {
     return freqFlyer;
     }
+
     // Setters
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -57,6 +59,7 @@ public class RegistrationInfo {
     public void setFreqFlyer(boolean freqFlyer) {
         this.freqFlyer = freqFlyer;
     }
+    
     // Other Methods
     public String toString() {
         return "First Name: " + firstName + "\nLast Name: " + lastName +
@@ -64,6 +67,10 @@ public class RegistrationInfo {
         "\nAge: " + age + "\nFrequent Flyer: " + freqFlyer;
     }
 
+    /**
+     * compares the log in details with the saved details
+     * @return username and password
+     */
     public boolean tryLogin(String username, String password) {
         return username.equals(this.username) && password.equals(this.password);
     }
