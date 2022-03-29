@@ -9,6 +9,13 @@ public class Reservation {
     private Time startTime;
     private Time endTime;
 
+    /**
+     * Sets local variables to passed in parameters
+     * @param start date for the date
+     * @param end date for the date
+     * @param start time for the time
+     * @param end time for the time
+     */
     public Reservation(Date startDate, Date endDate, Time startTime, Time endTime) {
         this.startDate = startDate;
         this.endDate = endDate;
