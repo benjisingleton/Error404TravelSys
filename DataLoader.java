@@ -321,7 +321,8 @@ public class DataLoader extends DataConstants{
 			ArrayList<String> roomAmenities = new ArrayList<>();
 			hotelAmenities.add("King Bed");
 
-			allHotels.add(new Hotel(hotelUUIDA, "Seattle", 4, 230, hotelAmenities, roomAmenities));
+			Hotel tempHotel = new Hotel();
+			allHotels.add(tempHotel(hotelUUIDA, "Seattle", 4, 230, hotelAmenities, roomAmenities));
 			/*
 			for (Object i: allHotelsJSON) {
 				JSONObject hotelJSON = (JSONObject)i;
