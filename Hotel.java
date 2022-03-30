@@ -26,7 +26,7 @@ class Hotel{
      * @param hotelAmenities Arraylist of hotel amenities
      * @param rooms Arraylist of room amenities
      */
-    public Hotel(UUID hotelID, String address, int rating, int price, ArrayList<HotelAmenity> hotelAmenities, ArrayList<Room> rooms) {
+    public Hotel(UUID hotelID, String address, int rating, int price, ArrayList<HotelAmenity> hotelAmenities, ArrayList<RoomAmenity> roomAmenities) {
         this.hotelID = hotelID;
         this.address = address;
         this.rating = rating;
