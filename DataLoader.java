@@ -325,6 +325,7 @@ public class DataLoader extends DataConstants{
 				int price = ((Long)hotelJSON.get(H_COST)).intValue();
 				ArrayList<Room> rooms = rebuildAllRooms((JSONArray)hotelJSON.get(H_ROOMS));
 				allHotels.add(new Hotel(hotelID, address, rating, price, hotelAmenities, rooms));
+				
 			}
 			return allHotels;
 		} catch (Exception e) {

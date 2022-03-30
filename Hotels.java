@@ -14,6 +14,7 @@ public class Hotels {
      */
     private Hotels() {
         this.hotelList = DataLoader.loadHotels();
+        System.out.println(hotelList);
     }
 
     //Getters
