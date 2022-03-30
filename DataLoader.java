@@ -325,9 +325,12 @@ public class DataLoader extends DataConstants{
 				ArrayList<Room> rooms = rebuildAllRooms((JSONArray)hotelJSON.get(H_ROOMS));
 				allHotels.add(new Hotel(hotelID, address, rating, price, hotelAmenities, rooms));
 			}
+			System.out.println("--- START OF HOTELS IM LOOKING FOR ---");
 			System.out.println(allHotels);
+			System.out.println("--- END OF HOTELS IM LOOKING FOR ---");
 			return allHotels;
 		} catch (Exception e) {
+			System.out.println("--- THIS IS THE ERROR THEN ---");
 			e.printStackTrace();
 		}
 		return null;
