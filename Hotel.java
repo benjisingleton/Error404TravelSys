@@ -13,6 +13,10 @@ class Hotel{
     private ArrayList<Room> rooms;
     private int price;
 
+    public Hotel() {
+        
+    }
+
     /**
      * Set class's variables
      * @param hotelID Hotel ID
