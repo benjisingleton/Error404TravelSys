@@ -33,7 +33,8 @@ import java.util.UUID;
         this.dropOffLocation = dropOffLocation;
         this.carReservation = carReservation;
     }
-/*------------------------------------------Getters----------------------------------------*/
+
+    //Getters
     public UUID getCarID() {
         return carID;
     }
@@ -55,7 +56,8 @@ import java.util.UUID;
     public Reservation getCarReservation() {
         return carReservation;
     }
-/*----------------------------------------Other Methods--------------------------------------*/
+
+    //Other methods
     public String toString() {
         return "Type: " + type.getLabel() + "\nCapacity: " + capacity
         + "\nPrice: " + price 

@@ -13,13 +13,12 @@ public class BookingList {
     }
 
     public BookingList(ArrayList<Flight> flightList,
-            ArrayList<FlightGroup> flightGroupList, ArrayList<Hotel> hotelBookings,
-            ArrayList<Car> carList) {
-        // this.bookingIds = bookingIds;
-        this.flightList = flightList;
-        this.flightGroupList = flightGroupList;
-        this.hotelBookings = hotelBookings;
-        this.carList = carList;
+        ArrayList<FlightGroup> flightGroupList, ArrayList<Hotel> hotelBookings,
+        ArrayList<Car> carList) {
+            this.flightList = flightList;
+            this.flightGroupList = flightGroupList;
+            this.hotelBookings = hotelBookings;
+            this.carList = carList;
     }
 
     //Getters

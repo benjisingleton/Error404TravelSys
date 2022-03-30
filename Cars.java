@@ -7,7 +7,8 @@ public class Cars {
     private Cars() {
         carList = DataLoader.loadCars();
     }
-/*------------------------------------------Getters----------------------------------------*/
+
+    //Getters
     public static Cars getInstance() {
         if(rentalCars == null) {
             rentalCars = new Cars();
@@ -18,7 +19,8 @@ public class Cars {
     public ArrayList<Car> getCars() {
         return carList;
     }
-/*----------------------------------------Other Methods--------------------------------------*/
+
+    //Other methods
     public void addCar(UUID carID, CarType type, int capacity, Double price, String pickUpLocation, String dropOffLocation, Reservation carReservation) {
         carList.add(new Car(carID, type, capacity, price, pickUpLocation, dropOffLocation, carReservation));
     }
