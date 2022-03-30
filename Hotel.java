@@ -13,6 +13,15 @@ class Hotel{
     private ArrayList<Room> rooms;
     private int price;
 
+    /**
+     * Set class's variables
+     * @param hotelID Hotel ID
+     * @param address Hotel addres
+     * @param rating Hotel rating
+     * @param price Hotel price
+     * @param hotelAmenities Arraylist of hotel amenities
+     * @param rooms Arraylist of room amenities
+     */
     public Hotel(UUID hotelID, String address, int rating, int price, ArrayList<HotelAmenity> hotelAmenities, ArrayList<Room> rooms) {
         this.hotelID = hotelID;
         this.address = address;
@@ -21,6 +30,7 @@ class Hotel{
         this.rooms = rooms;
         this.price = price;
     }
+
     /**
      * Sets local variables to passed in parameters
      * @param address hotel address

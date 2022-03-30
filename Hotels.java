@@ -70,6 +70,15 @@ public class Hotels {
         DataWriter.saveHotels();
     }
 
+    /**
+     * Search for hotel through Hotel class
+     * @param address Hotel address
+     * @param rating Hotel rating
+     * @param price Hotel price
+     * @param hotelAmenities Arraylist of hotel amenities
+     * @param roomAmenities Arraylist of room amenities
+     * @return Returns direct results of hotel
+     */
     public ArrayList<Hotel> searchForHotel(String address, int rating, int price, 
     ArrayList<String> hotelAmenities, ArrayList<String> roomAmenities) {
         ArrayList<Hotel> directResults = new ArrayList<>();
@@ -79,9 +88,6 @@ public class Hotels {
                 directResults.add(h);
             }
         }
-
         return directResults;
-
-    }  
-    
+    }
 }
