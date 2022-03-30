@@ -73,6 +73,7 @@ protected static final String H_ID = "hotelID";
 protected static final String H_ADDRESS = "address";
 protected static final String H_AMENITIES = "hotelAmenities";
 protected static final String H_RATING = "rating";
+protected static final String H_COST = "cost";
 protected static final String H_ROOMS = "rooms";
 // Room
 protected static final String RO_ID = "roomID";
