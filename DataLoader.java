@@ -316,9 +316,9 @@ public class DataLoader extends DataConstants{
 			JSONArray allHotelsJSON = (JSONArray)parser.parse(reader);
 
 			UUID hotelUUIDA = UUID.randomUUID();
-			ArrayList<HotelAmenity> hotelAmenities = new ArrayList<>();
+			ArrayList<String> hotelAmenities = new ArrayList<>();
 			hotelAmenities.add("Parking");
-			ArrayList<RoomAmenity> roomAmenities = new ArrayList<>();
+			ArrayList<String> roomAmenities = new ArrayList<>();
 			hotelAmenities.add("King Bed");
 
 			Hotel tempHotel = new Hotel();

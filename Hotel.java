@@ -10,7 +10,7 @@ class Hotel{
     private String address;
     private ArrayList<HotelAmenity> hotelAmenities = new ArrayList<HotelAmenity>();
     private int rating;
-    private ArrayList<Room> rooms;
+    private ArrayList<RoomAmenity> rooms;
     private int price;
 
     public Hotel() {
@@ -26,7 +26,7 @@ class Hotel{
      * @param hotelAmenities Arraylist of hotel amenities
      * @param rooms Arraylist of room amenities
      */
-    public Hotel(UUID hotelID, String address, int rating, int price, ArrayList<HotelAmenity> hotelAmenities, ArrayList<RoomAmenity> roomAmenities) {
+    public Hotel(UUID hotelID, String address, int rating, int price, ArrayList<String> hotelAmenities, ArrayList<String> roomAmenities) {
         this.hotelID = hotelID;
         this.address = address;
         this.rating = rating;
