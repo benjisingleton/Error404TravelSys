@@ -315,16 +315,6 @@ public class DataLoader extends DataConstants{
 			JSONParser parser = new JSONParser();
 			JSONArray allHotelsJSON = (JSONArray)parser.parse(reader);
 
-			UUID hotelUUIDA = UUID.randomUUID();
-			ArrayList<String> hotelAmenities = new ArrayList<>();
-			hotelAmenities.add("Parking");
-			ArrayList<String> roomAmenities = new ArrayList<>();
-			hotelAmenities.add("King Bed");
-
-			Hotel tempHotel = new Hotel();
-
-			allHotels.add(tempHotel(hotelUUIDA, "Seattle", 4, 230, hotelAmenities, roomAmenities));
-			/*
 			for (Object i: allHotelsJSON) {
 				JSONObject hotelJSON = (JSONObject)i;
 				UUID hotelID = UUID.fromString((String)hotelJSON.get(H_ID));
@@ -335,7 +325,6 @@ public class DataLoader extends DataConstants{
 				ArrayList<Room> rooms = rebuildAllRooms((JSONArray)hotelJSON.get(H_ROOMS));
 				allHotels.add(new Hotel(hotelID, address, rating, price, hotelAmenities, rooms));
 			}
-			*/
 			return allHotels;
 		} catch (Exception e) {
 			e.printStackTrace();
