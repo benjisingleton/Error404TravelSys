@@ -1,1 +1,29 @@
-[{"rooms":[],"address":"Seattle","hotelAmenities":["Stair-Free Path-to-Entrance","Parking","Free Wifi","Pool"],"price":230.0,"rating":3,"hotelID":"bc431bfc-a7df-406b-9528-315120fa36fa"},{"price":150.0,"rooms":[{"floorNumber":5,"roomReservations":[{"endDate":"03\/30\/22","startTime":"04:00 pm","endTime":"06:00 pm","startDate":"03\/30\/22"}],"price":170.0,"roomAmenities":["Double Bed","Double Bed","Queen Bed"],"roomID":"390a6881-c7dc-4e60-af6b-ef230bf05027","capacity":4},{"floorNumber":3,"roomReservations":[{"endDate":"03\/30\/22","startTime":"11:00 am","endTime":"03:00 pm","startDate":"03\/30\/22"},{"endDate":"04\/09\/22","startTime":"12:00 pm","endTime":"04:00 pm","startDate":"04\/05\/22"}],"roomAmenities":["Queen Bed","Queen Bed","Smoking"],"roomID":"98970798-5fa1-456f-8d31-17f8621c82e7","capacity":4}],"address":"Seattle","hotelAmenities":["Pool","Parking","Free Wifi","Air Conditioning"],"rating":4,"hotelID":"bd1b2bf3-0e49-4986-9f68-921b4287fd9f"},{"address":"Seattle","hotelAmenities":["Air Conditioning","Free Wifi","Pool"],"roomAmenities":["Double Bed","Double Bed"],"hotelID":"1865fa6f-08a0-4fec-b004-7f4f20b84d16","rating":4},{"price":180.0,"address":"Seattle","rating":4,"hotelAmenities":["Air Conditioning","Stair-Free Path-to-Entrance","Parking","Pool"],"roomAmenities":["Double Bed","Smoking","Queen Bed","Double Bed"],"hotelID":"76214ea2-7e05-4bd0-aabf-269c7d060c1f"}]
+[
+    {
+        "address":"Seattle",
+        "rating":4,
+        "amenities":["Pool", "Double Bed", "Double Bed"],
+        "price":200
+    }
+    ,
+    {
+        "address":"Seattle",
+        "rating":2,
+        "amenities":["Parking", "Free Wifi"],
+        "price":100
+    }
+    ,
+    {
+        "address":"Seattle",
+        "rating":5,
+        "amenities":["Parking", "Free Wifi", "Stair-Free Path-to-Entrance", "Pool", "Air Conditioning"],
+        "price":400 
+    }
+    ,
+    {
+        "address":"Seattle",
+        "rating":3,
+        "amenities":["Parking","Air Conditioning","Free Wifi"],
+        "Price":150
+    }
+]
