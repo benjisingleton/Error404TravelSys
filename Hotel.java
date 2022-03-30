@@ -26,9 +26,9 @@ class Hotel{
         this.hotelID = hotelID;
         this.address = address;
         this.rating = rating;
+        this.price = price;
         this.hotelAmenities = hotelAmenities;
         this.rooms = rooms;
-        this.price = price;
     }
 
     /**

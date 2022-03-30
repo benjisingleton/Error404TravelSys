@@ -72,8 +72,9 @@ protected static final String HOTELS_FILE_NAME = "jsonFiles/hotels.json";
 protected static final String H_ID = "hotelID";
 protected static final String H_ADDRESS = "address";
 protected static final String H_AMENITIES = "hotelAmenities";
+protected static final String H_RAMENITIES = "roomAmenities";
 protected static final String H_RATING = "rating";
-protected static final String H_COST = "cost";
+protected static final String H_PRICE = "price";
 protected static final String H_ROOMS = "rooms";
 // Room
 protected static final String RO_ID = "roomID";
