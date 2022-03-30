@@ -315,10 +315,11 @@ public class DataLoader extends DataConstants{
 			JSONParser parser = new JSONParser();
 			JSONArray allHotelsJSON = (JSONArray)parser.parse(reader);
 
-			UUID hotelUUIDA = "76214ea2-7e05-4bd0-aabf-269c7d060c1f";
-			ArrayList<HotelAmenity> hotelAmenities = new ArrayList<>();
+			UUID hotelUUIDA = new UUID(mostSigBits, leastSigBits);
+			hotelUUIDA.randomUUID();
+			ArrayList<String> hotelAmenities = new ArrayList<>();
 			hotelAmenities.add("Parking");
-			ArrayList<HotelAmenity> roomAmenities = new ArrayList<>();
+			ArrayList<String> roomAmenities = new ArrayList<>();
 			hotelAmenities.add("King Bed");
 
 			allHotels.add(new Hotel(hotelUUIDA, "Seattle", 4, 230, hotelAmenities, roomAmenities));
