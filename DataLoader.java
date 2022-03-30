@@ -310,14 +310,20 @@ public class DataLoader extends DataConstants{
 	 */
 	public static ArrayList<Hotel> loadHotels() {
 		ArrayList<Hotel> allHotels = new ArrayList<>();
-		System.out.println("! !! ! Of course this works right?");
 		try {
 			FileReader reader = new FileReader(HOTELS_FILE_NAME);
 			JSONParser parser = new JSONParser();
 			JSONArray allHotelsJSON = (JSONArray)parser.parse(reader);
-			System.out.println("!!!! !! ! So this works");
+
+			UUID hotelUUIDA = "76214ea2-7e05-4bd0-aabf-269c7d060c1f";
+			ArrayList<HotelAmenity> hotelAmenities = new ArrayList<>();
+			hotelAmenities.add("Parking");
+			ArrayList<HotelAmenity> roomAmenities = new ArrayList<>();
+			hotelAmenities.add("King Bed");
+
+			allHotels.add(new Hotel(hotelUUIDA, "Seattle", 4, 230, hotelAmenities, roomAmenities));
+			/*
 			for (Object i: allHotelsJSON) {
-				System.out.println("!! ! ! ! Does this work");
 				JSONObject hotelJSON = (JSONObject)i;
 				UUID hotelID = UUID.fromString((String)hotelJSON.get(H_ID));
 				String address = (String)hotelJSON.get(H_ADDRESS);
@@ -327,15 +333,11 @@ public class DataLoader extends DataConstants{
 				ArrayList<Room> rooms = rebuildAllRooms((JSONArray)hotelJSON.get(H_ROOMS));
 				allHotels.add(new Hotel(hotelID, address, rating, price, hotelAmenities, rooms));
 			}
-			System.out.println("!!!!! ! ! ! ! --- START OF HOTELS IM LOOKING FOR ---");
-			System.out.println(allHotels);
-			System.out.println("!! ! ! ! --- END OF HOTELS IM LOOKING FOR ---");
+			*/
 			return allHotels;
 		} catch (Exception e) {
-			System.out.println("!!! ! ! ! ! --- THIS IS THE ERROR THEN ---");
 			e.printStackTrace();
 		}
-		System.out.println("! !!  ! Trying here too");
 		return null;
 	}
 	/**
