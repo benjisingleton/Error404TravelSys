@@ -31,6 +31,7 @@ public class testHotelJSON {
         String address = getField("Address");
         ArrayList<HotelAmenity> hotelAmenities = getHAmenities();
         int rating = getInt("Rating");
+        int price = getPrice("Price");
         ArrayList<Room> rooms = getAllRooms();
         return new Hotel(hotelID, address, rating, price, hotelAmenities, rooms);
     }
@@ -166,6 +167,13 @@ public class testHotelJSON {
 	}
 
     private int getInt(String prompt) {
+        System.out.print(prompt + ": ");
+        int temp = scanner.nextInt();
+        scanner.nextLine();
+        return temp;
+    }
+
+    private int getPrice(String prompt) {
         System.out.print(prompt + ": ");
         int temp = scanner.nextInt();
         scanner.nextLine();

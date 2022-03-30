@@ -39,8 +39,8 @@ public class Hotels {
      * Adds a new hotel to the hotel list with parameters
      * 
      */
-    public void addHotel(UUID hotelID, String address, ArrayList<HotelAmenity> hotelAmenities, int rating, ArrayList<Room> rooms) {
-        hotelList.add(new Hotel(hotelID, address, rating, hotelAmenities, rooms));
+    public void addHotel(UUID hotelID, String address, ArrayList<HotelAmenity> hotelAmenities, int rating, int price, ArrayList<Room> rooms) {
+        hotelList.add(new Hotel(hotelID, address, rating, price, hotelAmenities, rooms));
     }
 
     public void addHotel(Hotel hotel) {
