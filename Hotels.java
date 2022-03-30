@@ -16,6 +16,8 @@ public class Hotels {
         this.hotelList = DataLoader.loadHotels();
     }
 
+    //Getters
+    
     /**
      * Creates new hotel class if hotels is null
      */

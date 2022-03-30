@@ -10,6 +10,7 @@ public class FlightGroup {
         this.allFlights = allFlights;
     }
 
+    //Getters
     public UUID getFlightGroupID() {
         return flightGroupID;
     }

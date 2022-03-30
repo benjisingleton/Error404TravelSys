@@ -15,6 +15,7 @@ public class Flights {
         flightGroupList = DataLoader.loadFlightGroups();
     }
 
+    //Getters
     public static Flights getInstance() {
         if (flights == null) {
             flights = new Flights();
@@ -70,6 +71,7 @@ public class Flights {
         return otherResults;
     }
     
+    //Getters
     public Flight getFlightByUUID(UUID flightID) {
         for (Flight i: flightList) {
             if (flightID.equals(i.getFlightID()))

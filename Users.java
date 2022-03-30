@@ -26,6 +26,8 @@ public class Users {
         }
         return rUsers;
     }
+    //Getters
+    
     /**
      * Get ArrayList of Registered Users
      * @return The giant list of all our users
