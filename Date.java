@@ -1,3 +1,7 @@
+/**
+ * Class to help format dates
+ */
+
 public class Date {
     private int day;
     private int month;
