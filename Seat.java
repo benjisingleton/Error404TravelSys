@@ -1,3 +1,5 @@
+import org.junit.Test;
+
 /**
  * Class to manage seats on a plane
  * @author Benjamin Singleton
