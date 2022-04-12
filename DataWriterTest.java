@@ -36,7 +36,7 @@ class DataWriterTest {
 	
 	@Test
 	void tesWritingZeroUsers() {
-		userList = DataLoader.get.Users():
+		userList = DataLoader.get.Users();
 		assertEquals(0, userList.size());
 	}
 
