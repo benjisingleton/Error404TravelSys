@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 class BookingAppTest {
 	BookingApp bookingapp = BookingApp.getInstance();
 	private Date date = new Date(03, 30, 22);
+	private Date fakedate = new Date(03, 22, 30);
 	ArrayList<String> roomamenities = new ArrayList<String>();
 	ArrayList<String> hotelamenities = new ArrayList<String>();
 	
@@ -34,15 +35,18 @@ class BookingAppTest {
 	public void tryLoginTest() {
 		boolean loginTrue = bookingapp.tryLogin("tired", "password");
 		assertTrue(loginTrue);
+		boolean loginFalse = bookingapp.tryLogin("fakeusername","fakepassword");
+		assertFalse(loginFalse);
 	}
 
 	@Test
 	public void testOnewayFlight() {
 		assertNotNull(bookingapp.searchForAOneWayFlight("SEA", "CAE", date));
+		assertNull(bookingapp.searchForAOneWayFlight("Not real", "Not real", fakedate));
 	}
 
 	@Test
-	public void testhotel() {
+	public void testSearchForHotel() {
 		assertNotNull(bookingapp.searchForHotel("Seattle", 4, 200, hotelamenities, roomamenities));
 	}
 	
