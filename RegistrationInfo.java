@@ -11,6 +11,8 @@ public class RegistrationInfo {
     private int age;
     private boolean freqFlyer;
 
+    
+
     /**
      * Sets local variables to passed in parameters
      * @param user's firstname

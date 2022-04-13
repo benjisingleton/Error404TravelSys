@@ -69,7 +69,7 @@ public class Time {
      * @param hour the hour of time
      * @return Whether the time falls in am (T) or pm (F)
      */
-    private boolean checkAMHour(int hour) {
+    static boolean checkAMHour(int hour) {
         return hour < 12 || hour == 24;
     }
     /**
@@ -78,7 +78,7 @@ public class Time {
      * @param number the hour or minute in question
      * @return Whether a 0 should be added before the number in the print string
      */
-    private boolean checkBelow10(int number) {
+    static boolean checkBelow10(int number) {
         return number < 10;
     }
     /**
@@ -87,7 +87,7 @@ public class Time {
      * @param minute the minute from Time
      * @return a string representation of the Time object
      */
-    private String makeTimeString(int hour, int minute) {
+    static String makeTimeString(int hour, int minute) {
         hour %= 12;
         if (hour == 0) {
             hour = 12;

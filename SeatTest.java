@@ -7,7 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class AirlineTest {
+class SeatTest {
 
 	
 	//assertEquals(val1,val2)
@@ -18,16 +18,8 @@ class AirlineTest {
 	//assertNull(val)
 	//assertNotNull(val)
 	
-	
 	@Test
-	public void testAirline() {
+	public void testSeat() {
 		assertEquals(true, true);
 	}
-
-	@Test
-	public void getAlTest() {
-		assertEquals(Airline.AMERICAN, Airline.getAL("American Airlines"));
-		assertEquals(Airline.DELTA, Airline.getAL("Random Airline"));
-	}
-	
 }
