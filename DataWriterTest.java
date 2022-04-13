@@ -18,6 +18,7 @@ class DataWriterTest {
 	//assertNull(val)
 	//assertNotNull(val)
 	
+    /*
 	
 	private Users user = Users.getInstance();
 	private ArrayList<User> userList = Users.getRegisteredUsers();
@@ -79,5 +80,5 @@ class DataWriterTest {
 
 	
 	
-	
+	*/
 }

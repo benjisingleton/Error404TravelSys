@@ -15,6 +15,11 @@ public class Flights {
         flightGroupList = DataLoader.loadFlightGroups();
     }
 
+    //Setter
+    public static void setFlightList(Flight flight) {
+        flightList.add(flight);
+    }
+
     //Getters
     public static Flights getInstance() {
         if (flights == null) {
@@ -23,7 +28,7 @@ public class Flights {
         return flights;
     }
 
-    public ArrayList<Flight> getFlights() {
+    public static ArrayList<Flight> getFlights() {
         return flightList;
     }
 
@@ -47,7 +52,7 @@ public class Flights {
         flightGroupList.add(fGroup);
     }
 
-    public ArrayList<Flight> searchForDirectFlights(String deptAirportCode, String arrivAirportCode, Date deptDate) {
+    public static ArrayList<Flight> searchForDirectFlights(String deptAirportCode, String arrivAirportCode, Date deptDate) {
         ArrayList<Flight> directResults = new ArrayList<>();
 
         for (Flight f : flightList) {
@@ -60,7 +65,7 @@ public class Flights {
 
     }   
 
-    public ArrayList<FlightGroup> searchForOtherFlights(String deptAirportCode, String arrivAirportCode, Date deptDate) {
+    public static ArrayList<FlightGroup> searchForOtherFlights(String deptAirportCode, String arrivAirportCode, Date deptDate) {
         ArrayList<FlightGroup> otherResults = new ArrayList<>();
         for (FlightGroup fG : flightGroupList) {
             if(fG.checkFlightGroup(deptAirportCode, arrivAirportCode, deptDate)) {
@@ -72,7 +77,7 @@ public class Flights {
     }
     
     //Getters
-    public Flight getFlightByUUID(UUID flightID) {
+    public static Flight getFlightByUUID(UUID flightID) {
         for (Flight i: flightList) {
             if (flightID.equals(i.getFlightID()))
             return i;
