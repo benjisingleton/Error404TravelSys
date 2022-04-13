@@ -19,9 +19,6 @@ class DataLoaderTest {
 	//assertNotSame(val1,val2)
 	//assertNull(val)
 	//assertNotNull(val)
-	
-    private Users users = Users.getInstance();
-	private ArrayList<RegisteredUser> userList = users.getRegisteredUsers();
     
     private RegistrationInfo regInfo0 = new RegistrationInfo("ben", "s", "bcs11", "password", 19, true);
     private UUID uuid0 = new UUID(0, 1);
@@ -33,37 +30,6 @@ class DataLoaderTest {
     private BookingList bookList1 = new BookingList();
     private ArrayList<PartyMember> partyMemebers1 = new ArrayList<>();
 
-    @BeforeEach
-    public void setup() {
-        userList.clear();
-        userList.add(new RegisteredUser(uuid0, regInfo0, bookList0, partyMemebers0));
-        userList.add(new RegisteredUser(uuid1, regInfo1, bookList1, partyMemebers1));
-    }
-
-    @AfterEach
-    public void tearDown() {
-        Users.getInstance().getRegisteredUsers().clear();
-        DataWriter.saveUsers();
-    }
-
-    @Test
-    void testGetUsersSize() {
-        userList = DataLoader.loadUsers();
-        assertEquals(2, userList.size());
-    }
-
-    @Test
-    void testGetUsersSizeZero() {
-        Users.getInstance().getRegisteredUsers().clear();
-        DataWriter.saveUsers();
-        assertEquals(0, userList.size());
-    }
-
-    @Test
-    void testGetUserFirstUserName() {
-        userList = DataLoader.loadUsers();
-        assertEquals(regInfo0, userList.get(0).getUserInfo());
-    }
 
 	@Test
 	public void loadUsers() {

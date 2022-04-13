@@ -8,15 +8,12 @@ import org.junit.jupiter.api.Test;
 
 class DataWriterTest {
 	
-<<<<<<< HEAD
     /*
 	
 	private Users user = Users.getInstance();
 	private ArrayList<User> userList = Users.getRegisteredUsers();
-=======
 	private Users users = Users.getInstance();
 	private ArrayList<RegisteredUser> userList = users.getRegisteredUsers();
->>>>>>> 7652d81f1e5a9e5f62f36e2853a3555c64db3419
 
 	private RegistrationInfo regInfo0 = new RegistrationInfo("ben", "s", "bcs11", "password", 19, true);
     private UUID uuid0 = new UUID(0, 1);
