@@ -21,7 +21,6 @@ class HotelsTest {
 	//assertNull(val)
 	//assertNotNull(val)
 	private Hotels hotels = Hotels.getInstance();
-	private Date date = new Date(03, 30, 22);
 	private ArrayList<String> hotelAmenities = new ArrayList<>();
 	private ArrayList<String> roomAmenities = new ArrayList<>();
 	
