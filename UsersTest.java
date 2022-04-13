@@ -8,22 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class UsersTest {
-
 	
-	//assertEquals(val1,val2)
-	//assertFalse(val)
-	//assertTrue(val)
-	//assertSame(val1,val2)
-	//assertNotSame(val1,val2)
-	//assertNull(val)
-	//assertNotNull(val)
-	
-	
-	
-	
-	@Test
-	public void getInstance() {
-		assertEquals(true, true);
-	}
 	
 }
