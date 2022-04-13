@@ -227,7 +227,7 @@ public class DataLoader extends DataConstants{
 	 * @param jsonArray the list of all flights in a FlightGroup
 	 * @return an ArrayList<Flight>
 	 */
-	private static ArrayList<Flight> rebuildAllFlights(JSONArray jsonArray) {
+	static ArrayList<Flight> rebuildAllFlights(JSONArray jsonArray) {
 		ArrayList<Flight> allFlights = new ArrayList<>();
 		for (Object i : jsonArray) {
 			allFlights.add(rebuildFlight((JSONObject)i));
@@ -261,7 +261,7 @@ public class DataLoader extends DataConstants{
 	 * @param flightObject the JSONObject storing the Flight's information
 	 * @return a Flight object
 	 */
-	private static Flight rebuildFlight(JSONObject flightObject) {
+	static Flight rebuildFlight(JSONObject flightObject) {
 		JSONObject fJSON = flightObject;
 				UUID flightID = UUID.fromString((String)fJSON.get(FLIGHT_ID));
 				String deptLocation = (String)fJSON.get(F_DEPT_AIRPORT);
@@ -276,7 +276,7 @@ public class DataLoader extends DataConstants{
 	 * @param plInfo the JSONObject storing the Plane's information 
 	 * @return a Plane object
 	 */
-	private static Plane rebuildPlane(JSONObject plInfo) {
+	static Plane rebuildPlane(JSONObject plInfo) {
 		Airline airline = Airline.getAL((String)plInfo.get(P_AIRLINE));
 		// int capacity = ((Long)plInfo.get(P_CAPACITY)).intValue();
 		// Seat seat = rebuildSeat((JSONObject)plInfo.get(P_SEAT));
@@ -336,7 +336,7 @@ public class DataLoader extends DataConstants{
 	 * @param jsonArray the JSONArray containing the HotelAmenities
 	 * @return an ArrayList<HotelAmenity>
 	 */
-	private static ArrayList<HotelAmenity> rebuildHAmenities(JSONArray jsonArray) {
+	static ArrayList<HotelAmenity> rebuildHAmenities(JSONArray jsonArray) {
 		ArrayList<HotelAmenity> newHAs = new ArrayList<>();
 		ArrayList<String> strToHA = (ArrayList<String>)jsonArray;
 		for (String i: strToHA) {
@@ -349,7 +349,7 @@ public class DataLoader extends DataConstants{
 	 * @param jsonArray the JSONArray containing the info for all the Rooms
 	 * @return an ArrayList<Room>
 	 */
-	private static ArrayList<Room> rebuildAllRooms(JSONArray jsonArray) {
+	static ArrayList<Room> rebuildAllRooms(JSONArray jsonArray) {
 		ArrayList<Room> allRooms = new ArrayList<>();
 		for (Object i : jsonArray) {
 			JSONObject roomJSON = (JSONObject)i;
@@ -362,7 +362,7 @@ public class DataLoader extends DataConstants{
 	 * @param roomJSON the JSONObject containing the info for the Room
 	 * @return a Room
 	 */
-	private static Room rebuildRoom(JSONObject roomJSON) {
+	static Room rebuildRoom(JSONObject roomJSON) {
 		UUID roomID = UUID.fromString((String)roomJSON.get(RO_ID));
 		ArrayList<RoomAmenity> roomAmenities = rebuildRoAmenities((JSONArray)roomJSON.get(RO_AMENITIES));
 		int floorNumber = ((Long)roomJSON.get(RO_FLOOR_NUMBER)).intValue();
@@ -375,7 +375,7 @@ public class DataLoader extends DataConstants{
 	 * @param jsonArray the JSONArray containing the info for all the Room's Reservations
 	 * @return an ArrayList<Reservation>
 	 */
-	private static ArrayList<Reservation> rebuildRoReservations(JSONArray jsonArray) {
+	static ArrayList<Reservation> rebuildRoReservations(JSONArray jsonArray) {
 		ArrayList<Reservation> resList = new ArrayList<>();
 		for (Object i: jsonArray) {
 			resList.add(rebuildReservation((JSONObject)i));
@@ -387,7 +387,7 @@ public class DataLoader extends DataConstants{
 	 * @param jsonArray the JSONArray containing the info for all the Room's Amenities
 	 * @return an ArrayList<RoomAmenity>
 	 */
-	private static ArrayList<RoomAmenity> rebuildRoAmenities(JSONArray jsonArray) {
+	static ArrayList<RoomAmenity> rebuildRoAmenities(JSONArray jsonArray) {
 		ArrayList<RoomAmenity> newList = new ArrayList<>();
 		ArrayList<String> strtoRA = (ArrayList<String>)jsonArray;
 		for (String i: strtoRA) {

@@ -12,42 +12,33 @@ import org.junit.jupiter.api.Test;
 
 class UsersTest {
 	private Users users = Users.getInstance();
-	private ArrayList<RegisteredUser> userList = users.getRegisteredUsers();
+	private ArrayList<RegisteredUser> userList = new ArrayList<>();
 
     private UUID userID = new UUID(0,1);
     private RegistrationInfo userInfo = new RegistrationInfo("Ryan", "Davis", "rDavis", "password", 20, true);
     private BookingList savedBookings = new BookingList();
     private ArrayList<PartyMember> partyMembers = new ArrayList<>();
 
-
-
 	@BeforeEach
 	public void setup() {
 		userList.clear();
 		userList.add(new RegisteredUser(userID, userInfo, savedBookings, partyMembers));
-		DataWriter.saveUsers();
 	}
 	
 	@AfterEach
 	public void tearDown() {
-		Users.getInstance().getRegisteredUsers().clear();
-		DataWriter.saveUsers();
+		userList.clear();
 	}
 
 	@Test
 	void testHaveUserValidFirstItem() {
-		assertEquals(true, Users.getInstance().getRegisteredUsers().get(0).getUserInfo().getFirstName());
+		assertEquals("Ryan", userList.get(0).getUserInfo().getFirstName());
 	}
 
 	@Test
 	void testHaveUserEmpty() {
-		// TO DO
+		assertEquals(false, Users.getInstance().getRegisteredUsers().get(0));
+        assertEquals(true, Users.getInstance().getRegisteredUsers().get(1));
 	}
-	
-	@Test
-	void testHaveUserNull() {
-		// TO DO
-	}
-	
 	
 }
